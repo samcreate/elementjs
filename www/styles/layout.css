@@ -39,8 +39,13 @@ div#PageWrapper{}
 /*
 Header 282829   display: block; 
 */
-header{   text-align: center; background-color: #2a2a2b; height: 532px;}
-header #MenuHolder { border-bottom:1px solid #333333; outline: 5px solid #282829;}
+header{   text-align: center; background-color: #2a2a2b; height: 532px; padding-top: 75px;display: block;}
+header #MenuHolder { border-bottom:1px solid #333333; outline: 5px solid #282829;position: fixed;
+width: 100%;
+z-index: 9999;
+background-color: #2A2A2B;
+top: 0;
+margin-bottom: 37px;}
 header #menu {height:60px; margin:0px auto; width:410px; }
 header #menu li {float:left; padding:26px 5px;}
 header #menu li a{text-decoration: none; text-transform: uppercase;}
