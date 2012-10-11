@@ -64,9 +64,13 @@ Content MainContent
 */
 div#MainContent{}
 
-div#MainContent{}
+div#MainContent{margin-top: 40px;}
 
 ol.steps {margin:0px auto; width: 740px;}
+
+ol.steps li dt{font-size: 12px; margin-bottom:10px; margin-left: 4px;}
+ol.steps li dd{margin-bottom: 40px;}
+
 /*
 Footer
 */
