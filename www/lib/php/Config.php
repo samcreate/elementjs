@@ -62,11 +62,11 @@ class Config {
 				
 			break;
 			
-			case "production_url.com":
+			case "elementjs.herokuapp.com":
 				//turn off error reporting for production
 				error_reporting(0);
 				ini_set('display_errors', '0');
-				$this->environment = PROD;
+				$this->environment = STAGE;
 				$this->dbhost = 'localhost';
 				$this->dbuser = "root";
 				$this->dbpass = "root";
