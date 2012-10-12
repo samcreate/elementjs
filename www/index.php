@@ -35,51 +35,47 @@
 		</header>
 
 		<div id="MainContent" role="main">
-			<ol class="steps">
-				<li>
-					<dl>
-						<dt>Step 1:</dt>
-						<dd>
-							<pre class="brush: js; gutter: false; ">
+			<dl class="steps">
+	
+				<dt class="water">Step 1:</dt>
+					<dd>
+						<pre class="brush: js; gutter: false; ">
 
-								<script src="element.js" type="text/javascript" charset="utf-8"></script>
+							<script src="element.js" type="text/javascript" charset="utf-8"></script>
 
-								//Include Element.js to your document.
-							</pre>
-						</dd>
-					</dl>
-				</li>
-				<li>
-					<dl>
-						<dt>Step 2:</dt>
-						<dd>
-							<pre class="brush: js; gutter: false; ">
+							//Include Element.js to your document.
+						</pre>
+					</dd>
+	
+				<dt class="fire">Step 2:</dt>
+					<dd>
+						<pre class="brush: js; gutter: false; ">
 
-								<canvas id="element-root" framerate="10"> No support for canvas was detected, human. </canvas>
+							<canvas id="element-root" framerate="10"> No support for canvas was detected, human. </canvas>
 
-								//First step is to add a canvas element to your page with an id of “element-root”.
-								//For framerate, height and width of your project is all based on the “meta-data” 
-								//that you add to the canvas element.
-							</pre>
-						</dd>
-					</dl>
-				</li>
-				<li>
-					<dl>
-						<dt>Step 3:</dt>
-						<dd>
-							<pre class="brush: js; gutter: false; ">
+							//First step is to add a canvas element to your page with an id of “element-root”.
+							//For framerate, height and width of your project is all based on the “meta-data” 
+							//that you add to the canvas element.
+						</pre>
+					</dd>
+	
+				<dt class="atom">Step 3:</dt>
+					<dd>
+						<pre class="brush: js; gutter: false; ">
 
-								var fire = new Element("Sprite").src("fire.png","fire.json",2).loop(true);
+							var fire = new Element("Sprite").src("fire.png","fire.json",2).loop(true);
 
-								//Create a new Elment by defining what the Element type is. In the above example
-								//we have a new Sprite Element being created and automatically added to the canvas.
-								//We define the Element further with “src, loop, x, y.”
-							</pre>
-						</dd>
-					</dl>
-				</li>
-			</ol>
+							//Create a new Elment by defining what the Element type is. In the above example
+							//we have a new Sprite Element being created and automatically added to the canvas.
+							//We define the Element further with “src, loop, x, y.”
+						</pre>
+					</dd>
+				<dt class="light">Step 3:</dt>
+					<dd>
+						<canvas id="element-root2" framerate="40" width="740" height="480"> No support for canvas was detected, human. </canvas>
+					</dd>
+	
+			</dl>
 		</div>
 
 		<footer>
@@ -90,7 +86,10 @@
 	<script src="lib/js/plugins/dd_belatedpng.js"></script>
 	<script> DD_belatedPNG.fix('img, .png_bg');</script>
 	<![endif]-->
-	<script type="text/javascript"> window._app_vars = <?php echo $settings->app_vars_JSON(); ?>; </script>
+	<script type="text/javascript"> window._app_vars = <?php echo $settings->app_vars_JSON(); ?>; 
+
+		
+	</script>
 	
 	<?
 
@@ -119,10 +118,12 @@
 	<script src="lib/js/jquery/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="lib/js/plugins/shCore.js"></script>
 	<script src="lib/js/plugins/shBrushJScript.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/js/plugins/Element.js" type="text/javascript" charset="utf-8"></script>
 	<script src="lib/js/master.js" type="text/javascript" charset="utf-8"></script>	
 	<script src="lib/js/main.js" type="text/javascript" charset="utf-8"></script>
 	<script src="lib/js/homePage.js" type="text/javascript" charset="utf-8"></script>
 	<!-- END: javascript -->
+
 	<?	
 	} 
 	?>

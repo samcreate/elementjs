@@ -27,7 +27,7 @@
 						'new null return super switch ' +
 						'this throw true try typeof while with'
 						;
-		var blue = 'src x y width height scale animate filter on to start alpha border mask index pause ready mask easing id extend visible transform time toString top shadow loop';
+		var blue = 'gotoAndStop run gotoAndPlay src x y width height scale animate filter on to start alpha border mask index pause ready mask easing id extend visible transform time toString top shadow loop';
 		var offwhite = 'var';
 		var orange = 'equals  = ';
 		var yellowish = 'Element script canvas';

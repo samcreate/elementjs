@@ -64,12 +64,19 @@ Content MainContent
 */
 div#MainContent{}
 
-div#MainContent{margin-top: 40px;}
+div#MainContent{margin-top: 58px;}
 
-ol.steps {margin:0px auto; width: 740px;}
+dl.steps {margin:0px auto; width: 740px;}
 
-ol.steps li dt{font-size: 12px; margin-bottom:10px; margin-left: 4px;}
-ol.steps li dd{margin-bottom: 40px;}
+dl.steps dt{font-size: 12px; margin-bottom:10px; margin-left: 4px; }
+dl.steps dt.water{background: url('/media/images/ele.water.png') no-repeat center top transparent; padding-top: 130px;}
+dl.steps dt.fire{background: url('/media/images/ele.fire.png') no-repeat center top transparent; padding-top: 130px;}
+dl.steps dt.atom{background: url('/media/images/ele.atom-.png') no-repeat center top transparent; padding-top: 130px;}
+dl.steps dt.light{background: url('/media/images/ele.light.png') no-repeat center top transparent; padding-top: 130px;}
+
+dl.steps dd{margin-bottom: 58px;}
+
+dl.steps dd canvas{ background-color: #414141;}
 
 /*
 Footer

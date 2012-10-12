@@ -22,7 +22,8 @@ EJS.homePage = function(){
 				debug.log('- initialized'); 
 				
 				//--> sof private functions
-				SyntaxHighlighter.all();
+				
+				_run();
 				//--> eof private functions
 			    		
 				debug.groupEnd();
@@ -36,6 +37,18 @@ EJS.homePage = function(){
 	// ================================================
 	// = Private functionse (function _private() {} ) =
 	// ================================================
+
+
+	function _run () {
+
+		//
+		SyntaxHighlighter.all();
+		
+		var fire = new Element("Sprite").canvas_id('element-root2').src("/media/animation/fire.png","/media/animation/fire.json",2).loop(true);
+
+		
+
+	}
 	
 }();
 EJS.main.queue(EJS.homePage.init);
