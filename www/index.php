@@ -72,7 +72,7 @@
 					</dd>
 				<dt class="light">Step 3:</dt>
 					<dd>
-						<canvas id="element-root2" framerate="40" width="740" height="480"> No support for canvas was detected, human. </canvas>
+						<canvas id="element-root2" framerate="80" width="740" height="480"> No support for canvas was detected, human. </canvas>
 					</dd>
 	
 			</dl>
