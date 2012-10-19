@@ -63,11 +63,14 @@
 					<dd>
 						<pre class="brush: js; gutter: false; ">
 
-							var fire = new Element("Sprite").src("fire.png","fire.json",2).loop(true);
+							var fire = new Element("Sprite",{
+								src  : "fire.png,fire.json,2",
+								loop : true
+							});
 
 							//Create a new Elment by defining what the Element type is. In the above example
 							//we have a new Sprite Element being created and automatically added to the canvas.
-							//We define the Element further with “src, loop, x, y.”
+							//We define the Element further with “src, loop, x, y" by passing them as an object.
 						</pre>
 					</dd>
 				<dt class="light">Step 3:</dt>
