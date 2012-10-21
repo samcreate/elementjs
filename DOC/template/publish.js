@@ -4,8 +4,8 @@ function publish(symbolSet) {
 		ext:         ".html",
 		outDir:      JSDOC.opt.d || SYS.pwd+"../out/jsdoc/",
 		templatesDir: JSDOC.opt.t || SYS.pwd+"../templates/jsdoc/",
-		symbolsDir:  "symbols/",
-		srcDir:      "symbols/src/"
+		symbolsDir:  "class/",
+		srcDir:      "class/src/"
 	};
 	
 	// is source output is suppressed, just display the links to the source file
@@ -16,7 +16,7 @@ function publish(symbolSet) {
 	}
 	
 	// create the folders and subfolders to hold the output
-	IO.mkPath((publish.conf.outDir+"symbols/src").split("/"));
+	IO.mkPath((publish.conf.outDir+"class/src").split("/"));
 		
 	// used to allow Link to check the details of things being linked to
 	Link.symbolSet = symbolSet;
@@ -43,7 +43,7 @@ function publish(symbolSet) {
 	var files = JSDOC.opt.srcFiles;
  	for (var i = 0, l = files.length; i < l; i++) {
  		var file = files[i];
- 		var srcDir = publish.conf.outDir + "symbols/src/";
+ 		var srcDir = publish.conf.outDir + "class/src/";
 		makeSrcFile(file, srcDir);
  	}
  	
@@ -81,7 +81,7 @@ function publish(symbolSet) {
 		var output = "";
 		output = classTemplate.process(symbol);
 		
-		IO.saveFile(publish.conf.outDir+"symbols/", ((JSDOC.opt.u)? Link.filemap[symbol.alias] : symbol.alias) + publish.conf.ext, output);
+		IO.saveFile(publish.conf.outDir+"class/", ((JSDOC.opt.u)? Link.filemap[symbol.alias] : symbol.alias) + publish.conf.ext, output);
 	}
 	
 	// regenerate the index with different relative links, used in the index pages

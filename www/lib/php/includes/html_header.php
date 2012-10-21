@@ -43,9 +43,9 @@
 		<header>
 			<div id="MenuHolder">
 				<ul id="menu">
-					<li><a href="" class="active">Home</a></li>
+					<li><a href="/" class="active">Home</a></li>
 					<li><a href="" class="">Examples</a></li>
-					<li><a href="doc/" class="">Documentation</a></li>
+					<li><a href="/doc/" class="">Documentation</a></li>
 					<li><a href="" class="">Support</a></li>
 					<li><a href="" class="">Read</a></li>
 				</ul>
