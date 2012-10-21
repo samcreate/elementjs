@@ -22,7 +22,7 @@
 				<ul id="menu">
 					<li><a href="" class="active">Home</a></li>
 					<li><a href="" class="">Examples</a></li>
-					<li><a href="doc/" class="">Documentation</a></li>
+					<li><a href="" class="">Documentation</a></li>
 					<li><a href="" class="">Support</a></li>
 					<li><a href="" class="">Read</a></li>
 				</ul>
@@ -35,49 +35,26 @@
 		</header>
 
 		<div id="MainContent" role="main">
-			<dl class="steps">
-	
-				<dt class="water">Step 1:</dt>
-					<dd>
-						<pre class="brush: js; gutter: false; ">
-
-							<script src="element.js" type="text/javascript" charset="utf-8"></script>
-
-							//Include Element.js to your document.
-						</pre>
-					</dd>
-	
-				<dt class="fire">Step 2:</dt>
-					<dd>
-						<pre class="brush: js; gutter: false; ">
-
-							<canvas id="element-root" framerate="10"> No support for canvas was detected, human. </canvas>
-
-							//First step is to add a canvas element to your page with an id of “element-root”.
-							//For framerate, height and width of your project is all based on the “meta-data” 
-							//that you add to the canvas element.
-						</pre>
-					</dd>
-	
-				<dt class="atom">Step 3:</dt>
-					<dd>
-						<pre class="brush: js; gutter: false; ">
-
-							var fire = new Element("Sprite",{
-								src  : "fire.png, fire.json",
-								loop : true
-							});
-
-							//Create a new Elment by defining what the Element type is. In the above example
-							//we have a new Sprite Element being created and automatically added to the canvas.
-							//We define the Element further with “src, loop, x, y" by passing them as an object.
-						</pre>
-					</dd>
-				<dt class="light">Step 3:</dt>
-					<dd>
-						<canvas id="element-root2" framerate="80" width="740" height="480"> No support for canvas was detected, human. </canvas>
-					</dd>
-	
+			<h2>Classes Menu:</h2>
+			<ul id="classNames">
+				<li><a href="Bitmap.html">Bitmap</a></li>
+				<li><a href="Sprite.html">Sprite</a></li>
+				<li><a href="Shape.html">Shape</a></li>
+			</ul>
+			<dl>
+				<dt>Bitmap:</dt>
+				<dd>
+					<pre  class="brush: js; gutter: false; ">
+						//Bitmap description
+					</pre>
+					<hr>
+					<ul>
+						<li><a href="#src">.src()</a></li>
+						<li><a href="#alpha">.alpha()</a></li>
+					</ul>
+				</dd>
+				<dd></dd>
+				<dd></dd>
 			</dl>
 		</div>
 

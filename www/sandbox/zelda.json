@@ -1,0 +1,276 @@
+{"frames": [
+
+{
+	"filename": "zelda-sword0010.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0010.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0010.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0010.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0010.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0006.png",
+	"frame": {"x":2,"y":2,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0007.png",
+	"frame": {"x":2,"y":2,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0008.png",
+	"frame": {"x":2,"y":2,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0009.png",
+	"frame": {"x":34,"y":2,"w":30,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":2,"w":30,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0010.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0011.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0012.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0013.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0014.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda-sword0015.png",
+	"frame": {"x":66,"y":2,"w":54,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":54,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0001.png",
+	"frame": {"x":2,"y":2,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0002.png",
+	"frame": {"x":2,"y":2,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0003.png",
+	"frame": {"x":2,"y":2,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0004.png",
+	"frame": {"x":2,"y":2,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0005.png",
+	"frame": {"x":2,"y":2,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0006.png",
+	"frame": {"x":2,"y":2,"w":30,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":32},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0007.png",
+	"frame": {"x":2,"y":36,"w":28,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":28,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0008.png",
+	"frame": {"x":2,"y":36,"w":28,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":28,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0009.png",
+	"frame": {"x":2,"y":36,"w":28,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":28,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0010.png",
+	"frame": {"x":2,"y":36,"w":28,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":28,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0011.png",
+	"frame": {"x":2,"y":36,"w":28,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":28,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda0012.png",
+	"frame": {"x":2,"y":36,"w":28,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":28,"h":30},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda_power0001.png",
+	"frame": {"x":32,"y":36,"w":28,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":52},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda_power0002.png",
+	"frame": {"x":32,"y":36,"w":28,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":52},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda_power0003.png",
+	"frame": {"x":32,"y":36,"w":28,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":52},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda_power0004.png",
+	"frame": {"x":62,"y":36,"w":28,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":52},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda_power0005.png",
+	"frame": {"x":62,"y":36,"w":28,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":52},
+	"sourceSize": {"w":550,"h":400}
+},
+{
+	"filename": "zelda_power0006.png",
+	"frame": {"x":62,"y":36,"w":28,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":52},
+	"sourceSize": {"w":550,"h":400}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "zelda.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":128},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c8d72fed671bc86955d5dd43e84705f3$"
+}
+}

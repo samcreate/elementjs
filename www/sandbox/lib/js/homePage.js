@@ -2,8 +2,8 @@
  * Put javascript plugin depedencies below (see main.js for an exmaple)
  * 
  */
-var EJS = EJS || {};
-EJS.homePage = function(){
+var CHANGE_ME = CHANGE_ME || {};
+CHANGE_ME.homePage = function(){
 	// =================================================
 	// = Private variables (example: var _foo = bar; ) =
 	// =================================================
@@ -23,13 +23,11 @@ EJS.homePage = function(){
 				
 				//--> sof private functions
 				
-				_run();
 				//--> eof private functions
 			    		
 				debug.groupEnd();
 
-		},
-		fire : ""
+		}
 		
 	};
 	
@@ -38,20 +36,8 @@ EJS.homePage = function(){
 	// ================================================
 	// = Private functionse (function _private() {} ) =
 	// ================================================
-
-
-	function _run () {
-
-	
-		SyntaxHighlighter.all();
-		
-		self.fire = new Element("Sprite").canvas_id('element-root2').src("/media/animation/fire.png","/media/animation/fire.json",2).loop(true);
-
-		
-
-	}
 	
 }();
-EJS.main.queue(EJS.homePage.init);
+CHANGE_ME.main.queue(CHANGE_ME.homePage.init);
 
 

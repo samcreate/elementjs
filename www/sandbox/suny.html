@@ -1,0 +1,81 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  </header>
+  <div role="main">
+	<canvas id="element-root" framerate="100"  width="800" height="600">No support for canvas was detected, human.</canvas>
+  </div>
+  <footer>
+
+  </footer>
+<script type="text/javascript" charset="utf-8">
+	window.debug=(function(){var i=this,b=Array.prototype.slice,d=i.console,h={},f,g,m=9,c=["error","warn","info","debug","log"],l="assert clear count dir dirxml exception group groupCollapsed groupEnd profile profileEnd table time timeEnd trace".split(" "),j=l.length,a=[];while(--j>=0){(function(n){h[n]=function(){m!==0&&d&&d[n]&&d[n].apply(d,arguments)}})(l[j])}j=c.length;while(--j>=0){(function(n,o){h[o]=function(){var q=b.call(arguments),p=[o].concat(q);a.push(p);e(p);if(!d||!k(n)){return}d.firebug?d[o].apply(i,q):d[o]?d[o](q):d.log(q)}})(j,c[j])}function e(n){if(f&&(g||!d||!d.log)){f.apply(i,n)}}h.setLevel=function(n){m=typeof n==="number"?n:9};function k(n){return m>0?m>n:c.length+m<=n}h.setCallback=function(){var o=b.call(arguments),n=a.length,p=n;f=o.shift()||null;g=typeof o[0]==="boolean"?o.shift():false;p-=typeof o[0]==="number"?o.shift():n;while(p<n){e(a[p++])}};return h})();
+	
+</script>
+<script src="lib/js/Element/Basic.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/util.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/EventTarget.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Filter.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/DisplayObject.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Loop.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Transform.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Events.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Bitmap.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Path.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Sprite.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/FrameTicker.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Tweenie.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/canvas.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="lib/js/Element/release/Element.js" type="text/javascript" charset="utf-8"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+	var _img1 = new Element("Bitmap").src("jelly.jpg").width(300).filter("emboss");
+	var _img2 = new Element("Bitmap").src("one.png");
+	_flag = false;
+	_img1.bind('finishDraw',function(){
+		if(_flag === true) return;
+		var img = new Image();
+		img.src = _img1.toDataURL();
+
+		$('body').append(img);
+
+		_flag = true;
+	})
+	
+	
+	
+	function drag_handler (p_evt) {
+			//this.width(650).height(387);
+			
+			if(p_evt.eventType === "onFinished"){
+				
+				//this.border("none").shadow("none").width(600).height(337);
+			}
+			
+			if (p_evt.eventType == "onStart") {
+				
+			}
+	}
+		
+</script>
+  
+</body>
+</html>

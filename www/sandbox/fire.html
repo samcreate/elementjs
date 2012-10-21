@@ -1,0 +1,94 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  </header>
+  <div role="main">
+	<canvas id="element-root" framerate="60"  style="background:gray">No support for canvas was detected, human.</canvas>
+  </div>
+  <footer>
+
+  </footer>
+<script type="text/javascript" charset="utf-8">
+	window.debug=(function(){var i=this,b=Array.prototype.slice,d=i.console,h={},f,g,m=9,c=["error","warn","info","debug","log"],l="assert clear count dir dirxml exception group groupCollapsed groupEnd profile profileEnd table time timeEnd trace".split(" "),j=l.length,a=[];while(--j>=0){(function(n){h[n]=function(){m!==0&&d&&d[n]&&d[n].apply(d,arguments)}})(l[j])}j=c.length;while(--j>=0){(function(n,o){h[o]=function(){var q=b.call(arguments),p=[o].concat(q);a.push(p);e(p);if(!d||!k(n)){return}d.firebug?d[o].apply(i,q):d[o]?d[o](q):d.log(q)}})(j,c[j])}function e(n){if(f&&(g||!d||!d.log)){f.apply(i,n)}}h.setLevel=function(n){m=typeof n==="number"?n:9};function k(n){return m>0?m>n:c.length+m<=n}h.setCallback=function(){var o=b.call(arguments),n=a.length,p=n;f=o.shift()||null;g=typeof o[0]==="boolean"?o.shift():false;p-=typeof o[0]==="number"?o.shift():n;while(p<n){e(a[p++])}};return h})();
+	
+</script>
+<script src="lib/js/Element/release/Element.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="lib/js/Element/util.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Basic.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/EventTarget.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Filter.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/DisplayObject.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Loop.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Transform.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Events.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Bitmap.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Path.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Sprite.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/FrameTicker.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Tweenie.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/canvas.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script> -->
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+
+
+var one, two, three, four;
+// one = new Element("Bitmap").src("one.png").on("drag",drag_handler).filter("emboss");
+// two = new Element("Bitmap").src("two.png").on("drag",drag_handler).x(50).y(50);
+// three = new Element("Bitmap").src("three.png").on("drag",drag_handler).x(100).y(100);
+//var sprite2 = new Element("Sprite").src("ball.png","ball.json",2).loop(true).on("drag",drag_handler)
+var fire = new Element("Sprite").src("fire.png","fire.json",2).loop(true);	
+
+function _handlekeydown(p_evt){
+	if(p_evt.keyCode === 37) this.run("default",true).x(this.x()-4);
+	
+	if(p_evt.keyCode === 83) this.run("sword",true);
+	
+	if(p_evt.keyCode === 39) this.run("default",true).x(this.x()+4);
+	
+}
+function _handlekeyUp(p_evt){
+	if(p_evt.keyCode === 37) this.gotoAndStop(15);
+	if(p_evt.keyCode === 83) this.gotoAndStop(15);
+}
+
+function drag_handler (p_evt) {
+	if(p_evt.eventType === "onStart"){
+ 		this.top().loop(false).gotoAndStop(4);
+	
+	}
+	if(p_evt.eventType === "onFinished"){
+		
+	var _x = this.x();
+	this.stop().gotoAndPlay(0).loop(true).animate(1,{x:(_x+300)}).start(function(){
+		this.gotoAndStop(12);
+	});
+	}
+ 	
+}
+
+
+		
+</script>
+  
+</body>
+</html>

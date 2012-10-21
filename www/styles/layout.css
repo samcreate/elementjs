@@ -81,8 +81,11 @@ dl.steps dd canvas{ background-color: #414141;}
 /*
 Footer
 */
-footer{}
-
+footer{ text-align: center;}
+footer hr {background-color: #414141; height: 1px; border:none;  }
+footer p{font-size:9px; color: #757575; padding: 16px 0;}
+footer p a{color: #757575; text-decoration: none;}
+footer p em{color: #809349; padding-left: 5px; font-size: 10px;}
 
 
 
