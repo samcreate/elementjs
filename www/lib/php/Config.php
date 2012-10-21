@@ -47,7 +47,7 @@ class Config {
 		
 		
 		switch($this->server_name) {
-			case "beta.elementjs.com":
+			case "local.elementjs.com":
 				
 				$this->environment = LOCAL;
 				$this->dbhost = 'localhost';
