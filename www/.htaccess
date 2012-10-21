@@ -15,7 +15,7 @@
 ### github.com/paulirish/html5-boilerplate-server-configs
 ###
 
-
+AddType application/x-httpd-php .html
 
 # ----------------------------------------------------------------------
 # Better website experience for IE users

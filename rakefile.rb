@@ -5,11 +5,6 @@
      sh 'juicer merge -i ../www/lib/js/master.js -o ../www/lib/js/evbmaster-min.js --force'
  end
 
- task :doc do
-  puts "Building Documentation"
-   sh 'java -Djsdoc.dir=/Users/aaron.mcguire/Documents/jsdoc-toolkit -jar /Users/aaron.mcguire/Documents/jsdoc-toolkit/jsrun.jar /Users/aaron.mcguire/Documents/jsdoc-toolkit/app/run.js -t=/Users/aaron.mcguire/Documents/jsdoc-toolkit/templates/jsdoc -r=4 www/lib/js/Element -d=www/doc -q'
-     
-end
  
  task :min do
   puts "Building JS"

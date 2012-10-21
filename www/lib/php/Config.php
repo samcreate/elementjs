@@ -37,7 +37,7 @@ class Config {
 	var $protocol;
 	var $facebook_app_id;
 	var $page;
-	var $title = "Evolution Bureau |";
+	var $title = "ElementJS >>-e";
 	 
 	private function __construct($server_name = '') {
 		
