@@ -63,6 +63,8 @@ class Config {
 			break;
 			
 			case "elementjs.herokuapp.com":
+			case "elementjs.com":
+			case "www.elementjs.com":
 				//turn off error reporting for production
 				error_reporting(0);
 				ini_set('display_errors', '0');
