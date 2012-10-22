@@ -258,7 +258,7 @@
 	* @memberOf Bitmap#
 	* @name x
     * @function
-	* @param {Number} value - Value of x position.
+	* @param {Number} [value] - Value of x position.
     * @description 
     // x moves an object's x axius on the canvas
 	* @public 
@@ -273,7 +273,7 @@
 	* @memberOf Bitmap#
 	* @name y
     * @function
-	* @param {Number} value - Value of y position.
+	* @param {Number} [value] - Value of y position.
     * @description 
     // y moves an object's y axius on the canvas
 	* @public 
