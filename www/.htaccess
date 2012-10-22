@@ -17,12 +17,6 @@
 
 
 
-RewriteEngine on
-RewriteCond %{HTTP_HOST} !^local\.elementjs\.com$ [NC]
-RewriteCond %{HTTP_HOST} !^elementjs\.herokuapp\.com$ [NC]
-RewriteCond %{HTTP_HOST} !^www\.elementjs\.com
-RewriteRule (.*) http://www.elementjs.com/$1 [R=301,L]
-
 AddType application/x-httpd-php .html
 
 # ----------------------------------------------------------------------
@@ -313,11 +307,11 @@ FileETag None
 # Option 1:
 # Rewrite "www.domain.com -> domain.com" 
 
-<IfModule mod_rewrite.c>
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
-</IfModule>
+#<IfModule mod_rewrite.c>
+#  RewriteCond %{HTTPS} !=on
+#  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+#  RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+#</IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -326,12 +320,14 @@ FileETag None
 # Be aware that the following rule might not be a good idea if you
 # use "real" subdomains for certain parts of your website.
 
-# <IfModule mod_rewrite.c>
-#   RewriteCond %{HTTPS} !=on
-#   RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-#   RewriteCond %{HTTP_HOST} (.+)$ [NC]
-#   RewriteRule ^(.*)$ http://www.%1/$1 [R=301,L]
-# </IfModule>
+ <IfModule mod_rewrite.c>
+   RewriteCond %{HTTP_HOST} !^local\.elementjs\.com$ [NC]
+   RewriteCond %{HTTP_HOST} !^elementjs\.herokuapp\.com$ [NC]
+   RewriteCond %{HTTPS} !=on
+   RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+   RewriteCond %{HTTP_HOST} (.+)$ [NC]
+   RewriteRule ^(.*)$ http://www.%1/$1 [R=301,L]
+ </IfModule>
 
 
 
