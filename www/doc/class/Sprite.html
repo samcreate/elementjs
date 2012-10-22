@@ -84,8 +84,8 @@
 				<!-- ============================== method details ========================= -->		
 			
 				
-				<dt><a name="on"> </a><h3>on( event_name:Stringcall_back:Function )</h3></dt><dd><pre class="brush: js; gutter: false; ">// on allows you to bind to an event (e.g drag, click, etc...) and specify a callback 
-    // function
+				<dt><a name="on"> </a><h3>on( event_name:Stringcall_back:Function )</h3></dt><dd><pre class="brush: js; gutter: false; ">// on allows you to bind to an event (e.g drag, click, etc...) and specify a 
+    // callback function.
 var _img1 = new Element("Bitmap",{
 
 		src:"path/to/image.jpg",
@@ -99,9 +99,10 @@ function _click_handler (p_e) {
 	// the path of an image returns a Bitmap object.
 var _img1 = new Element("Bitmap",{
 		src:"path/to/image.jpg"
-});</pre></dd><dt><a name="toDataURL"> </a><h3>toDataURL( area:String<em>:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// toDataURL pulls the image data in a dataURL format. This function allows for one 
-    // optional string parameter. If you pass in "all", all of the image data is returned 
-    // for the entire canvas, if left blank, just that objects data is returned.
+});</pre></dd><dt><a name="toDataURL"> </a><h3>toDataURL( area:String<em>:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// toDataURL pulls the image data in a dataURL format. This function allows for 
+    // one optional string parameter. If you pass in "all", all of the image data
+    // is returned for the entire canvas, if left blank, just that objects data is 
+    // returned.
 	// this example will return dataURL for just that single object
 
 var _img_data = new Element("Bitmap",{

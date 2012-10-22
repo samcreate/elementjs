@@ -88,9 +88,10 @@
     * @function
 	* @param {String} [area] - 'all'= all elements
     * @description 
-    // toDataURL pulls the image data in a dataURL format. This function allows for one 
-    // optional string parameter. If you pass in "all", all of the image data is returned 
-    // for the entire canvas, if left blank, just that objects data is returned.
+    // toDataURL pulls the image data in a dataURL format. This function allows for 
+    // one optional string parameter. If you pass in "all", all of the image data
+    // is returned for the entire canvas, if left blank, just that objects data is 
+    // returned.
 	* @public 
 	* @example 
 	// this example will return dataURL for just that single object
@@ -274,8 +275,8 @@
 	* @param {String} event_name - Name of the event.
 	* @param {Function} call_back - Callback function that will be triggered for the event.
     * @description 
-    // on allows you to bind to an event (e.g drag, click, etc...) and specify a callback 
-    // function
+    // on allows you to bind to an event (e.g drag, click, etc...) and specify a 
+    // callback function.
 	* @public 
 	* @example 
    	*var _img1 = new Element("Bitmap",{
