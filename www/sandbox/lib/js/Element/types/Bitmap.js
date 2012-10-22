@@ -33,8 +33,8 @@
     * @function
 	* @param {String} path - Path to image (png,gif,jpg).
     * @description 
-    // src allows for one string parameter that points to the path of an image
-	// returns a Bitmap object.
+    // src allows for one string parameter that points to<br>
+	// the path of an image returns a Bitmap object.
 	* @public 
 	* @example 
    	*var _img1 = new Element("Bitmap",{

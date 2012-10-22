@@ -58,8 +58,52 @@
 						</if>
 					</dd>
 				</if>
-				<dd></dd>
-				<dd></dd>
+
+				<!-- ============================== method details ========================= -->		
+			<if test="defined(ownMethods) && ownMethods.length">
+				
+				<for each="member" in="ownMethods">
+					
+					<dt>
+						<a name="{+Link.symbolNameToLinkName(member)+}"> </a>
+						<h3>{!
+						if (member.isPrivate) output += "&lt;private&gt; ";
+						if (member.isInner) output += "&lt;inner&gt; ";
+						if (member.isStatic) output += "&lt;static&gt; ";
+					!}
+					
+					<if test="member.type">{{+new Link().toSymbol(member.type)+}}</if>
+					<if test="member.isStatic && member.memberOf != '_global_'">{+member.memberOf+}.</if>{+member.name.replace(/\^\d+$/, '')+}{+makeSignature(member.params)+}
+
+						<if test="member.params.length">
+							<for each="item" in="member.params">
+								
+									{+((item.type)?"{"+(new Link().toSymbol(item.type))+"} " : "")+}{+item.name+}
+									<if test="item.isOptional">Optional<if test="item.defaultValue">, Default: {+item.defaultValue+}</if></if>
+								
+								<!-- <dd>{+resolveLinks(item.desc)+}</dd> -->
+							</for>
+							
+						</if>
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc">{+resolveLinks(member.desc)+}</p>
+						<pre  class="brush: js; gutter: false; ">
+						<if test="member.example.length">
+							<for each="example" in="member.example">
+								{+example+}
+							</for>
+						</if>
+						
+						</pre>
+					</dd>
+				</for>
+			</if>
+				
 			</dl>
 		</div>
-<?php require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_footer.php'; ?>	
+<?php require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_footer.php'; ?>
+
+
+
