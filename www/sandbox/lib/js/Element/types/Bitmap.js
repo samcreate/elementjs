@@ -3,11 +3,9 @@
 	/**
 	* //Bitmap class loads jpg/png/gif as a Bitmap Object on the canvas 
 	* @class Bitmap
-	* @extends BaseObject
+	* @extends DisplayObject
 	* @constructor
 	* @example
-	* var bleeper = makeBleep(3);
-	* bleeper.flop();
 	*/
 	Bitmap = function(p_context) {
 		
@@ -33,12 +31,12 @@
     * @function
 	* @param {String} path - Path to image (png,gif,jpg).
     * @description 
-    // src allows for one string parameter that points to<br>
+    // src allows for one string parameter that points to
 	// the path of an image returns a Bitmap object.
 	* @public 
 	* @example 
    	*var _img1 = new Element("Bitmap",{
-	*	src:"path/to/image.jpg"
+	*		src:"path/to/image.jpg"
 	*});
     */
 
@@ -84,7 +82,7 @@
 	/** @memberOf Bitmap#
 	* @name toDataURL
     * @function
-	* @param {String} area - 'all'= all elements
+	* @param {String} [area] - 'all'= all elements
     * @description 
     // toDataURL pulls the image data in a dataURL format. This function allows for one optional string parameter. 
     // If you pass in "all", all of the image data is returned for the entire canvas, if left blank, just that objects
@@ -92,7 +90,7 @@
 	* @public 
 	* @example 
    	*var _img_data = new Element("Bitmap",{
-	*	src:"path/to/image.jpg"
+	*		src:"path/to/image.jpg"
 	*}).toDataURL();
     */
 	
@@ -252,9 +250,55 @@
 	};
 	
 	
-	
 	_pt.name = "Bitmap Instance";
 	
 	window.Bitmap = Bitmap;
+
+	/**
+	* @memberOf Bitmap#
+	* @name x
+    * @function
+	* @param {Number} value - Value of x position.
+    * @description 
+    // x moves an object's x axius on the canvas
+	* @public 
+	* @example 
+   	*var _img1 = new Element("Bitmap",{
+	*		src:"path/to/image.jpg"
+	*}).x(22);
+    */
+
+
+    /**
+	* @memberOf Bitmap#
+	* @name y
+    * @function
+	* @param {Number} value - Value of y position.
+    * @description 
+    // y moves an object's y axius on the canvas
+	* @public 
+	* @example 
+   	*var _img1 = new Element("Bitmap",{
+	*		src:"path/to/image.jpg"
+	*}).y(22);
+    */
+
+
+    /**
+	* @memberOf Bitmap#
+	* @name on
+    * @function
+	* @param {String} event_name - Name of the event.
+	* @param {Function} call_back - Callback function that will be triggered for the event.
+    * @description 
+    // on allows you to bind to an event (e.g drag, click, etc...) and specify a callback function
+	* @public 
+	* @example 
+   	*var _img1 = new Element("Bitmap",{
+	*		src:"path/to/image.jpg",
+	*}).on('click',function(p_e){ c
+	*		onsole.log('event is being triggered', p_e) 
+	*	});
+    */
 	
 }(window));

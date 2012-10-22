@@ -25,7 +25,7 @@ Global
 
 a{color:white;}
 
-code.space {display: none;}
+code.spaces {display: none;}
 /*
 Body
 */
@@ -83,8 +83,9 @@ div.doc ul#classNames {display: block; width: 688px; margin: 17px auto; overflow
 div.doc ul#classNames li a{display: block; width: 162px; color: white; font-size: 12px; text-decoration: none; float: left; background-color: #414141;padding: 9px 0; margin:5px 5px; }
 div.doc dl {clear: both; width: 740px; margin:0 auto; text-align: left; margin-top: 40px;}
 div.doc dl dt{ width: 740px; font-size: 15px; margin-bottom: 14px;}
+div.doc dl dt em{ color:#414141;}
 div.doc dl dd .syntaxhighlighter{width:656px;}
-div.doc dl dd{ background: #414141; padding: 0 21px;}
+div.doc dl dd{ background: #414141; padding: 0 21px; margin-bottom: 39px;}
 div.doc dl dd hr {height: 1px; background: #535353; border:none; margin-bottom: 22px;}
 div.doc dl dd ul {overflow: auto; padding-bottom: 10px; display:block;}
 div.doc dl dd ul li a{ float:left; display: block; text-decoration: none; color: #6d98be; background-color: #262627; padding: 6px 9px; margin-right: 4px;}

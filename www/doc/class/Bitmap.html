@@ -79,12 +79,27 @@
 									
 										
 											<li>
+												<a href="../class/Bitmap.html#on">.on(event_name, call_back)</a>
+											</li>
+									
+										
+											<li>
 												<a href="../class/Bitmap.html#src">.src(path)</a>
 											</li>
 									
 										
 											<li>
 												<a href="../class/Bitmap.html#toDataURL">.toDataURL(area)</a>
+											</li>
+									
+										
+											<li>
+												<a href="../class/Bitmap.html#x">.x(value)</a>
+											</li>
+									
+										
+											<li>
+												<a href="../class/Bitmap.html#y">.y(value)</a>
 											</li>
 									
 								</ul>
@@ -99,37 +114,72 @@
 				
 					
 					<dt>
+						<a name="on"> </a>
+						<h3>
+					
+					
+					on(
+
+						
+							
+							
+									
+									event_name:String,
+								
+							
+									
+									call_back:Function
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// on allows you to bind to an event (e.g drag, click, etc...) and specify a callback function
+						
+var _img1 = new Element("Bitmap",{
+		src:"path/to/image.jpg",
+}).on('click',function(p_e){ c
+		onsole.log('event is being triggered', p_e) 
+	});
+						</pre>
+					</dd>
+				
+					
+					<dt>
 						<a name="src"> </a>
 						<h3>
 					
 					
-					src(path)
+					src(
 
 						
 							
-								
-									{String} path
+							
 									
+									path:String
 								
-								<!-- <dd>- Path to image (png,gif,jpg).</dd> -->
 							
 							
 						
+						)
+
+
 					</h3>
 					</dt>
 					<dd>
-						<p class="classDesc">// src allows for one string parameter that points to<br>
-	// the path of an image returns a Bitmap object.</p>
-						<pre  class="brush: js; gutter: false; ">
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// src allows for one string parameter that points to
+	// the path of an image returns a Bitmap object.
 						
-							
-								
 var _img1 = new Element("Bitmap",{
-	src:"path/to/image.jpg"
+		src:"path/to/image.jpg"
 });
-							
-						
-						
 						</pre>
 					</dd>
 				
@@ -139,34 +189,95 @@ var _img1 = new Element("Bitmap",{
 						<h3>
 					
 					
-					toDataURL(area)
+					toDataURL(
 
 						
 							
-								
-									{String} area
+							
 									
+									area:String<em>:Optional</em>
 								
-								<!-- <dd>- 'all'= all elements</dd> -->
 							
 							
 						
+						)
+
+
 					</h3>
 					</dt>
 					<dd>
-						<p class="classDesc">// toDataURL pulls the image data in a dataURL format. This function allows for one optional string parameter. 
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// toDataURL pulls the image data in a dataURL format. This function allows for one optional string parameter. 
     // If you pass in "all", all of the image data is returned for the entire canvas, if left blank, just that objects
-    // data is returned.</p>
-						<pre  class="brush: js; gutter: false; ">
+    // data is returned.
 						
-							
-								
 var _img_data = new Element("Bitmap",{
-	src:"path/to/image.jpg"
+		src:"path/to/image.jpg"
 }).toDataURL();
+						</pre>
+					</dd>
+				
+					
+					<dt>
+						<a name="x"> </a>
+						<h3>
+					
+					
+					x(
+
+						
+							
+							
+									
+									value:Number
+								
+							
 							
 						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// x moves an object's x axius on the canvas
 						
+var _img1 = new Element("Bitmap",{
+		src:"path/to/image.jpg"
+}).x(22);
+						</pre>
+					</dd>
+				
+					
+					<dt>
+						<a name="y"> </a>
+						<h3>
+					
+					
+					y(
+
+						
+							
+							
+									
+									value:Number
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// y moves an object's y axius on the canvas
+						
+var _img1 = new Element("Bitmap",{
+		src:"path/to/image.jpg"
+}).y(22);
 						</pre>
 					</dd>
 				
@@ -174,6 +285,7 @@ var _img_data = new Element("Bitmap",{
 				
 			</dl>
 		</div>
+		
 <?php require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_footer.php'; ?>
 
 

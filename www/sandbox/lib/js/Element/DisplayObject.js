@@ -18,6 +18,9 @@
 	// ====================
 	// = public functions =
 	// ====================
+
+	
+
 	_pt.x = function(p_val){
 		if(p_val != null){
 			this._x = p_val;
