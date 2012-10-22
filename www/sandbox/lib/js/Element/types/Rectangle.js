@@ -1,5 +1,11 @@
 (function(window) {
 	
+	/**
+	* //Rectangle class helps draw a Rectangle
+	* @class Rectangle
+	* @extends DisplayObject
+	* @constructor
+	*/
 	
 	Rectangle = function(p_context) {
 		

@@ -2,7 +2,12 @@
 (function(window) {
 
 
-
+	/**
+	* //Sprite class helps draw a Sprite
+	* @class Sprite
+	* @extends Bitmap
+	* @constructor
+	*/
 
 	Sprite = function(p_context) {
 

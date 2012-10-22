@@ -80,6 +80,21 @@
 		
 		return this;
 	};
+
+	/** @memberOf Bitmap#
+	* @name toDataURL
+    * @function
+	* @param {String} area - 'all'= all elements
+    * @description 
+    // toDataURL pulls the image data in a dataURL format. This function allows for one optional string parameter. 
+    // If you pass in "all", all of the image data is returned for the entire canvas, if left blank, just that objects
+    // data is returned.
+	* @public 
+	* @example 
+   	*var _img_data = new Element("Bitmap",{
+	*	src:"path/to/image.jpg"
+	*}).toDataURL();
+    */
 	
 	_pt.toDataURL = function(p_area){
 

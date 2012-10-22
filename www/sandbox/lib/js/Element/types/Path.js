@@ -1,9 +1,12 @@
-
-
 (function(window) {
 	
 
-
+	/**
+	* //Path class helps draw a path
+	* @class Path
+	* @extends EventTarget
+	* @constructor
+	*/
 	
 	Path = function(p_context) {
 		
