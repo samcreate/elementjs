@@ -1,7 +1,7 @@
 <?php
 	require_once($_SERVER["DOCUMENT_ROOT"]."/lib/php/Config.php");
 	$settings = Config::getInstance();
-	$settings->setPage("Documentation: Rectangle ");
+	$settings->setPage("Documentation: DisplayObject ");
 	require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_header.php';
 ?>
 		
@@ -62,7 +62,7 @@
 					<!-- ============================== class title ============================ -->
 
 					
-				Rectangle
+				DisplayObject
 					</h3>
 				<!-- ============================== class summary ========================== -->
 				</dt>
@@ -70,12 +70,27 @@
 					<!-- ============================== class constructor ====================== -->
 					<dd>
 						<pre  class="brush: js; gutter: false; ">
-							//Rectangle class helps draw a Rectangle
+							//DisplayObject class loads jpg/png/gif as a DisplayObject Object on the canvas
 						</pre>
 						<hr>
 						<!-- ============================== methods summary ======================== -->
 						
 							
+							
+								<ul>
+									
+										
+											<li>
+												<a href="../class/DisplayObject.html#x">.x(value)</a>
+											</li>
+									
+										
+											<li>
+												<a href="../class/DisplayObject.html#y">.y(value)</a>
+											</li>
+									
+									
+								</ul>
 							
 						
 					</dd>
@@ -84,7 +99,33 @@
 				<!-- ============================== method details ========================= -->		
 			
 				
-				<dt><a name="x"> </a><h3>x( value:Number<em>:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// x moves an object's x axius on the canvas
+				
+					
+					<dt>
+						<a name="x"> </a>
+						<h3>
+					
+					
+					x(
+
+						
+							
+							
+									
+									value:Number<em>:Optional</em>
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// x moves an object's x axius on the canvas
+						
 	// In this example, we set the x to 22 of an image.
 
 var _img1 = new Element("Bitmap",{
@@ -92,7 +133,36 @@ var _img1 = new Element("Bitmap",{
 }).x(22);
 
 	//now, let's 'get' the x value
-console.log(_img1.x()); //returns 22</pre></dd><dt><a name="y"> </a><h3>y( value:Number<em>:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// y moves an object's y axius on the canvas
+console.log(_img1.x()); //returns 22
+						</pre>
+					</dd>
+				
+					
+					<dt>
+						<a name="y"> </a>
+						<h3>
+					
+					
+					y(
+
+						
+							
+							
+									
+									value:Number<em>:Optional</em>
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// y moves an object's y axius on the canvas
+						
 	// In this example, we set the y to 22 of an image.
 
 var _img1 = new Element("Bitmap",{
@@ -100,7 +170,11 @@ var _img1 = new Element("Bitmap",{
 }).y(22);
 
 	//now, let's 'get' the y value
-console.log(_img1.y()); //returns 22</pre></dd>
+console.log(_img1.y()); //returns 22
+						</pre>
+					</dd>
+				
+			
 				
 			</dl>
 		</div>

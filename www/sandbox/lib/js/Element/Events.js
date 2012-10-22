@@ -19,6 +19,7 @@
 	// ====================
 	// = public functions =
 	// ====================
+	
 	_pt.on = function(p_event,p_callback){
 		
 		$$_EVENTS_CHILDREN.push({object:this,event:p_event,callback:p_callback});

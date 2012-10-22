@@ -4,7 +4,12 @@
 	$settings->setPage("Documentation: {+data.alias+} ");
 	require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_header.php';
 ?>
+		{!
 
+		var borrowedMembers = data.methods.filter(function($) {return $.memberOf != data.alias});
+					var contributers = [];
+					borrowedMembers.map(function($) {if (contributers.indexOf($.memberOf) < 0) contributers.push($.memberOf)});
+		!}
 		<div id="MainContent" class="doc clearfix"  role="main">
 			<!-- begin publish.classesIndex -->
 			{+publish.classesIndex+}
@@ -53,6 +58,33 @@
 												<if test="member.isStatic && member.memberOf != '_global_'">{+member.memberOf+}.</if>{+new Link().toSymbol(member.alias).withText("."+member.name.replace(/\^\d+$/, '') +makeSignature(member.params ) )+}
 											</li>
 									</for>
+									<if test="data.inheritsFrom.length">
+									{!
+										
+										for (var i = 0, l = contributers.length; i < l; i++) {
+											output += "" +
+												borrowedMembers
+												.filter(
+													function($) { return $.memberOf == contributers[i] }
+												)
+												.sort(makeSortby("name"))
+												.map(
+													function($) { 
+														var _params = '';
+														for (var i = 0; i < $.params.length; i++) {
+															_params += $.params[i].name;
+														}
+														var _html = '<li><a href="#'+$.name+'">'+$.name+makeSignature($.params )+'</a></li>';
+													 return _html;
+													}
+												)
+												.join("")
+												+
+												"";
+										}
+									
+									!}
+									</if>
 								</ul>
 							</if>
 						</if>
@@ -97,36 +129,41 @@
 					</dd>
 				</for>
 			</if>
-				
-			</dl>
-		</div>
-		<if test="data.inheritsFrom.length">
-				<dl class="inheritsList">
+				<if test="data.inheritsFrom.length">
 				{!
-					var borrowedMembers = data.methods.filter(function($) {return $.memberOf != data.alias});
-					var contributers = [];
-					borrowedMembers.map(function($) {if (contributers.indexOf($.memberOf) < 0) contributers.push($.memberOf)});
+					
 					for (var i = 0, l = contributers.length; i < l; i++) {
-						output +=
-							"<dt>Methods borrowed from class "+new Link().toSymbol(contributers[i])+": </dt>"
-							+
-							"<dd>" +
+						output += "" +
 							borrowedMembers
 							.filter(
 								function($) { return $.memberOf == contributers[i] }
 							)
 							.sort(makeSortby("name"))
 							.map(
-								function($) { return new Link().toSymbol($.alias).withText($.name) }
+								function($) { 
+									var _params = '';
+									for (var i = 0; i < $.params.length; i++) {
+										_params += $.params[i].name +':'+$.params[i].type;
+
+										if($.params[i].isOptional){
+											_params += '<em>:Optional</em>';
+										}
+									}
+									var _html = '<dt><a name="'+$.name+'"> </a><h3>'+$.name+'( '+_params+' )</h3></dt>';
+										_html += '<dd><pre class="brush: js; gutter: false; ">'+resolveLinks($.desc)+$.example+'</pre></dd>';
+								 return _html;
+								}
 							)
-							.join(", ")
+							.join("")
 							+
-							"</dd>";
+							"";
 					}
 				
 				!}
-				</dl>
 				</if>
+			</dl>
+		</div>
+		
 <?php require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_footer.php'; ?>
 
 

@@ -1,6 +1,12 @@
 (function(window) {
 	
-
+	/**
+	* //DisplayObject class loads jpg/png/gif as a DisplayObject Object on the canvas 
+	* @class DisplayObject
+	* @extends EventTarget
+	* @constructor
+	* @example
+	*/
 	DisplayObject = function() {
 		
 	}
@@ -19,8 +25,25 @@
 	// = public functions =
 	// ====================
 
-	
 
+	/**
+	* @memberOf DisplayObject#
+	* @name x
+    * @function
+	* @param {Number} [value] - Value of x position.
+    * @description 
+    // x moves an object's x axius on the canvas
+	* @public 
+	* @example 
+	// In this example, we set the x to 22 of an image.
+	*
+   	*var _img1 = new Element("Bitmap",{
+	*		src:"path/to/image.jpg"
+	*}).x(22);
+	*
+	//now, let's 'get' the x value
+	*console.log(_img1.x()); //returns 22
+    */
 	_pt.x = function(p_val){
 		if(p_val != null){
 			this._x = p_val;
@@ -29,6 +52,26 @@
 			return this._x || 1;
 		}
 	};
+
+
+	/**
+	* @memberOf DisplayObject#
+	* @name y
+    * @function
+	* @param {Number} [value] - Value of y position.
+    * @description 
+    // y moves an object's y axius on the canvas
+	* @public 
+	* @example 
+	// In this example, we set the y to 22 of an image.
+	*
+   	*var _img1 = new Element("Bitmap",{
+	*		src:"path/to/image.jpg"
+	*}).y(22);
+	*
+	//now, let's 'get' the y value
+	*console.log(_img1.y()); //returns 22
+    */
 	_pt.y = function(p_val){
 		if(p_val != null){
 			this._y = p_val;
