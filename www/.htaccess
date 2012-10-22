@@ -15,10 +15,13 @@
 ### github.com/paulirish/html5-boilerplate-server-configs
 ###
 
-RewriteCond %{HTTP_HOST} !^local.elementjs.com$ [NC]
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteCond %{HTTP_HOST} !"local.elementjs.com"
-RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} !^local\.elementjs\.com$ [NC]
+RewriteCond %{HTTP_HOST} !^elementjs\.herokuapp\.com$ [NC]
+RewriteCond %{HTTP_HOST} !^www\.elementjs\.com
+RewriteRule (.*) http://www.elementjs.com/$1 [R=301,L]
 
 AddType application/x-httpd-php .html
 
