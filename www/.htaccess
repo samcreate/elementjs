@@ -15,6 +15,11 @@
 ### github.com/paulirish/html5-boilerplate-server-configs
 ###
 
+RewriteCond %{HTTP_HOST} !^local.elementjs.com$ [NC]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} !"local.elementjs.com"
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
 AddType application/x-httpd-php .html
 
 # ----------------------------------------------------------------------
