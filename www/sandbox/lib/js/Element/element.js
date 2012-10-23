@@ -187,6 +187,7 @@
 					}
 				}else{
 					//debug.log(p_def[prop], typeof p_def[prop]);
+					
 					_args = typeof p_def[prop] == "string" ? p_def[prop].split(",") : p_def[prop];
 					
 					if(_args.length >1){

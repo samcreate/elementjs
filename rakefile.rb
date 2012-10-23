@@ -11,7 +11,7 @@
    sh 'juicer merge -i -s build/build.js -o www/sandbox/lib/js/Element/release/Element.js --force'
 end
 
- task :relese do
+ task :release do
   puts "Release: Building JS"
    sh 'juicer merge -i -s build/build.js -o release/Element.js --force'
   puts "Release: Building Documentation"

@@ -55,7 +55,7 @@
 		}
 	};
 	
-	_pt.draw = function(p_scope){
+	_pt.draw = function(){
 		
 		var _to_draw, _w = (this.width()/this.orig_width), _h = (this.height()/this.orig_height);
 		
@@ -185,9 +185,11 @@
 				_this.width( _this.width() ||  _img.width);
 				_this.height( _this.height() || _img.height );
 				_this._src = _img;
-				_this.fire("loaded");
 				_this.bind('draw',_this.draw,_this);
 				_this.ready(true);
+				_this.draw();
+				_this.fire("loaded");
+				
 			};
 			
 		})(this,p_path);

@@ -20,6 +20,7 @@
 		this._sequences = {};
 		this._curSequence = null;
 		this._stopindex = null;
+		this._lastDrawState = "";
 	};
 
 	var _pt = Sprite.prototype = new Bitmap();
@@ -47,7 +48,6 @@
 
 	_pt.draw = function(p_scope) {
 
-
 		
 		var _to_draw, _w = (this.width() / this.orig_width), _h = (this.height() / this.orig_height);
 
@@ -58,18 +58,19 @@
 		_to_draw = this._handle_sprite(this._src);
 
 
-
 		if (this.trace()) {
 			_to_draw = this._handle_trace(_w,_h,  _to_draw, "initial");
 		} else {
-			this._handle_basic(_w, _h);
+			//this._handle_basic(_w, _h);
 		}
 		this.resetFilter();
 		_to_draw = this._handle_filters(_to_draw);
 
 		this.transform.context.drawImage(_to_draw, 0, 0);
-		this.transform.restore();
+	
 		this._lastDrawState = _to_draw;
+
+		this.transform.restore();
 		this.fire("finishDraw");
 
 		return this;
@@ -86,11 +87,8 @@
 				this.iterate = this.gotoAndStop();
 			} else {
 				this.iterate++;
-				//debug.log("iterating")
 			}
 
-		} else {
-			//debug.log("getting here",this.iterate,this._curSequence.end -1)
 		}
 
 		_w = this.frames[this.iterate].frame.w + this.padding();
@@ -143,14 +141,17 @@
 		if (p_val != null) {
 			if (typeof p_val === "string") {
 				this._stopindex = this._sequences[p_val].end;
+
 			} else {
 				this._curSequenceName = "";
 				this._stopindex = p_val;
 			}
+			this.draw();
 			return this;
 		} else {
 			return this._stopindex;
 		}
+
 	};
 
 	_pt.gotoAndPlay = function(p_val) {
@@ -161,7 +162,7 @@
 				this.iterate = p_val;
 			}
 			this._stopindex = null;
-
+			this.draw();
 			return this;
 		} else {
 			return this._stopindex;
@@ -197,6 +198,7 @@
 			
 			if (p_loop === true) this.loop(true);
 		}
+		this.draw();
 		return this;
 	};
 

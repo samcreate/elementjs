@@ -38,6 +38,8 @@
         }
 
         this._listeners[type].push({fn:listener,scope:scope});
+
+        return this;
 	};
 	/** @memberOf EventTarget#
     * @function
