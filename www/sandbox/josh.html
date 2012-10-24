@@ -50,15 +50,16 @@
 	
 	var _peices = [];
 	var _sprite = new Element("Sprite",{
-		src : "zelda.png, zelda.json"
+		src : "porn.png, porn.json"
 	}).bind("loaded",function(){
 		for (var i = 0; i < this.frames.length; i++) {
 			
 			var _img_data = this.gotoAndStop(i).toDataURL();
+			debug.log(_img_data)
 			_peices.push(new Element("Bitmap",{drag: drag_handler}).src(_img_data));
 			
 		};
-		_sprite.alpha(0);
+		_sprite.visible(false);
 	});
 
 
@@ -73,7 +74,7 @@
 			}
 			
 			if (p_evt.eventType == "onStart") {
-				
+				this.top();
 			}
 	}
 		

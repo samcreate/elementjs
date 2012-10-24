@@ -106,12 +106,11 @@
 					
 					<if test="member.type">{{+new Link().toSymbol(member.type)+}}</if>
 					<if test="member.isStatic && member.memberOf != '_global_'">{+member.memberOf+}.</if>{+member.name.replace(/\^\d+$/, '')+}{+"("+}
-
 						<if test="member.params.length">
 							{! var pram_count = 0; !}
-							<for each="item" in="member.params">
-									{! pram_count++; !}
-									{+((item.type)?  item.name+":"+(new Link().toSymbol(item.type))+"":"")+}<if test="item.isOptional"><em>:Optional</em><if test="item.defaultValue">, Default: {+item.defaultValue+}</if></if>{+ ((pram_count != member.params.length) ? "," : "" )  +}
+							<for each="item" in="member.params"> 
+									{! pram_count++; !} 
+									{+((item.type)?  "<em class='name'>"+item.name+"</em><em class='type'>:"+(new Link().toSymbol(item.type))+"</em>":"")+}<if test="item.isOptional"><em class='optional'>:Optional</em><if test="item.defaultValue">, Default: {+item.defaultValue+}</if></if>{+ ((pram_count != member.params.length) ? "," : "" )  +}
 								
 							</for>
 							
@@ -143,10 +142,10 @@
 								function($) { 
 									var _params = '';
 									for (var i = 0; i < $.params.length; i++) {
-										_params += $.params[i].name +':'+$.params[i].type;
+										_params += '<em class="name">'+$.params[i].name +'</em><em class="type">:'+$.params[i].type+'</em>';
 
 										if($.params[i].isOptional){
-											_params += '<em>:Optional</em>';
+											_params += '<em class="optional">:Optional</em>';
 										}
 									}
 									var _html = '<dt><a name="'+$.name+'"> </a><h3>'+$.name+'( '+_params+' )</h3></dt>';

@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "EVB_LOGO_copy_normal18.png",
+	"frame": {"x":258,"y":150,"w":100,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+	"sourceSize": {"w":100,"h":100}
+},
+{
+	"filename": "evb-flag.png",
+	"frame": {"x":2,"y":2,"w":254,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":160},
+	"sourceSize": {"w":254,"h":160}
+},
+{
+	"filename": "signature.png",
+	"frame": {"x":258,"y":2,"w":512,"h":146},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":146},
+	"sourceSize": {"w":512,"h":146}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "porn.png",
+	"format": "RGBA8888",
+	"size": {"w":772,"h":252},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f8868399bfc042f0da3b56bcb71a4ad7$"
+}
+}
