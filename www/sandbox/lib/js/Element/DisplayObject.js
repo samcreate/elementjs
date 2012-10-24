@@ -37,12 +37,12 @@
 	* @example 
 	// In this example, we set the x to 22 of an image.
 	*
-   	*var _img1 = new Element("Bitmap",{
+   	*var _my_element = new Element("Bitmap",{
 	*		src:"path/to/image.jpg"
 	*}).x(22);
 	*
 	//now, let's 'get' the x value
-	*console.log(_img1.x()); //returns 22
+	*console.log(_my_element.x()); //returns 22
     */
 	_pt.x = function(p_val){
 		if(p_val != null){
@@ -65,12 +65,12 @@
 	* @example 
 	// In this example, we set the y to 22 of an image.
 	*
-   	*var _img1 = new Element("Bitmap",{
+   	*var _my_element = new Element("Bitmap",{
 	*		src:"path/to/image.jpg"
 	*}).y(22);
 	*
 	//now, let's 'get' the y value
-	*console.log(_img1.y()); //returns 22
+	*console.log(_my_element.y()); //returns 22
     */
 	_pt.y = function(p_val){
 		if(p_val != null){
