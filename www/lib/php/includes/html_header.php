@@ -52,7 +52,7 @@
 			</div>
 			
 			<a href="" class="logo"><h1>Element.js</h1></a>
-			<a href="" class="download">Download</a>
+			<a href="https://raw.github.com/samcreate/elementjs/master/release/Element.js" class="download">Download</a>
 			<hr>
 			<p><em>Element.js:</em> Canvas 2D Library, Open source and free, really simple api, intuitive to use.</p>
 		</header>
