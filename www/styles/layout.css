@@ -91,7 +91,7 @@ div.doc dl dd .syntaxhighlighter{width:656px;}
 div.doc dl dd{ background: #414141; padding: 0 21px; margin-bottom: 39px;}
 div.doc dl dd hr {height: 1px; background: #535353; border:none; margin-bottom: 22px;}
 div.doc dl dd ul {overflow: auto; padding-bottom: 10px; display:block;}
-div.doc dl dd ul li a{ float:left; display: block; text-decoration: none; color: #6d98be; background-color: #262627; padding: 8px 9px 6px; margin-right: 4px;}
+div.doc dl dd ul li a{ float:left; display: block; text-decoration: none; color: #6d98be; background-color: #262627; padding: 8px 9px 6px; margin-right: 4px; margin-bottom: 4px;}
 /*
 Footer
 */

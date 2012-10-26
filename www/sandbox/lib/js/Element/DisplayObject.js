@@ -37,9 +37,7 @@
 	* @example 
 	// In this example, we set the x to 22 of an image.
 	*
-   	*var _my_element = new Element("Bitmap",{
-	*		src:"path/to/image.jpg"
-	*}).x(22);
+   	*var _my_element.x(22);
 	*
 	//now, let's 'get' the x value
 	*console.log(_my_element.x()); //returns 22
@@ -65,9 +63,7 @@
 	* @example 
 	// In this example, we set the y to 22 of an image.
 	*
-   	*var _my_element = new Element("Bitmap",{
-	*		src:"path/to/image.jpg"
-	*}).y(22);
+   	*var _my_element.y(22);
 	*
 	//now, let's 'get' the y value
 	*console.log(_my_element.y()); //returns 22
@@ -80,6 +76,23 @@
 			return this._y || 1;
 		}
 	};
+
+	/**
+	* @memberOf DisplayObject#
+	* @name width
+    * @function
+	* @param {Number} [value] - Value of the element's width.
+    * @description 
+    // width changes an object's width in pixels
+	* @public 
+	* @example 
+	// In this example, we set the width to 222px.
+	*
+   	*var _my_element.width(222);
+	*
+	//now, let's 'get' the width value
+	*console.log(_my_element.width()); //returns 222
+    */
 	_pt.width = function(p_val){
 		if(p_val){
 			this._width = p_val;
@@ -88,6 +101,23 @@
 			return this._width;
 		}
 	};
+
+	/**
+	* @memberOf DisplayObject#
+	* @name height
+    * @function
+	* @param {Number} [value] - Value of the element's height.
+    * @description 
+    // height changes an object's height in pixels
+	* @public 
+	* @example 
+	// In this example, we set the height to 222px.
+	*
+   	*var _my_element.height(222);
+	*
+	//now, let's 'get' the height value
+	*console.log(_my_element.height()); //returns 222
+    */
 	_pt.height = function(p_val){
 		if(p_val){
 			this._height = p_val;
@@ -97,6 +127,23 @@
 		}
 	};
 	
+
+	/**
+	* @memberOf DisplayObject#
+	* @name scale
+    * @function
+	* @param {Number} [value] - Value of the element's scale in.
+    * @description 
+    // scale changes an object's scale aspect ratio in descimal percentage.
+	* @public 
+	* @example 
+	// In this example, we set the scale to 200%.
+	*
+   	*var _my_element.scale(2);
+	*
+	//now, let's 'get' the scale value
+	*console.log(_my_element.scale()); //returns 2
+    */
 	_pt.scale = function(p_val){
 		if(p_val != null){
 			this._scale = p_val;

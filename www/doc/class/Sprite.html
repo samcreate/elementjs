@@ -113,20 +113,34 @@ var _img_data = new Element("Bitmap",{
 
 var _img_data = new Element("Bitmap",{
 		src:"path/to/image.jpg"
-}).toDataURL("all");</pre></dd><dt><a name="x"> </a><h3>x( <em class="name">value</em><em class="type">:Number</em><em class="optional">:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// x moves an object's x axius on the canvas
+}).toDataURL("all");</pre></dd><dt><a name="height"> </a><h3>height( <em class="name">value</em><em class="type">:Number</em><em class="optional">:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// height changes an object's height in pixels
+	// In this example, we set the height to 222px.
+
+var _my_element.height(222);
+
+	//now, let's 'get' the height value
+console.log(_my_element.height()); //returns 222</pre></dd><dt><a name="scale"> </a><h3>scale( <em class="name">value</em><em class="type">:Number</em><em class="optional">:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// scale changes an object's scale aspect ratio in descimal percentage.
+	// In this example, we set the scale to 200%.
+
+var _my_element.scale(2);
+
+	//now, let's 'get' the scale value
+console.log(_my_element.scale()); //returns 2</pre></dd><dt><a name="width"> </a><h3>width( <em class="name">value</em><em class="type">:Number</em><em class="optional">:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// width changes an object's width in pixels
+	// In this example, we set the width to 222px.
+
+var _my_element.width(222);
+
+	//now, let's 'get' the width value
+console.log(_my_element.width()); //returns 222</pre></dd><dt><a name="x"> </a><h3>x( <em class="name">value</em><em class="type">:Number</em><em class="optional">:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// x moves an object's x axius on the canvas
 	// In this example, we set the x to 22 of an image.
 
-var _my_element = new Element("Bitmap",{
-		src:"path/to/image.jpg"
-}).x(22);
+var _my_element.x(22);
 
 	//now, let's 'get' the x value
 console.log(_my_element.x()); //returns 22</pre></dd><dt><a name="y"> </a><h3>y( <em class="name">value</em><em class="type">:Number</em><em class="optional">:Optional</em> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// y moves an object's y axius on the canvas
 	// In this example, we set the y to 22 of an image.
 
-var _my_element = new Element("Bitmap",{
-		src:"path/to/image.jpg"
-}).y(22);
+var _my_element.y(22);
 
 	//now, let's 'get' the y value
 console.log(_my_element.y()); //returns 22</pre></dd>
