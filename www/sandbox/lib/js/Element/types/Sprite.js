@@ -48,6 +48,7 @@
 
 	_pt.draw = function(p_scope) {
 
+		if(!this.ready()) return;
 		
 		var _to_draw, _w = (this.width() / this.orig_width), _h = (this.height() / this.orig_height);
 
@@ -61,7 +62,7 @@
 		if (this.trace()) {
 			_to_draw = this._handle_trace(_w,_h,  _to_draw, "initial");
 		} else {
-			//this._handle_basic(_w, _h);
+			this._handle_basic(_w, _h);
 		}
 		this.resetFilter();
 		_to_draw = this._handle_filters(_to_draw);

@@ -56,22 +56,22 @@ var one, two, three, four;
 // two = new Element("Bitmap").src("two.png").on("drag",drag_handler).x(50).y(50);
 // three = new Element("Bitmap").src("three.png").on("drag",drag_handler).x(100).y(100);
 //var sprite2 = new Element("Sprite").src("ball.png","ball.json",2).loop(true).on("drag",drag_handler)
-var josh = new Element("Sprite").src("walk.png","walk.json",2).sequence("stand",0,5).sequence("walk",6,42).easing("none").y(100).on("drag",drag_handler).trace(true);
-var sprite3 = new Element("Sprite").src("ball2.png","ball2.json",2);
+// var josh = new Element("Sprite").src("walk.png","walk.json",2).sequence("stand",0,5).sequence("walk",6,42).easing("none").y(100).on("drag",drag_handler).trace(true);
+// var sprite3 = new Element("Sprite").src("ball2.png","ball2.json",2);
 
 
 
-//var zelda = new Element("Sprite").src("zelda.png","zelda.json",2).gotoAndStop(15).x(400).y(400).sequence("sword",0,14).sequence("default",14,25);
+var zelda = new Element("Sprite").src("zelda.png","zelda.json",2).x(400).y(400).gotoAndStop(15).sequence("sword",0,14).sequence("default",14,25);
 
 
-var zelda = new Element("Sprite", {
-	src : "zelda.png, zelda.json",
-	padding: 2,
-	x: 400,
-	y: 400,
-	sequence: "sword:0:14,default:14:25",
-	gotoAndStop:15
-});
+// var zelda = new Element("Sprite", {
+// 	src : "zelda.png, zelda.json",
+// 	padding: 2,
+// 	x: 400,
+// 	y: 400,
+// 	sequence: "sword:0:14,default:14:25",
+// 	gotoAndStop:15
+// });
 
 // var zelda = new Element("Sprite", {
 // 	src : "zelda.png, zelda.json",
