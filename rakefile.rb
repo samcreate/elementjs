@@ -9,6 +9,7 @@
  task :min do
   puts "Building JS"
    sh 'juicer merge -i -s build/build.js -o www/sandbox/lib/js/Element/release/Element.js --force'
+   sh 'juicer merge -i -s build/build.js -o www/lib/js/plugins/Element.js --force'
 end
 
  task :release do
