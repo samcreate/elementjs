@@ -29,6 +29,7 @@
 </script>
 <script src="lib/js/Element/util.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Basic.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/EventTarget.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Filter.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/DisplayObject.js" type="text/javascript" charset="utf-8"></script>
@@ -40,8 +41,7 @@
 <script src="lib/js/Element/types/Sprite.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/FrameTicker.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Tweenie.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/js/Element/Canvas.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/canvas.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script>
 
 
@@ -51,11 +51,12 @@
 
 
 var one, two, three;
-one = new Element("Bitmap").src("one.png").on("drag",drag_handler).filter("emboss").x(500).y(500);
-two = new Element("Bitmap").src("two.png").on("drag",drag_handler).x(50).y(50).width(200);
+one = new Element("Bitmap").src("one.png").on("drag",drag_handler).filter("emboss").x(500).y(300);
+two = new Element("Bitmap").src("two.png").on("drag",drag_handler).x(50).y(50);
 three = new Element("Bitmap").src("three.png").on("drag",drag_handler).x(100).y(100);
 
 Loop(function(){
+  
 	two.filter("diffuse",Math.random()*20);
 	two.collides(one,function(){
 		debug.log("Two touches one!");
