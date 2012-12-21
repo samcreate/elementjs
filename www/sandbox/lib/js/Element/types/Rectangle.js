@@ -14,6 +14,7 @@
 		this.extend(this, new Events());
 		this.extend(this, new Animate());
 		this.transform = new Transform(this._context);
+		this.ctx = this.transform.context;
 		
 	};
 
@@ -36,11 +37,22 @@
 		this.transform.rotate(this.rotate());
 		
 		this.transform.scale(1*this.scale(),1*this.scale());
-		this.transform.context.fillStyle   = this.color();
-		this.transform.context.globalAlpha = this.alpha();
-		this._applyShadow(this.transform.context);
-		this.transform.context.fillRect(0,   0, this.width(), this.height());
-		
+	
+		this._applyShadow(this.ctx);
+		this.ctx.fillStyle   = this.color();
+		this.ctx.globalAlpha = this.alpha();
+		this.ctx.beginPath();
+		this.ctx.moveTo(this.x() + this.radius(), this.y());
+		this.ctx.lineTo(this.x() + this.width() - this.radius(), this.y());
+		this.ctx.quadraticCurveTo(this.x() + this.width(), this.y(), this.x() + this.width(), this.y() + this.radius());
+		this.ctx.lineTo(this.x() + this.width(), this.y() + this.height() - this.radius());
+		this.ctx.quadraticCurveTo(this.x() + this.width(), this.y() + this.height(), this.x() + this.width() - this.radius(), this.y() + this.height());
+		this.ctx.lineTo(this.x() + this.radius(), this.y() + this.height());
+		this.ctx.quadraticCurveTo(this.x(), this.y() + this.height(), this.x(), this.y() + this.height() - this.radius());
+		this.ctx.lineTo(this.x(), this.y() + this.radius());
+		this.ctx.quadraticCurveTo(this.x(), this.y(), this.x() + this.radius(), this.y());
+		this.ctx.closePath();
+		this.ctx.fill();
 
 		this.transform.restore();
 		this.fire("finishDraw");
@@ -77,6 +89,15 @@
 			return this;
 		}else{
 			return this._color;
+		}
+	};
+
+	_pt.radius = function(p_val){
+		if(p_val != null){
+			this._radius = p_val;
+			return this;
+		}else{
+			return this._radius || 0;
 		}
 	};
 

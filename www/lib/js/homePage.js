@@ -45,7 +45,7 @@ EJS.homePage = function(){
 	
 		SyntaxHighlighter.all();
 		
-		self.fire = new Element("Sprite").canvas_id('element-root2').src("/media/animation/fire.png","/media/animation/fire.json",2).loop(true);
+		self.fire = new Element("Sprite").src("/media/animation/fire.png","/media/animation/fire.json",2).loop(true);
 
 		
 
