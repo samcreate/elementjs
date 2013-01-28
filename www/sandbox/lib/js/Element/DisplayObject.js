@@ -203,13 +203,13 @@
 		if(this._trace_canvas){
 			this._trace_canvas.canvas.width = this._trace_canvas.canvas.width;
 		}
-	}
+	};
 
 	_pt._transform_reset = function(){
 		
 		this.transform.save();
 		this.transform.setMatrix([1, 0, 0, 1, 0, 0]);
-	}
+	};
 	
 
 	window.DisplayObject = DisplayObject;

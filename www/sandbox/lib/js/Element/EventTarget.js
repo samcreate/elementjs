@@ -54,7 +54,7 @@
 		if (this._listeners[type] instanceof Array){
             var listeners = this._listeners[type];
             for (var i=0, len=listeners.length; i < len; i++){
-                if (listeners[i] === listener){
+                if (listeners[i].fn === listener){
                     listeners.splice(i, 1);
                     break;
                 }
