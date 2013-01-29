@@ -18,16 +18,16 @@
 		
 	};
 
-	var _pt = Rectangle.prototype = new DisplayObject();
+	var _pt = Rectangle.prototype = new Shape();
 	
 	_pt.constructor = Rectangle;
 	
-	_pt.init = function(){
-		this.x(0);
-		this.y(0);
-		this.ready(true);
-		this.bind('draw',this.draw,this);
-	};
+	// _pt.init = function(){
+	// 	this.x(0);
+	// 	this.y(0);
+	// 	this.ready(true);
+	// 	this.bind('draw',this.draw,this);
+	// };
 
 	_pt.draw = function(p_val){
 	
@@ -59,6 +59,29 @@
 
 		return this;
 	};
+
+
+	_pt._make = function(p_ctx,p_scope){
+		this.unbind('draw',this.draw);
+		var _ctx = p_ctx;
+		// this.transform.rotate(this.rotate());
+		// this.transform.scale(1*this.scale(),1*this.scale());
+	
+		_ctx.moveTo(this.x() + this.radius(), this.y());
+		_ctx.lineTo(this.x() + this.width() - this.radius(), this.y());
+		_ctx.quadraticCurveTo(this.x() + this.width(), this.y(), this.x() + this.width(), this.y() + this.radius());
+		_ctx.lineTo(this.x() + this.width(), this.y() + this.height() - this.radius());
+		_ctx.quadraticCurveTo(this.x() + this.width(), this.y() + this.height(), this.x() + this.width() - this.radius(), this.y() + this.height());
+		_ctx.lineTo(this.x() + this.radius(), this.y() + this.height());
+		_ctx.quadraticCurveTo(this.x(), this.y() + this.height(), this.x(), this.y() + this.height() - this.radius());
+		_ctx.lineTo(this.x(), this.y() + this.radius());
+		_ctx.quadraticCurveTo(this.x(), this.y(), this.x() + this.radius(), this.y());
+		_ctx.closePath();
+		_ctx.clip();
+
+
+	};
+
 
 	_pt.mouseDraw =  function(){
 

@@ -58,26 +58,13 @@
 
 
 var one, two, three;
-one = new Element("Bitmap").src("one.png").on("drag",drag_handler).filter("emboss");
-
-var _has_run = false;
-
-// one.bind("finishDraw",function(){
-
-// if(_has_run) return;
-
-//   this.unbind("finishDraw",this.callee);
-//   debug.log("here once", this);
-// _has_run = true;
-
-// });
-
+var one = new Element("Bitmap").src("one.png");
 one.bind("finishDraw",_finishDrawHandler);
 
 function _finishDrawHandler(){
 
-  debug.log("Ran once: ", this);
   this.unbind("finishDraw",_finishDrawHandler);
+  debug.log("Finished rendering");
 
 }
 

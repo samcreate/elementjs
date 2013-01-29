@@ -43,7 +43,7 @@
 		}else{
 			return this._alpha;
 		}
-	}
+	};
 	
 	_pt.visible = function(p_val){
 		if(p_val != null){
@@ -52,15 +52,16 @@
 		}else{
 			return this._visible;
 		}
-	}
+	};
 	_pt.mask = function(p_val){
-		if(p_val){
+		if(p_val && p_val.__proto__.__proto__.name === "Shape Instance"){
+			p_val.alpha(0);
 			this._mask = p_val;
 			return this;
 		}else{
 			return this._mask;
 		}
-	}
+	};
 	
 	_pt.id = function(p_val){
 		if(p_val){
@@ -69,7 +70,7 @@
 		}else{
 			return this._id ;
 		}
-	}
+	};
 	_pt.canvas_id = function(p_val){
 		if(p_val){
 			this._id = p_val;
@@ -77,7 +78,7 @@
 		}else{
 			return this._id ;
 		}
-	}
+	};
 	_pt.index = function(p_val){
 		if(p_val != null){
 			this._index = p_val;
@@ -85,7 +86,7 @@
 		}else{
 			return this._index;
 		}
-	}
+	};
 	_pt.ready = function(p_val){
 		if(p_val){
 			this._ready = p_val;
@@ -93,7 +94,7 @@
 		}else{
 			return this._ready || false;
 		}
-	}
+	};
 	_pt.shadow = function(p_val){
 		if(p_val){
 			this._shadow = p_val;
@@ -101,7 +102,7 @@
 		}else{
 			return this._shadow || {};
 		}
-	}
+	};
 	_pt.border = function(p_val){
 		if(p_val){
 			this._border = p_val;
@@ -109,21 +110,21 @@
 		}else{
 			return this._border || {width:0,color:null};
 		}
-	}
+	};
 	
 	_pt.top = function(){
 		var _i = Util.getIndex(this);
 		var _childtotop = $$_CHILDREN.splice(_i,1);
 		$$_CHILDREN.push(_childtotop[0]);
 		return this;
-	}
+	};
 	
 	_pt.bottom = function(){
 		var _i = Util.getIndex(this);
 		var _childtotop = $$_CHILDREN.splice(_i,1);
 		$$_CHILDREN.unshift(_childtotop[0]);
 		return this;
-	}
+	};
 	
 	
 	// ====================
@@ -135,8 +136,6 @@
 	_pt.toString = function(){
 		return "["+this.name+" Instance]"
 	};
-	
-	
 	
 	// =====================
 	// = private functions =
@@ -154,7 +153,7 @@
 			
 			
 		}
-	}
+	};
 	
 	_pt._applyShadow = function(p_context){
 		if(this.shadow().color != null){
