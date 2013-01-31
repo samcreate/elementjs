@@ -29,7 +29,16 @@
 		return p_el;
 	};
 	
-	
+	_pt.destroy = function(){
+		for (var i = 0; i < $$_CHILDREN.length; i++) {
+			if($$_CHILDREN[i].id() === this.id()){
+				// debug.log("Destroyed!: ", this.id());
+				var _obj = $$_CHILDREN.splice(i,1);
+				_obj = null;
+			}
+		}
+		
+	};
 	// =====================
 	// = private functions =
 	// =====================

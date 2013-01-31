@@ -30,7 +30,10 @@
 	// };
 
 	_pt.draw = function(p_val){
+		
 	
+		// debug.log(this.id());
+		debug.log("About to draw: ",this.toString());
 		this._transform_reset();
 		this.fire("beginDraw");
 		this.transform.translate(this.x(),this.y());
@@ -62,23 +65,24 @@
 
 
 	_pt._make = function(p_ctx,p_scope){
-		this.unbind('draw',this.draw);
+		
 		var _ctx = p_ctx;
-		// this.transform.rotate(this.rotate());
-		// this.transform.scale(1*this.scale(),1*this.scale());
-	
-		_ctx.moveTo(this.x() + this.radius(), this.y());
-		_ctx.lineTo(this.x() + this.width() - this.radius(), this.y());
-		_ctx.quadraticCurveTo(this.x() + this.width(), this.y(), this.x() + this.width(), this.y() + this.radius());
-		_ctx.lineTo(this.x() + this.width(), this.y() + this.height() - this.radius());
-		_ctx.quadraticCurveTo(this.x() + this.width(), this.y() + this.height(), this.x() + this.width() - this.radius(), this.y() + this.height());
-		_ctx.lineTo(this.x() + this.radius(), this.y() + this.height());
-		_ctx.quadraticCurveTo(this.x(), this.y() + this.height(), this.x(), this.y() + this.height() - this.radius());
-		_ctx.lineTo(this.x(), this.y() + this.radius());
-		_ctx.quadraticCurveTo(this.x(), this.y(), this.x() + this.radius(), this.y());
-		_ctx.closePath();
-		_ctx.clip();
 
+		
+		_ctx.moveTo(0 + this.radius(), 0);
+		_ctx.lineTo(0 + this.width() - this.radius(), 0);
+		_ctx.quadraticCurveTo(0 + this.width(), 0, 0 + this.width(), 0 + this.radius());
+		_ctx.lineTo(0 + this.width(), 0 + this.height() - this.radius());
+		_ctx.quadraticCurveTo(0 + this.width(), 0 + this.height(), 0 + this.width() - this.radius(), 0 + this.height());
+		_ctx.lineTo(0 + this.radius(), 0 + this.height());
+		_ctx.quadraticCurveTo(0, 0 + this.height(), 0, 0 + this.height() - this.radius());
+		_ctx.lineTo(0, 0 + this.radius());
+		_ctx.quadraticCurveTo(0, 0, 0 + this.radius(), 0);
+		_ctx.closePath();
+		_ctx.fill();
+
+
+		_ctx.clip();
 
 	};
 
@@ -104,6 +108,7 @@
 		return this._mouse_canvas.context;
 	};
 
+
 	
 
 	_pt.color = function(p_val){
@@ -123,6 +128,8 @@
 			return this._radius || 0;
 		}
 	};
+
+
 
 	// =====================
 	// = private functions =

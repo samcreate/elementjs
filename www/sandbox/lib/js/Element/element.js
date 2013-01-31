@@ -7,19 +7,21 @@
 		if(p_class){
 			
 			window.$$_CHILDREN = window.$$_CHILDREN || [];
+			window.$$_CHILDREN_ID = window.$$_CHILDREN_ID || 0;
 			window.$$_TWEENS = window.$$_TWEENS || {};
 			window.$$_canvas = window.$$_canvas || new Canvas( this.canvas_id() || "element-root" );
 			
 			var _temp = eval("new "+p_class+"(window.$$_canvas.context())");
 			
 				_temp = this.extend(_temp, new Element());
-				_temp.id((window.$$_CHILDREN.length)+"_id");
-				_temp.index((window.$$_CHILDREN.length));
+				_temp.id((window.$$_CHILDREN_ID)+"_id");
+				_temp.index((window.$$_CHILDREN_ID));
 				_temp.visible(true);
 				_temp.alpha(1);
 				_temp._tweenie = new Tweenie();
 				if(typeof _temp.init === "function") _temp.init();
 				window.$$_CHILDREN.push(_temp);
+				window.$$_CHILDREN_ID++;
 				_temp._handelDefinition(p_def, _temp);
 
 			return _temp;
@@ -56,6 +58,7 @@
 	_pt.mask = function(p_val){
 		if(p_val && p_val.__proto__.__proto__.name === "Shape Instance"){
 			p_val.alpha(0);
+			p_val.unbind("draw",p_val.draw);
 			this._mask = p_val;
 			return this;
 		}else{
@@ -125,6 +128,7 @@
 		$$_CHILDREN.unshift(_childtotop[0]);
 		return this;
 	};
+	
 	
 	
 	// ====================

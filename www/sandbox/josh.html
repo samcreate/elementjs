@@ -18,7 +18,38 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   </header>
   <div role="main">
-	<canvas id="element-root" framerate="100"  width="800" height="600">No support for canvas was detected, human.</canvas>
+  	<article>
+        <label for="files1">Select  files1: </label>
+        <input id="files1" class="upload" postion="0" type="file" />
+        
+    </article>
+    <article>
+        <label for="files2">Select  files2: </label>
+        <input id="files2" class="upload" postion="1" type="file" />
+        
+    </article>
+    
+	<canvas id="element-root" framerate="40"  width="800" height="400">No support for canvas was detected, human.</canvas>
+    <div class="options" for="0">
+      <h2>photo 1 options</h2>
+      <ul>
+        <li><a href="#" class="filter1">filter1</a></li>
+        <li><a href="#" class="filter2">filter2</a></li>
+        <li><a href="#" class="filter3">filter3</a></li>
+        <li><a href="#" class="filter4">filter4</a></li>
+        <li><a href="#" class="finish">Finish</a></li>
+      </ul>
+    </div>
+    <div class="options" for="0">
+      <h2>photo 1 options</h2>
+      <ul>
+        <li><a href="#" class="filter1">filter1</a></li>
+        <li><a href="#" class="filter2">filter2</a></li>
+        <li><a href="#" class="filter3">filter3</a></li>
+        <li><a href="#" class="filter4">filter4</a></li>
+        <li><a href="#" class="finish">Finish</a></li>
+      </ul>
+    </div>
   </div>
   <footer>
 
@@ -36,6 +67,8 @@
 <script src="lib/js/Element/Loop.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Transform.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Events.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Shape.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Rectangle.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Bitmap.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Path.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Sprite.js" type="text/javascript" charset="utf-8"></script>
@@ -47,36 +80,117 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
 <script type="text/javascript" charset="utf-8">
-	
-	var _peices = [];
-	var _sprite = new Element("Sprite",{
-		src : "porn.png, porn.json"
-	}).bind("loaded",function(){
-		for (var i = 0; i < this.frames.length; i++) {
-			
-			var _img_data = this.gotoAndStop(i).toDataURL();
-			debug.log(_img_data)
-			_peices.push(new Element("Bitmap",{drag: drag_handler}).src(_img_data));
-			
-		};
-		_sprite.visible(false);
+
+	$(document).ready(function(){
+
+		if(!window.File && !window.FileList && !window.FileReader) return;
+
+		var _reference = {};
+   
+
+		window._reference = _reference;
+		var _added_imgs = 0;
+
+		$('.upload').on("change",function(e){
+			_add_toCanvas(e.target.files[0], parseInt($(this).attr('postion')));
+		});
+		//316x305
+		function _add_toCanvas (p_file, p_position) {
+
+			var picReader = new FileReader();
+			var output = document.getElementById("results");
+			var postion = p_position;
+                
+            picReader.addEventListener("load",function(p_evt){
+
+                var _obj = _reference["bitmap"+postion];
+
+                if(_obj == null){
+                	// debug.log("first time added");
+                	_obj = new Element("Bitmap").src(p_evt.target.result).bind("loaded",_hanle_imgloaded).alpha(0);
+                  _obj.pos = postion;
+                	_reference["bitmap"+postion] = _obj;
+                }else{
+                
+                	_reference["bitmap"+postion].destroy();
+                
+                	_obj = new Element("Bitmap").src(p_evt.target.result).bind("loaded",_hanle_imgloaded).alpha(0);
+                  _obj.pos = postion;
+                  _reference["bitmap"+postion] = _obj;
+                }
+
+                         
+            
+            });
+             //Read the image
+            picReader.readAsDataURL(p_file);	
+		}//eof _add_toCanvas
+
+
+    function _hanle_imgloaded () {
+        var _img = this;
+        var _xpos = 316;
+        var _mask = new Element("Rectangle",{color:"#ff0000"}).width(314).height(307).x((_img.pos*_xpos));
+        _reference["mask"+_img.pos] = _mask;
+        _img.x( (_img.pos*_xpos) );
+        _img.mask(_mask);
+        _img.bind("finishDraw",_finishDrawhandler);
+        function _finishDrawhandler(){
+          this.unbind("finishDraw",_finishDrawhandler); 
+          _scaleImage(this);
+          this.alpha(1);
+
+        };
+
+    }
+
+    function _scaleImage (img) {
+
+   
+      var width = img.width(),
+        height = img.height(),
+        percent, offset, calculated_x,img_width = 314,img_height = 305;
+        debug.log(width, height);
+
+        
+
+      /* conditions: */
+      var wide = width > height,
+        tall = height > width;
+
+        // debug.log("here");
+
+      if (wide) {
+        debug.log('wide');
+        percent = (img_height / height) + .01;
+        img.scale(percent);
+
+        offset = ((width * percent) - img_width) / 2;
+        // debug.log('img.x() ', img.x());
+        // debug.log('offset ', offset);
+        // debug.log('img.x() - offset ', img.x()-offset);
+        // calculated_x = img.x() - offset;
+        // img.x(calculated_x);
+      } else if (tall) {
+        debug.log('tall');
+        percent = (img_width / width) + .01;
+        img.scale(percent);
+
+        offset = ((width * percent) - img_width) / 2;
+        // calculated_x = img.x() - offset;
+        // img.x(calculated_x);
+      }
+      window.fart = img;
+      return img;
+
+    }
+
+		
 	});
-
-
 	
 	
-	function drag_handler (p_evt) {
-			//this.width(650).height(387);
-			
-			if(p_evt.eventType === "onFinished"){
-				
-				//this.border("none").shadow("none").width(600).height(337);
-			}
-			
-			if (p_evt.eventType == "onStart") {
-				this.top();
-			}
-	}
+
+	// var _img = new Element("Bitmap").src("jelly.jpg").filter('multiply', '#dffefe').filter('contrast', 2);
 		
 </script>
   

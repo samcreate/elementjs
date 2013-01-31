@@ -67,21 +67,23 @@
 			_to_draw = this._handle_trace(_w,_h, this._src, "initial");
 		}else{
 			_to_draw = this._handle_basic(_w,_h);
-		}
-	
-		_to_draw = this._handle_filters(_to_draw);
-
-		if(this.mask()){
 			
-			   this.mask()._make(this.transform.context,this);
 		}
 
+		
+		 _to_draw = this._handle_filters(_to_draw);
+
+		 if(this.mask()){
+			this.transform.restore();
+			 _to_draw = this._handle_mask(_to_draw);
+
+			 
+		
+		}
 
 		this.transform.context.drawImage(_to_draw,0,0);
-		
 		this._lastDrawState = _to_draw;
 	
-
 		this.transform.restore();
 		
 		this.fire("finishDraw");
@@ -89,6 +91,25 @@
 
 		
 		return this;
+	};
+
+	_pt._handle_mask =  function(p_disp_data){
+
+		this._mask_canvas = this._mask_canvas || Util.createContext("mask_"+this.id());
+		this._mask_transform = this._mask_transform || new Transform(this._mask_canvas.context);
+		this._mask_transform.save();
+		this._mask_transform.setMatrix([1, 0, 0, 1, 0, 0]);
+		this._mask_canvas.context.clearRect(0, 0, this._mask_canvas.canvas.width, this._mask_canvas.canvas.height );
+		this._mask_transform.context.globalAlpha = this.alpha();
+		this._applyStroke(this._mask_transform.context,{x:this.x(),y:this.y(),w:this.width(),h:this.height()});
+		this._mask_transform.translate(this.x(),this.y());
+		this._mask_transform.rotate(this.rotate());
+		this.transform.rotate(this.rotate());
+		this._mask_transform.scale((this.width()/this.orig_width)*this.scale(),(this.height()/this.orig_height)*this.scale());		
+		this.mask()._make(this._mask_canvas.context,this);
+		this._mask_canvas.context.drawImage(p_disp_data,0,0);
+
+		return this._mask_canvas.canvas;
 	};
 
 	/** @memberOf Bitmap#
@@ -195,7 +216,7 @@
 				_this._src = _img;
 				_this.bind('draw',_this.draw,_this);
 				_this.ready(true);
-				_this.draw();
+				// _this.draw();
 				_this.fire("loaded");
 				
 			};
@@ -205,6 +226,7 @@
 	
 	_pt._handle_filters = function(p_disp_data){
 		var _to_draw;
+
 		if(this.filter() && !this.filter_cache){
 			// if filter is present and there's no cached filter, let's create one.
 			if(this._filter_canvas) Util.removeElement(this._filter_canvas.canvas.id);
@@ -270,7 +292,10 @@
 		this._applyShadow(this.transform.context);
 		return this._src;
 	};
+
+
 	
+
 	
 	_pt.name = "Bitmap Instance";
 	
