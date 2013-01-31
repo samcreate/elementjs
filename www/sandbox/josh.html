@@ -88,8 +88,10 @@
 
 	$(document).ready(function(){
 
-		if(!window.File && !window.FileList && !window.FileReader) return;
+		// check if FileReader works
+    
 
+    // _reference stores: images, masks, vignette's
 		var _reference = {};
     var _vin0 = new Element("Bitmap").src("media/images/vignette.png").visible(false);
     var _vin1 = new Element("Bitmap").src("media/images/vignette.png").visible(false);
@@ -97,16 +99,18 @@
         _reference.vignette1 = _vin1;
 
 
-
-		window._reference = _reference;
-
 		$('.upload').on("change",function(e){
+
+      if(!window.File && !window.FileList && !window.FileReader) return;
+
 			_add_toCanvas(e.target.files[0], parseInt($(this).attr('postion')));
+
 		});
 
     
     $('.options .menu li a').on('click',function(e){
       e.preventDefault();
+
       var _index = parseInt($(this).parent().parent().parent().attr("for"));
       var _filter = $(this).attr("class");
       
@@ -119,8 +123,8 @@
         _apply_filter(_index,_filter);
       }
     });
-    
-		//316x305
+
+		
 		function _add_toCanvas (p_file, p_position) {
 
 			var picReader = new FileReader();
@@ -131,13 +135,15 @@
 
                 var _obj = _reference["bitmap"+postion];
 
+
                 if(_obj == null){
                 	// debug.log("first time added");
+                  //first time image
                 	_obj = new Element("Bitmap").src(p_evt.target.result).bind("loaded",_hanle_imgloaded).alpha(0);
                   _obj.pos = postion;
                 	_reference["bitmap"+postion] = _obj;
                 }else{
-                
+                  //replace image
                 	_reference["bitmap"+postion].destroy();
                 
                 	_obj = new Element("Bitmap").src(p_evt.target.result).bind("loaded",_hanle_imgloaded).alpha(0);
@@ -154,6 +160,7 @@
 
 
     function _hanle_imgloaded () {
+
         var _img = this;
         var _xpos = 316;
         var _mask = new Element("Rectangle",{color:"#ff0000"}).width(314).height(307).x((_img.pos*_xpos));
@@ -202,7 +209,6 @@
         // calculated_x = img.x() - offset;
         // img.x(calculated_x);
       }
-      window.fart = img;
       return img;
 
     };
@@ -224,10 +230,16 @@
 
         break;
       case "filter2":
-        // execute code block 2
+        var _obj = _reference["bitmap"+p_index];
+        var _vin = _reference["vignette"+p_index];
+
+        if(_obj != null){
+          _vin.visible(true).top();
+          _obj.filter('multiply', '#ff0000').filter('contrast', 2);
+        }
         break;
       }  
-    }
+    }//eof appy_filter
 
     function _remove_filter (p_index){
 
@@ -238,16 +250,12 @@
           _vin.visible(false);
           _obj.filterRemove("all");
         }
-    }
+    }//eof _remove_filter
 
 		
-	});
+	}); //eof doc ready
 
 
-
-	
-
-	// var _img = new Element("Bitmap").src("jelly.jpg").filter('multiply', '#dffefe').filter('contrast', 2);
 		
 </script>
   
