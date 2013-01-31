@@ -39,6 +39,19 @@
 		}
 		
 	};
+
+	_pt.dirty = function(p_val, p_by){
+		
+		if(p_val != null){
+			// debug.log(p_val);
+			 // if(p_by != null && p_val === true) debug.log(this.id(),"dirty by: "+p_by);
+			 // if(p_val === false) debug.log(this.id()+" SET CLEAN");
+			this._dirty = p_val;
+			return this;
+		}else{
+			return this._dirty;
+		}
+	};
 	// =====================
 	// = private functions =
 	// =====================

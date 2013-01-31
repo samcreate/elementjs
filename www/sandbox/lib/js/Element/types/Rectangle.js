@@ -58,6 +58,7 @@
 		this.ctx.fill();
 
 		this.transform.restore();
+		this.dirty(false);
 		this.fire("finishDraw");
 
 		return this;
@@ -83,6 +84,7 @@
 
 
 		_ctx.clip();
+		this.dirty(false);
 
 	};
 
@@ -114,6 +116,7 @@
 	_pt.color = function(p_val){
 		if(p_val != null){
 			this._color = p_val;
+			this.dirty(true, arguments.callee.name);
 			return this;
 		}else{
 			return this._color;
@@ -123,6 +126,7 @@
 	_pt.radius = function(p_val){
 		if(p_val != null){
 			this._radius = p_val;
+			this.dirty(true);
 			return this;
 		}else{
 			return this._radius || 0;

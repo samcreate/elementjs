@@ -126,18 +126,46 @@
 		
 		this.fire("draw");
 
+		if(this._isDirty() !== true) return;
+
 		this.context().clearRect(0, 0, this._canvas.width, this._canvas.height);
-	
+		
+		
+
 		for (var i=0; i < $$_CHILDREN.length; i++) {
 
 			if($$_CHILDREN[i].visible()){
 				
 				$$_CHILDREN[i].fire("draw");
-
+				
+			}else{
+				$$_CHILDREN[i].dirty(false);
 			}
 			
 		}
+
+		// debug.log("##---------drawCHILDREN called");
+
 		
+		// if(this._isDirty() !== true) this._cleanChildren();
+		
+	};
+
+
+
+	_pt._isDirty = function(){
+
+		var _dirty = false;
+		for (var i=0; i < $$_CHILDREN.length; i++) {
+
+			if($$_CHILDREN[i].dirty() === true){
+				// debug.log($$_CHILDREN[i].id(), "IS DIRTY:");
+				_dirty = true;
+			}
+			
+		}
+
+		return _dirty;
 	};
 	
 	_pt._keyDownHandler = function(p_e){

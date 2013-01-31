@@ -83,7 +83,7 @@
 	    var canvas = document.createElement('canvas');
 		canvas.setAttribute("id", "element-canvas_"+p_id);
 		$$_canvas.canvas().appendChild(canvas);
-		// document.body.appendChild(canvas);
+		 //document.body.appendChild(canvas);
 		canvas.style.display = "none";
 	    canvas.width =  $$_canvas._canvas.width;
 	    canvas.height =  $$_canvas._canvas.height;
@@ -168,9 +168,17 @@
 		
 		return _i;
 	}
+
+	Util.getSize = function(p_obj){
+		var size = 0, key;
+	    for (key in p_obj) {
+	        if (p_obj.hasOwnProperty(key)) size++;
+	    }
+	    return size;
+	}
 	function loadXMLDoc() {
 
-}
+	}
 
 	Util.getJSON = function(p_path, p_callback, p_scope){
 		var xmlhttp, scope;

@@ -41,6 +41,7 @@
 	_pt.alpha = function(p_val){
 		if(p_val != null){
 			this._alpha = p_val;
+			this.dirty(true, "alpha");
 			return this;
 		}else{
 			return this._alpha;
@@ -50,6 +51,7 @@
 	_pt.visible = function(p_val){
 		if(p_val != null){
 			this._visible = p_val;
+			this.dirty(true, "visible");
 			return this;
 		}else{
 			return this._visible;
@@ -60,6 +62,7 @@
 			p_val.alpha(0);
 			p_val.unbind("draw",p_val.draw);
 			this._mask = p_val;
+			this.dirty(true, "mask");
 			return this;
 		}else{
 			return this._mask;
@@ -101,6 +104,7 @@
 	_pt.shadow = function(p_val){
 		if(p_val){
 			this._shadow = p_val;
+			this.dirty(true, "shadow");
 			return this;
 		}else{
 			return this._shadow || {};
@@ -109,6 +113,7 @@
 	_pt.border = function(p_val){
 		if(p_val){
 			this._border = p_val;
+			this.dirty(true, "border");
 			return this;
 		}else{
 			return this._border || {width:0,color:null};
@@ -119,6 +124,7 @@
 		var _i = Util.getIndex(this);
 		var _childtotop = $$_CHILDREN.splice(_i,1);
 		$$_CHILDREN.push(_childtotop[0]);
+		this.dirty(true, "top");
 		return this;
 	};
 	
@@ -126,6 +132,7 @@
 		var _i = Util.getIndex(this);
 		var _childtotop = $$_CHILDREN.splice(_i,1);
 		$$_CHILDREN.unshift(_childtotop[0]);
+		this.dirty(true, "bottom");
 		return this;
 	};
 	

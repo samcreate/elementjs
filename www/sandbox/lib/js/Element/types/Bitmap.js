@@ -29,6 +29,7 @@
 	_pt.init = function(){
 		this.x(0);
 		this.y(0);
+		this.dirty(false);
 	};
 
 
@@ -76,15 +77,14 @@
 		 if(this.mask()){
 			this.transform.restore();
 			 _to_draw = this._handle_mask(_to_draw);
-
-			 
 		
 		}
-
 		this.transform.context.drawImage(_to_draw,0,0);
 		this._lastDrawState = _to_draw;
 	
 		this.transform.restore();
+
+		this.dirty(false);
 		
 		this.fire("finishDraw");
 
@@ -190,6 +190,7 @@
 		
 		if(p_val != null){
 			this._trace = p_val;
+			this.dirty(true,"trace");
 			return this;
 		}else{
 			return this._trace ||  false;
@@ -214,10 +215,16 @@
 				_this.width( _this.width() ||  _img.width);
 				_this.height( _this.height() || _img.height );
 				_this._src = _img;
+
+				if(_this.visible() == false){
+					_this.dirty(false);
+				}else{
+					_this.dirty(true,"_loadsrc");
+				}
 				_this.bind('draw',_this.draw,_this);
 				_this.ready(true);
-				// _this.draw();
 				_this.fire("loaded");
+				
 				
 			};
 			
@@ -225,8 +232,8 @@
 	};
 	
 	_pt._handle_filters = function(p_disp_data){
-		var _to_draw;
 
+		var _to_draw;
 		if(this.filter() && !this.filter_cache){
 			// if filter is present and there's no cached filter, let's create one.
 			if(this._filter_canvas) Util.removeElement(this._filter_canvas.canvas.id);
@@ -244,7 +251,7 @@
 				_to_draw = Filter.get(this._filter_canvas,this.filter()[key],this);
 				this.filter_cache = _to_draw;
 			}
-			//
+			
 		}else if(this.filter_cache){
 			//if filter cahce is present let's use it
 			_to_draw = this.filter_cache;

@@ -34,7 +34,7 @@
         
     </article>
     
-	<canvas id="element-root" framerate="130"  width="800" height="305">No support for canvas was detected, human.</canvas>
+	<canvas id="element-root" framerate="150"  width="800" height="305">No support for canvas was detected, human.</canvas>
     <div class="options" for="0">
       <h2>photo 1 options</h2>
       <ul class="menu">
@@ -91,10 +91,14 @@
 		if(!window.File && !window.FileList && !window.FileReader) return;
 
 		var _reference = {};
-   
+    var _vin0 = new Element("Bitmap").src("media/images/vignette.png").visible(false);
+    var _vin1 = new Element("Bitmap").src("media/images/vignette.png").visible(false);
+        _reference.vignette0 = _vin0;
+        _reference.vignette1 = _vin1;
+
+
 
 		window._reference = _reference;
-		var _added_imgs = 0;
 
 		$('.upload').on("change",function(e){
 			_add_toCanvas(e.target.files[0], parseInt($(this).attr('postion')));
@@ -105,10 +109,17 @@
       e.preventDefault();
       var _index = parseInt($(this).parent().parent().parent().attr("for"));
       var _filter = $(this).attr("class");
+      
+      if($(this).attr("filter") === "on" ){
+          _remove_filter(_index);
+          $(this).attr("filter","off");
+      }else{
 
-      _apply_filter(_index,_filter);
-
+        $(this).attr("filter","on");
+        _apply_filter(_index,_filter);
+      }
     });
+    
 		//316x305
 		function _add_toCanvas (p_file, p_position) {
 
@@ -148,6 +159,7 @@
         var _mask = new Element("Rectangle",{color:"#ff0000"}).width(314).height(307).x((_img.pos*_xpos));
         _reference["mask"+_img.pos] = _mask;
         _img.x( (_img.pos*_xpos) );
+        _reference["vignette"+_img.pos].x( (_img.pos*_xpos) );
         _img.mask(_mask);
         _img.bind("finishDraw",_finishDrawhandler);
         function _finishDrawhandler(){
@@ -165,9 +177,7 @@
       var width = img.width(),
         height = img.height(),
         percent, offset, calculated_x,img_width = 314,img_height = 305;
-        debug.log(width, height);
 
-        
 
       /* conditions: */
       var wide = width > height,
@@ -181,11 +191,8 @@
         img.scale(percent);
 
         offset = ((width * percent) - img_width) / 2;
-        // debug.log('img.x() ', img.x());
-        // debug.log('offset ', offset);
-        // debug.log('img.x() - offset ', img.x()-offset);
-         calculated_x = img.x() - offset;
-         img.x(calculated_x);
+        calculated_x = img.x() - offset;
+        img.x(calculated_x);
       } else if (tall) {
         debug.log('tall');
         percent = (img_width / width) + .01;
@@ -202,22 +209,42 @@
 
 
     function _apply_filter (p_index,p_filter) {
+
       switch(p_filter){
+
       case "filter1":
+
         var _obj = _reference["bitmap"+p_index];
+        var _vin = _reference["vignette"+p_index];
+
         if(_obj != null){
+          _vin.visible(true).top();
           _obj.filter('multiply', '#dffefe').filter('contrast', 2);
         }
+
         break;
-      case 2:
+      case "filter2":
         // execute code block 2
         break;
       }  
     }
 
+    function _remove_filter (p_index){
+
+        var _obj = _reference["bitmap"+p_index];
+        var _vin = _reference["vignette"+p_index];
+
+        if(_obj != null){
+          _vin.visible(false);
+          _obj.filterRemove("all");
+        }
+    }
+
 		
 	});
-	
+
+
+
 	
 
 	// var _img = new Element("Bitmap").src("jelly.jpg").filter('multiply', '#dffefe').filter('contrast', 2);

@@ -45,6 +45,7 @@
 	_pt.x = function(p_val){
 		if(p_val != null){
 			this._x = p_val;
+			this.dirty(true,"x");
 			return this;
 		}else{
 			return this._x || 1;
@@ -71,6 +72,7 @@
 	_pt.y = function(p_val){
 		if(p_val != null){
 			this._y = p_val;
+			this.dirty(true,"y");
 			return this;
 		}else{
 			return this._y || 1;
@@ -96,6 +98,7 @@
 	_pt.width = function(p_val){
 		if(p_val){
 			this._width = p_val;
+			this.dirty(true,"width");
 			return this;
 		}else{
 			return this._width;
@@ -121,6 +124,7 @@
 	_pt.height = function(p_val){
 		if(p_val){
 			this._height = p_val;
+			this.dirty(true,"height");
 			return this;
 		}else{
 			return this._height;
@@ -147,6 +151,7 @@
 	_pt.scale = function(p_val){
 		if(p_val != null){
 			this._scale = p_val;
+			this.dirty(true,"scale");
 			return this;
 		}else{
 			return this._scale || 1;
@@ -155,6 +160,7 @@
 	_pt.rotate = function(p_val){
 		if(p_val  != null){
 			this._rotate = p_val;
+			this.dirty(true,"rotate");
 			return this;
 		}else{
 			return this._rotate || 0;
@@ -173,10 +179,41 @@
 				_temp_filter.args.push(arguments[i]);
 			}
 			this._filters[_temp_filter.effect] = _temp_filter;
+			this.dirty(true,"filter");
 			return this;
 		}else{
 			return this._filters;
 		}
+	};
+
+	_pt.filterRemove = function(p_filter){
+		for(var key in  this.filter()){
+			if(p_filter === key || p_filter === "all" ){
+				
+				function _finishDraw(){
+					this.resetFilter();
+					this.unbind("finishDraw",_finishDraw);
+					this.resetFilter();
+					delete this.filter()[key];
+					if( Util.getSize(this.filter()) === 0 ) this._filters = null;
+					this.dirty(true,"filterRemove");
+					
+				}
+
+				if(p_filter === "all") {
+					this._filters = null;
+					this.resetFilter();
+					this.dirty(true,"filterRemove");
+					
+				}else{
+					this.bind("finishDraw",_finishDraw);
+					return this;
+				}
+				
+			}
+		}
+
+		return this;
 	};
 	
 	_pt.collides = function(p_target,p_callback){
