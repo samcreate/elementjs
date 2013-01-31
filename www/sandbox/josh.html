@@ -11,7 +11,12 @@
 
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/style.css">
-
+<style type="text/css">
+  .options {width:300px; float:left; clear:right;}
+  canvas {clear:both;}
+  .menu li{display:block;}
+  .menu li a{float:left; padding: 5px;}
+</style>  
   
 </head>
 <body>
@@ -29,10 +34,10 @@
         
     </article>
     
-	<canvas id="element-root" framerate="40"  width="800" height="400">No support for canvas was detected, human.</canvas>
+	<canvas id="element-root" framerate="130"  width="800" height="305">No support for canvas was detected, human.</canvas>
     <div class="options" for="0">
       <h2>photo 1 options</h2>
-      <ul>
+      <ul class="menu">
         <li><a href="#" class="filter1">filter1</a></li>
         <li><a href="#" class="filter2">filter2</a></li>
         <li><a href="#" class="filter3">filter3</a></li>
@@ -40,9 +45,9 @@
         <li><a href="#" class="finish">Finish</a></li>
       </ul>
     </div>
-    <div class="options" for="0">
-      <h2>photo 1 options</h2>
-      <ul>
+    <div class="options" for="1">
+      <h2>photo 2 options</h2>
+      <ul class="menu">
         <li><a href="#" class="filter1">filter1</a></li>
         <li><a href="#" class="filter2">filter2</a></li>
         <li><a href="#" class="filter3">filter3</a></li>
@@ -94,6 +99,16 @@
 		$('.upload').on("change",function(e){
 			_add_toCanvas(e.target.files[0], parseInt($(this).attr('postion')));
 		});
+
+    
+    $('.options .menu li a').on('click',function(e){
+      e.preventDefault();
+      var _index = parseInt($(this).parent().parent().parent().attr("for"));
+      var _filter = $(this).attr("class");
+
+      _apply_filter(_index,_filter);
+
+    });
 		//316x305
 		function _add_toCanvas (p_file, p_position) {
 
@@ -169,8 +184,8 @@
         // debug.log('img.x() ', img.x());
         // debug.log('offset ', offset);
         // debug.log('img.x() - offset ', img.x()-offset);
-        // calculated_x = img.x() - offset;
-        // img.x(calculated_x);
+         calculated_x = img.x() - offset;
+         img.x(calculated_x);
       } else if (tall) {
         debug.log('tall');
         percent = (img_width / width) + .01;
@@ -183,6 +198,21 @@
       window.fart = img;
       return img;
 
+    };
+
+
+    function _apply_filter (p_index,p_filter) {
+      switch(p_filter){
+      case "filter1":
+        var _obj = _reference["bitmap"+p_index];
+        if(_obj != null){
+          _obj.filter('multiply', '#dffefe').filter('contrast', 2);
+        }
+        break;
+      case 2:
+        // execute code block 2
+        break;
+      }  
     }
 
 		
