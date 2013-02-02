@@ -1,0 +1,250 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+  .options {width:300px; float:left; clear:right;}
+  canvas {clear:both;}
+  .menu li{display:block;}
+  .menu li a{float:left; padding: 5px;}
+</style>  
+  
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  </header>
+  <div role="main">
+  	<article>
+        <label for="files1">Select  files1: </label>
+        <input id="files1" class="upload" postion="0" type="file" />
+        
+    </article>
+    <article>
+        <label for="files2">Select  files2: </label>
+        <input id="files2" class="upload" postion="1" type="file" />
+        
+    </article>
+    
+	<canvas id="element-root" framerate="150"  width="800" height="305">No support for canvas was detected, human.</canvas>
+    <div class="options" for="0">
+      <h2>photo 1 options</h2>
+      <ul class="menu">
+        <li><a href="#" class="filter1">filter1</a></li>
+        <li><a href="#" class="filter2">filter2</a></li>
+        <li><a href="#" class="filter3">filter3</a></li>
+        <li><a href="#" class="filter4">filter4</a></li>
+        <li><a href="#" class="finish">Finish</a></li>
+      </ul>
+    </div>
+    <div class="options" for="1">
+      <h2>photo 2 options</h2>
+      <ul class="menu">
+        <li><a href="#" class="filter1">filter1</a></li>
+        <li><a href="#" class="filter2">filter2</a></li>
+        <li><a href="#" class="filter3">filter3</a></li>
+        <li><a href="#" class="filter4">filter4</a></li>
+        <li><a href="#" class="finish">Finish</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+
+  </footer>
+<script type="text/javascript" charset="utf-8">
+	window.debug=(function(){var i=this,b=Array.prototype.slice,d=i.console,h={},f,g,m=9,c=["error","warn","info","debug","log"],l="assert clear count dir dirxml exception group groupCollapsed groupEnd profile profileEnd table time timeEnd trace".split(" "),j=l.length,a=[];while(--j>=0){(function(n){h[n]=function(){m!==0&&d&&d[n]&&d[n].apply(d,arguments)}})(l[j])}j=c.length;while(--j>=0){(function(n,o){h[o]=function(){var q=b.call(arguments),p=[o].concat(q);a.push(p);e(p);if(!d||!k(n)){return}d.firebug?d[o].apply(i,q):d[o]?d[o](q):d.log(q)}})(j,c[j])}function e(n){if(f&&(g||!d||!d.log)){f.apply(i,n)}}h.setLevel=function(n){m=typeof n==="number"?n:9};function k(n){return m>0?m>n:c.length+m<=n}h.setCallback=function(){var o=b.call(arguments),n=a.length,p=n;f=o.shift()||null;g=typeof o[0]==="boolean"?o.shift():false;p-=typeof o[0]==="number"?o.shift():n;while(p<n){e(a[p++])}};return h})();
+	
+</script>
+<script src="lib/js/Element/Basic.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/util.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/EventTarget.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Filter.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/DisplayObject.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Loop.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Transform.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Events.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Shape.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Rectangle.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Bitmap.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Path.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Sprite.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/FrameTicker.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Tweenie.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/canvas.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="lib/js/Element/release/Element.js" type="text/javascript" charset="utf-8"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+
+	$(document).ready(function(){
+
+		// check if FileReader works
+    
+
+    // _reference stores: images, masks, vignette's
+
+		var _reference = {};
+    var _vin0 = new Element("Bitmap").src("media/images/vignette.png").visible(false);
+    var _vin1 = new Element("Bitmap").src("media/images/vignette.png").visible(false);
+        _reference.vignette0 = _vin0;
+        _reference.vignette1 = _vin1;
+
+    window._reference = _reference;
+	
+     _add_toCanvas("jelly.jpg", 0);
+     _add_toCanvas("jelly.jpg", 1);
+    
+    $('.options .menu li a').on('click',function(e){
+      e.preventDefault();
+
+      var _index = parseInt($(this).parent().parent().parent().attr("for"));
+      var _filter = $(this).attr("class");
+      
+      if($(this).attr("filter") === "on" ){
+          _remove_filter(_index);
+          $(this).attr("filter","off");
+      }else{
+
+        $(this).attr("filter","on");
+        _apply_filter(_index,_filter);
+      }
+    });
+
+		
+		function _add_toCanvas (p_file, p_position) {
+
+			var postion = p_position;
+      var _obj = _reference["bitmap"+postion];
+
+
+      if(_obj == null){
+        // debug.log("first time added");
+        //first time image
+        _obj = new Element("Bitmap").src(p_file).bind("loaded",_hanle_imgloaded).alpha(0);
+        _obj.pos = postion;
+        _reference["bitmap"+postion] = _obj;
+      }else{
+        //replace image
+        _reference["bitmap"+postion].destroy();
+      
+        _obj = new Element("Bitmap").src(p_file).bind("loaded",_hanle_imgloaded).alpha(0);
+        _obj.pos = postion;
+        _reference["bitmap"+postion] = _obj;
+      }
+               
+		}//eof _add_toCanvas
+
+
+    function _hanle_imgloaded () {
+
+        var _img = this;
+        var _xpos = 316;
+        var _mask = new Element("Rectangle",{color:"#ff0000"}).width(314).height(307).x((_img.pos*_xpos));
+        _reference["mask"+_img.pos] = _mask;
+        _img.x( (_img.pos*_xpos) );
+        _reference["vignette"+_img.pos].x( (_img.pos*_xpos) );
+        _img.mask(_mask);
+        _img.bind("finishDraw",_finishDrawhandler);
+        function _finishDrawhandler(){
+          debug.log("_finishDrawhandler");
+          this.unbind("finishDraw",_finishDrawhandler); 
+          _scaleImage(this);
+          this.alpha(1);
+
+        };
+
+    }
+
+    function _scaleImage (img) {
+
+   
+      var width = img.width(),
+        height = img.height(),
+        percent, offset, calculated_x,img_width = 314,img_height = 305;
+
+
+      /* conditions: */
+      var wide = width > height,
+        tall = height > width;
+
+        // debug.log("here");
+
+      if (wide) {
+        debug.log('wide');
+        percent = (img_height / height) + .01;
+        img.scale(percent);
+
+        offset = ((width * percent) - img_width) / 2;
+        calculated_x = img.x() - offset;
+        img.x(calculated_x);
+      } else if (tall) {
+        debug.log('tall');
+        percent = (img_width / width) + .01;
+        img.scale(percent);
+
+        offset = ((width * percent) - img_width) / 2;
+        // calculated_x = img.x() - offset;
+        // img.x(calculated_x);
+      }
+      return img;
+
+    };
+
+
+    function _apply_filter (p_index,p_filter) {
+
+      switch(p_filter){
+
+      case "filter1":
+
+        var _obj = _reference["bitmap"+p_index];
+        var _vin = _reference["vignette"+p_index];
+
+        if(_obj != null){
+          _vin.visible(true).top();
+          _obj.filter('multiply', '#dffefe').filter('contrast', 2);
+        }
+
+        break;
+      case "filter2":
+        var _obj = _reference["bitmap"+p_index];
+        var _vin = _reference["vignette"+p_index];
+
+        if(_obj != null){
+          _vin.visible(true).top();
+          _obj.filter('multiply', '#ff0000').filter('contrast', 2);
+        }
+        break;
+      }  
+    }//eof appy_filter
+
+    function _remove_filter (p_index){
+
+        var _obj = _reference["bitmap"+p_index];
+        var _vin = _reference["vignette"+p_index];
+
+        if(_obj != null){
+          _vin.visible(false);
+          _obj.filterRemove("all");
+        }
+    }//eof _remove_filter
+
+		
+	}); //eof doc ready
+
+
+		
+</script>
+  
+</body>
+</html>

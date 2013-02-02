@@ -58,7 +58,8 @@
 		}
 	};
 	_pt.mask = function(p_val){
-		if(p_val && p_val.__proto__.__proto__.name === "Shape Instance"){
+		// no workey in ie9 if(p_val && p_val.__proto__.__proto__.name === "Shape Instance"){
+		if(p_val){
 			p_val.alpha(0);
 			p_val.unbind("draw",p_val.draw);
 			this._mask = p_val;
