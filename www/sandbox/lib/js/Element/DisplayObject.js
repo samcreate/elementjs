@@ -157,6 +157,22 @@
 			return this._scale || 1;
 		}
 	};
+	/**
+	* @memberOf DisplayObject#
+	* @name rotate
+    * @function
+	* @param {Number} [value] - Value of the element's rotate in.
+    * @description 
+    // rotate changes an object's rotation in radians.
+	* @public 
+	* @example 
+	// In this example, we set the rotation of an object to 90 degrees.
+	*
+   	*var _my_element.rotate();
+	*
+	//now, let's 'get' the scale value
+	*console.log(_my_element.rotate()); //returns 1.57 (i.e. 90º)
+    */
 	_pt.rotate = function(p_val){
 		if(p_val  != null){
 			this._rotate = p_val;
