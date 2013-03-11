@@ -22,18 +22,11 @@
 	
 	_pt.constructor = Rectangle;
 	
-	// _pt.init = function(){
-	// 	this.x(0);
-	// 	this.y(0);
-	// 	this.ready(true);
-	// 	this.bind('draw',this.draw,this);
-	// };
 
 	_pt.draw = function(p_val){
 		
 	
 		// debug.log(this.id());
-		debug.log("About to draw: ",this.toString());
 		this._transform_reset();
 		this.fire("beginDraw");
 		this.transform.translate(this.x(),this.y());
