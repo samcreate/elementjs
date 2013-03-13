@@ -18,7 +18,7 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   </header>
   <div role="main">
-	<canvas id="element-root" framerate="10" height="600" >No support for canvas was detected, human.</canvas>
+	<canvas id="element-root" framerate="10" >No support for canvas was detected, human.</canvas>
   </div>
   <footer>
 
@@ -85,9 +85,9 @@ _start_y = 0;
 			 _start_y += 5;
 	        }else{
 				debug.log("up ",delta);
-				_text.scale(_text.scale()-0.1);
-				_text.y(_start_y);
-			 	_start_y -= 5;
+				if(_text.scale() > 1 )_text.scale(_text.scale()-0.1);
+				if(_start_y > 1 )_text.y(_start_y);
+			 	if(_start_y > 1 ) _start_y -= 5;
 			}
 	}
 
