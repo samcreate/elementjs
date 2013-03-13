@@ -928,7 +928,7 @@ if (!document.createElement('canvas').getContext) {
 
 
 var canvas = document.createElement("canvas");
-document.getElementById("target").appendChild(canvas);
+document.getElementById("element-root").appendChild(canvas);
 if (typeof FlashCanvas != "undefined") {
     FlashCanvas.initElement(canvas);
 }
