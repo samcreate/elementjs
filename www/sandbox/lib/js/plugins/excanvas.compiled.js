@@ -32,6 +32,9 @@
 // * Optimize. There is always room for speed improvements.
 
 // Only add this code if we do not already have a canvas implementation
+
+
+
 if (!document.createElement('canvas').getContext) {
 
 (function() {
@@ -922,3 +925,10 @@ if (!document.createElement('canvas').getContext) {
 })();
 
 } // if
+
+
+var canvas = document.createElement("canvas");
+document.getElementById("target").appendChild(canvas);
+if (typeof FlashCanvas != "undefined") {
+    FlashCanvas.initElement(canvas);
+}
