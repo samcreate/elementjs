@@ -18,7 +18,7 @@
 		this.context().translate(0,0);
 		this.framerate( this.canvas().getAttribute("framerate") || 0 );
 		this._engine = new FrameTicker();
-		this._engine.start(this.framerate()).bind("tick",this._childrenDraw,this);
+		this._engine.start(this.framerate()).bind("tick",this.childrenDraw,this);
 		
 		
 		this.init();
@@ -117,19 +117,16 @@
 		}
 	};
 	
-	
-
-	// ====================
-	// = private function =
-	// ====================
-	_pt._childrenDraw = function(){
+	_pt.childrenDraw = function(p_force){
 		
 		this.fire("draw");
 
-		if(this._isDirty() !== true) return;
+		if(this._isDirty() !== true && p_force != true) {
+			
+			return;
+		}
 
 		this.context().clearRect(0, 0, this._canvas.width, this._canvas.height);
-		
 		
 
 		for (var i=0; i < $$_CHILDREN.length; i++) {
@@ -150,6 +147,11 @@
 		// if(this._isDirty() !== true) this._cleanChildren();
 		
 	};
+
+	// ====================
+	// = private function =
+	// ====================
+	
 
 
 

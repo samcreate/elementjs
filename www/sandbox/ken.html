@@ -1,0 +1,126 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width">
+	<style>body{background:black;}</style>	
+  
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  </header>
+  <div role="main">
+	<canvas id="element-root" framerate="60"  height="800" style="background:black">No support for canvas was detected, human.</canvas>
+  </div>
+  <footer>
+
+  </footer>
+<script type="text/javascript" charset="utf-8">
+	window.debug=(function(){var i=this,b=Array.prototype.slice,d=i.console,h={},f,g,m=9,c=["error","warn","info","debug","log"],l="assert clear count dir dirxml exception group groupCollapsed groupEnd profile profileEnd table time timeEnd trace".split(" "),j=l.length,a=[];while(--j>=0){(function(n){h[n]=function(){m!==0&&d&&d[n]&&d[n].apply(d,arguments)}})(l[j])}j=c.length;while(--j>=0){(function(n,o){h[o]=function(){var q=b.call(arguments),p=[o].concat(q);a.push(p);e(p);if(!d||!k(n)){return}d.firebug?d[o].apply(i,q):d[o]?d[o](q):d.log(q)}})(j,c[j])}function e(n){if(f&&(g||!d||!d.log)){f.apply(i,n)}}h.setLevel=function(n){m=typeof n==="number"?n:9};function k(n){return m>0?m>n:c.length+m<=n}h.setCallback=function(){var o=b.call(arguments),n=a.length,p=n;f=o.shift()||null;g=typeof o[0]==="boolean"?o.shift():false;p-=typeof o[0]==="number"?o.shift():n;while(p<n){e(a[p++])}};return h})();
+	
+</script>
+<!-- <script src="lib/js/Element/release/Element.js" type="text/javascript" charset="utf-8"></script> -->
+<script src="lib/js/Element/util.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Basic.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/EventTarget.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Filter.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/DisplayObject.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Loop.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Transform.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Events.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Bitmap.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Path.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Sprite.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/FrameTicker.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Tweenie.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/canvas.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+var _mug = new Element("Sprite",{
+	src : "media/images/coffee-mug-animation.png, media/json/mug.json",
+	gotoAndStop : 0
+
+}).bind('loaded',function(){
+	_mug_loaded = true;
+	_mug_frames = this.frames;
+	_setupScroll();
+});
+
+function _setupScroll () {
+		/** This is high-level function.
+		 * It must react to delta being more/less than zero.
+		 */
+		 
+			function handle(delta) {
+			        if (delta < 0){
+					 
+					
+			        	// debug.log("down ");
+			        	_mug.nextFrame();
+			       
+			        	
+			        }else{
+			        	
+			        	// debug.log("up ");
+						_mug.prevFrame();
+			        
+					}
+			}
+
+			/** Event handler for mouse wheel event.
+			 */
+			function wheel(event){
+					event.preventDefault();
+			        var delta = 0;
+			        if (!event) /* For IE. */
+			                event = window.event;
+			        if (event.wheelDelta) { /* IE/Opera. */
+			                delta = event.wheelDelta/120;
+			        } else if (event.detail) { /** Mozilla case. */
+			                /** In Mozilla, sign of delta is different than in IE.
+			                 * Also, delta is multiple of 3.
+			                 */
+			                delta = -event.detail/3;
+			        }
+			        /** If delta is nonzero, handle it.
+			         * Basically, delta is now positive if wheel was scrolled up,
+			         * and negative, if wheel was scrolled down.
+			         */
+			        if (delta)
+			                handle(delta);
+			        /** Prevent default actions caused by mouse wheel.
+			         * That might be ugly, but we handle scrolls somehow
+			         * anyway, so don't bother here..
+			         */
+			        if (event.preventDefault)
+			                event.preventDefault();
+				event.returnValue = false;
+			}
+
+			/** Initialization code. 
+			 * If you use your own event management code, change it as required.
+			 */
+			if (window.addEventListener)
+			        /** DOMMouseScroll is for mozilla. */
+			        window.addEventListener('DOMMouseScroll', wheel, false);
+			/** IE/Opera. */
+			window.onmousewheel = document.onmousewheel = wheel;
+	}
+
+		
+</script>
+  
+</body>
+</html>

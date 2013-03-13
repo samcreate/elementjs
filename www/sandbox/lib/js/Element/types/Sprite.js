@@ -16,6 +16,7 @@
 		this.extend(this, new Events());
 		this.extend(this, new Animate());
 		this.transform = new Transform(this._context);
+		this.controller = $$_canvas;
 		this.iterate = 0;
 		this._sequences = {};
 		this._curSequence = null;
@@ -83,9 +84,10 @@
 	_pt._handle_sprite = function(p_src) {
 		var _to_draw, _w, _h, _x, _y, _ctx, _cvs;
 		this._sprite_canvas = this._sprite_canvas || Util.createContext("sprite_" + this.id());
-		if (this.iterate < this._curSequence.end - 1) {
+		if (this.iterate <= this._curSequence.end - 1) {
 			if (this.gotoAndStop() !== null) {
 				this.iterate = this.gotoAndStop();
+
 			} else {
 				this.iterate++;
 			}
@@ -114,6 +116,10 @@
 		if (this.iterate === this._curSequence.end - 1 && this.loop()) {
 			this.iterate = this._curSequence.start;
 
+		}
+
+		if (this.iterate === this._curSequence.end -1){
+			this.fire("spriteFinished");
 		}
 
 		return _cvs;
@@ -146,8 +152,11 @@
 			} else {
 				this._curSequenceName = "";
 				this._stopindex = p_val;
+				
 			}
-			this.draw();
+
+			this.controller.childrenDraw(true);
+
 			return this;
 		} else {
 			return this._stopindex;
@@ -163,13 +172,34 @@
 				this.iterate = p_val;
 			}
 			this._stopindex = null;
-			this.draw();
+			this.controller.childrenDraw(true);
+
 			return this;
 		} else {
 			return this._stopindex;
 		}
 		return this;
 	};
+
+	_pt.nextFrame = function(){
+		if(this.iterate != this.frames.length -1){
+			// debug.log("nextFrame called", this.iterate, this.frames.length-1);
+			this.gotoAndStop(this.iterate + 1);
+			
+		}
+		return this;
+	}
+	_pt.prevFrame = function(){
+		if(this.iterate >= 1){
+			var _frame = this.iterate - 1;
+			// debug.log("prevFrame called",_frame);
+			this._stopindex = null;
+			this.gotoAndStop(_frame);
+
+			
+		}
+		return this;
+	}
 
 	_pt.sequence = function(p_name, p_start, p_end) {
 		this._sequences[p_name] = {
@@ -199,7 +229,7 @@
 			
 			if (p_loop === true) this.loop(true);
 		}
-		this.draw();
+		this.controller.childrenDraw(true);
 		return this;
 	};
 
