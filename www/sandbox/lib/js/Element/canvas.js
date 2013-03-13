@@ -11,7 +11,7 @@
 		this._canvas.width = this.canvas().getAttribute("width") || window.innerWidth;
 		this._canvas.height = this.canvas().getAttribute("height") || window.innerHeight;
 
-		// if (!this._canvas||!this._canvas.getContext)throw "No Canvas Support.";
+		if (!this._canvas||!this._canvas.getContext) return;
 
 		
 		this.context( this._canvas.getContext("2d") );
@@ -132,7 +132,7 @@
 		for (var i=0; i < $$_CHILDREN.length; i++) {
 
 			if($$_CHILDREN[i].visible()){
-				
+
 				$$_CHILDREN[i].fire("draw");
 				
 			}else{
