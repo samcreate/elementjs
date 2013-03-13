@@ -11,7 +11,7 @@
 		this._canvas.width = this.canvas().getAttribute("width") || window.innerWidth;
 		this._canvas.height = this.canvas().getAttribute("height") || window.innerHeight;
 
-		// if (!this._canvas||!this._canvas.getContext)throw "No Canvas Support.";
+		if (!this._canvas||!this._canvas.getContext)throw "No Canvas Support.";
 
 		
 		this.context( this._canvas.getContext("2d") );
