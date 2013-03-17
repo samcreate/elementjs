@@ -11,6 +11,8 @@
 			window.$$_TWEENS = window.$$_TWEENS || {};
 			window.$$_canvas = window.$$_canvas || new Canvas( this.canvas_id() || "element-root" );
 			
+			
+
 			var _temp = eval("new "+p_class+"(window.$$_canvas.context())");
 			
 				_temp = this.extend(_temp, new Element());
@@ -212,6 +214,8 @@
 			}
 		}
 	};
+
+
 	
 
 

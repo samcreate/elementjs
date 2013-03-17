@@ -14,6 +14,7 @@
 * @depends ../www/sandbox/lib/js/Element/Transform.js
 * @depends ../www/sandbox/lib/js/Element/Events.js
 * @depends ../www/sandbox/lib/js/Element/types/Bitmap.js
+* @depends ../www/sandbox/lib/js/Element/types/Text.js
 * @depends ../www/sandbox/lib/js/Element/types/Path.js
 * @depends ../www/sandbox/lib/js/Element/types/Sprite.js
 * @depends ../www/sandbox/lib/js/Element/types/Shape.js

@@ -10,18 +10,19 @@
 		this._canvas = document.getElementById(p_canvas);
 		this._canvas.width = this.canvas().getAttribute("width") || window.innerWidth;
 		this._canvas.height = this.canvas().getAttribute("height") || window.innerHeight;
+		this.canvas_support = true;
 
-		if (!this._canvas||!this._canvas.getContext) return;
+		if (!this._canvas||!this._canvas.getContext) this.canvas_support = false;
 
-		
+
+
 		this.context( this._canvas.getContext("2d") );
 		this.context().translate(0,0);
 		this.framerate( this.canvas().getAttribute("framerate") || 0 );
 		this._engine = new FrameTicker();
 		this._engine.start(this.framerate()).bind("tick",this.childrenDraw,this);
-		
-		
 		this.init();
+
 	};
 
 	var _pt = Canvas.prototype = new EventTarget();
