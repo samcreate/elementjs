@@ -54,5 +54,5 @@
 			<a href="" class="logo"><h1>Element.js</h1></a>
 			<a href="/download" class="download">Download</a>
 			<hr>
-			<p><em>Element.js:</em> Canvas 2D Library, Open source and free, really simple api, intuitive to use.</p>
+			<p><em>Element.js:</em> Canvas 2D Library, Open source and free, really simple api, easy to use.</p>
 		</header>
