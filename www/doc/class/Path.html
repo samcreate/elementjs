@@ -13,15 +13,9 @@
 		
 	
 		
-	<li>
-			
-			<a href="../class/Basic.html">Basic</a>
-		
-	</li>
-		
 	
 		
-	<li>
+	<li class="Bitmap">
 			
 			<a href="../class/Bitmap.html">Bitmap</a>
 		
@@ -31,7 +25,11 @@
 		
 	
 		
-	<li>
+	
+		
+	
+		
+	<li class="Path">
 			
 			<a href="../class/Path.html">Path</a>
 		
@@ -39,7 +37,7 @@
 		
 	
 		
-	<li>
+	<li class="Rectangle">
 			
 			<a href="../class/Rectangle.html">Rectangle</a>
 		
@@ -47,15 +45,9 @@
 		
 	
 		
-	<li>
-			
-			<a href="../class/Shape.html">Shape</a>
-		
-	</li>
-		
 	
 		
-	<li>
+	<li class="Sprite">
 			
 			<a href="../class/Sprite.html">Sprite</a>
 		
@@ -63,7 +55,7 @@
 		
 	
 		
-	<li>
+	<li class="Text">
 			
 			<a href="../class/Text.html">Text</a>
 		
@@ -91,11 +83,21 @@
 						<hr>
 						<!-- ============================== methods summary ======================== -->
 						
+							
+							
+						
 					</dd>
 				
 
 				<!-- ============================== method details ========================= -->		
 			
+				
+				<dt><a name="fire"> </a><h3>fire( <a href="#fire" class="tooltip" data-tip="- unique name given to the custom event to be fired"><em class="name">type</em><em class="type">:string</em><em>,</em> </a><a href="#fire" class="tooltip" data-tip="- passes parameters to the callback function"><em class="name">params</em><em class="type">:Object</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">triggers the custom event._eventEngine.fire('eventName','pass me to the callback function');</pre></dd><dt><a name="unbind"> </a><h3>unbind( <a href="#unbind" class="tooltip" data-tip="- unique name given to the custom event to be removed"><em class="name">type</em><em class="type">:string</em><em>,</em> </a><a href="#unbind" class="tooltip" data-tip="- the callback function that was originally bound to the event"><em class="name">listener</em><em class="type">:function</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">Removes the event from the event list._eventEngine.unbind('eventName', _eventHandler );</pre></dd><dt><a name="extend"> </a><h3>extend( <a href="#extend" class="tooltip" data-tip="- Object getting extended."><em class="name">value</em><em class="type">:Object</em><em>,</em> </a><a href="#extend" class="tooltip" data-tip="- Inherited Object."><em class="name">value</em><em class="type">:Object</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// extend allows you to take all the properties for one object and
+    // apply them to another.
+	// In this example, we inherit the x value of obj2.
+var _obj2 = {x:33};
+var _my_element.extend(_my_element,_obj2);
+console.log(_my_element.x); //returns 33;</pre></dd>
 				
 			</dl>
 		</div>

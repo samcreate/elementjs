@@ -1,7 +1,7 @@
 <?php
 	require_once($_SERVER["DOCUMENT_ROOT"]."/lib/php/Config.php");
 	$settings = Config::getInstance();
-	$settings->setPage("Documentation: Sprite ");
+	$settings->setPage("Documentation: Graphics ");
 	require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_header.php';
 ?>
 		
@@ -70,7 +70,7 @@
 					<!-- ============================== class title ============================ -->
 
 					
-				Sprite
+				Graphics
 					</h3>
 				<!-- ============================== class summary ========================== -->
 				</dt>
@@ -78,7 +78,7 @@
 					<!-- ============================== class constructor ====================== -->
 					<dd>
 						<pre  class="brush: js; gutter: false; ">
-							//Sprite class helps draw a Sprite
+							//Graphics class loads jpg/png/gif as a Graphics Object on the canvas
 						</pre>
 						<hr>
 						<!-- ============================== methods summary ======================== -->
@@ -89,11 +89,16 @@
 									
 										
 											<li>
-												<a href="../class/Sprite.html#src">.src(pathToSprite, pathToJSON)</a>
+												<a href="../class/Graphics.html#filter">.filter(value)</a>
+											</li>
+									
+										
+											<li>
+												<a href="../class/Graphics.html#filterRemove">.filterRemove(value)</a>
 											</li>
 									
 									
-									<li><a href="#on">.on(event_name, call_back)</a></li><li><a href="#toDataURL">.toDataURL(area)</a></li><li><a href="#filter">.filter(value)</a></li><li><a href="#filterRemove">.filterRemove(value)</a></li><li><a href="#collides">.collides(Element, Callback)</a></li><li><a href="#drag">.drag(Callback)</a></li><li><a href="#height">.height(value)</a></li><li><a href="#rotate">.rotate(value)</a></li><li><a href="#scale">.scale(value)</a></li><li><a href="#trace">.trace(true/false)</a></li><li><a href="#width">.width(value)</a></li><li><a href="#x">.x(value)</a></li><li><a href="#y">.y(value)</a></li><li><a href="#fire">.fire(type, params)</a></li><li><a href="#unbind">.unbind(type, listener)</a></li><li><a href="#extend">.extend(value, value)</a></li>
+									<li><a href="#collides">.collides(Element, Callback)</a></li><li><a href="#drag">.drag(Callback)</a></li><li><a href="#height">.height(value)</a></li><li><a href="#rotate">.rotate(value)</a></li><li><a href="#scale">.scale(value)</a></li><li><a href="#trace">.trace(true/false)</a></li><li><a href="#width">.width(value)</a></li><li><a href="#x">.x(value)</a></li><li><a href="#y">.y(value)</a></li><li><a href="#fire">.fire(type, params)</a></li><li><a href="#unbind">.unbind(type, listener)</a></li><li><a href="#extend">.extend(value, value)</a></li>
 									
 								</ul>
 							
@@ -107,21 +112,16 @@
 				
 					
 					<dt>
-						<a name="src"> </a>
+						<a name="filter"> </a>
 						<h3>
 					
 					
-					src(
+					filter(
 						
 							
 							 
 									 
-									<a href='#src' class='tooltip' data-tip='- Path to image Sprite (texturepacker.com).'> <em class='name'>pathToSprite</em><em class='type'>:String</em>, 
-									</a>
-								
-							 
-									 
-									<a href='#src' class='tooltip' data-tip='- Path to JSON Array (texturepacker.com).'> <em class='name'>pathToJSON</em><em class='type'>:String</em>
+									<a href='#filter' class='tooltip' data-tip='- sets a new filter on the object.'> <em class='name'>value</em><em class='type'>:String</em><em class='optional'>:Optional</em>
 									</a>
 								
 							
@@ -134,46 +134,11 @@
 					</dt>
 					<dd>
 						<p class="classDesc"></p>
-						<pre  class="brush: js; gutter: false; ">// src allows for two parameters that points to first the sprite
-    // and the second, to the json array created by texturepacker.com
-						
-var sprite = new Element("Sprite", {
-	src : "zelda.png, zelda.json"
-});
-						</pre>
-					</dd>
-				
-			
-				
-				<dt><a name="on"> </a><h3>on( <a href="#on" class="tooltip" data-tip="- Name of the event."><em class="name">event_name</em><em class="type">:String</em><em>,</em> </a><a href="#on" class="tooltip" data-tip="- Callback function that will be triggered for the event."><em class="name">call_back</em><em class="type">:Function</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// on allows you to bind to an event (e.g drag, click, etc...) and specify a 
-    // callback function.
-var _img1 = new Element("Bitmap",{
-
-		src:"path/to/image.jpg",
-
-}).on('click',_click_handler);
-
-
-function _click_handler (p_e) {
-	console.log('event is being triggered', p_e);
-}</pre></dd><dt><a name="toDataURL"> </a><h3>toDataURL( <a href="#toDataURL" class="tooltip" data-tip="- 'all'= all elements"><em class="name">area</em><em class="type">:String</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// toDataURL pulls the image data in a dataURL format. This function allows for 
-    // one optional string parameter. If you pass in "all", all of the image data
-    // is returned for the entire canvas, if left blank, just that objects data is 
-    // returned.
-	// this example will return dataURL for just that single object
-
-var _img_data = new Element("Bitmap",{
-		src:"path/to/image.jpg"
-}).toDataURL();
-
-	//this example will return all image data on the "main" canvas element
-
-var _img_data = new Element("Bitmap",{
-		src:"path/to/image.jpg"
-}).toDataURL("all");</pre></dd><dt><a name="filter"> </a><h3>filter( <a href="#filter" class="tooltip" data-tip="- sets a new filter on the object."><em class="name">value</em><em class="type">:String</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// filter allows manipulation of an objects pixel data. Filters can be chained
+						<pre  class="brush: js; gutter: false; ">// filter allows manipulation of an objects pixel data. Filters can be chained
     // infinitly and are cached for performance. The performance of caching the 
     // filtered data isn't applied if you animate the filter's values, since you 
     // have to redraw for each newly applied filters.
+						
 	// In this example, we set a filter for the object to have a multiply filter
 	// using the red color value in the hex form.
 
@@ -238,14 +203,49 @@ my_element.filter("dither",{levels:10,color:false});
 my_element.filter("edge"); 
 
 	//kaleidoscope: angle : {min: 0, max: 360},rotation : {min: 0, max: 360}, sides : {min: 1, max: 30}, centerX : {min: 0.0, max:1.0}, centerY : {min: 0.0, max:1.0}
-my_element.filter("kaleidoscope",{angle : 0,rotation : 0,sides : 3,centerX : 0.5,centerY : 0.5});</pre></dd><dt><a name="filterRemove"> </a><h3>filterRemove( <a href="#filterRemove" class="tooltip" data-tip="- name of the filter, or 'all' to remove all applied filters."><em class="name">value</em><em class="type">:String</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// removes applied filters by name, or if 'all' is passed in, it removes all 
+my_element.filter("kaleidoscope",{angle : 0,rotation : 0,sides : 3,centerX : 0.5,centerY : 0.5});
+						</pre>
+					</dd>
+				
+					
+					<dt>
+						<a name="filterRemove"> </a>
+						<h3>
+					
+					
+					filterRemove(
+						
+							
+							 
+									 
+									<a href='#filterRemove' class='tooltip' data-tip='- name of the filter, or 'all' to remove all applied filters.'> <em class='name'>value</em><em class='type'>:String</em>
+									</a>
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// removes applied filters by name, or if 'all' is passed in, it removes all 
     // applied filters from the object.
+						
 	// In this example, we remove the multiply filter previously applied.
 
 _my_element.filterRemove("multiply"); 
 
 	//In this example, we remove all the applied filters
-_my_element.filterRemove("all");</pre></dd><dt><a name="collides"> </a><h3>collides( <a href="#collides" class="tooltip" data-tip="- anything that inherits DisplayObject"><em class="name">Element</em><em class="type">:Object</em><em>,</em> </a><a href="#collides" class="tooltip" data-tip="- the callback function trigger when the objects rectangle bonds overlap."><em class="name">Callback</em><em class="type">:function</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// Collides is used to find out if two different objects collide.
+_my_element.filterRemove("all");
+						</pre>
+					</dd>
+				
+			
+				
+				<dt><a name="collides"> </a><h3>collides( <a href="#collides" class="tooltip" data-tip="- anything that inherits DisplayObject"><em class="name">Element</em><em class="type">:Object</em><em>,</em> </a><a href="#collides" class="tooltip" data-tip="- the callback function trigger when the objects rectangle bonds overlap."><em class="name">Callback</em><em class="type">:function</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// Collides is used to find out if two different objects collide.
 	// this example will send out an alert if the two object overlap
 
 _my_element.collides(_other_element,function(){

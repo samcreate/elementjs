@@ -13,6 +13,7 @@
 * @depends ../www/sandbox/lib/js/Element/Loop.js
 * @depends ../www/sandbox/lib/js/Element/Transform.js
 * @depends ../www/sandbox/lib/js/Element/Events.js
+* @depends ../www/sandbox/lib/js/Element/types/Graphics.js
 * @depends ../www/sandbox/lib/js/Element/types/Bitmap.js
 * @depends ../www/sandbox/lib/js/Element/types/Text.js
 * @depends ../www/sandbox/lib/js/Element/types/Path.js

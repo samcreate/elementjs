@@ -3,7 +3,7 @@
 	/**
 	* //Bitmap class loads jpg/png/gif as a Bitmap Object on the canvas 
 	* @class Bitmap
-	* @extends DisplayObject
+	* @extends Graphics
 	* @constructor
 	* @example
 	*/
@@ -22,7 +22,7 @@
 		
 	};
 
-	var _pt = Bitmap.prototype = new DisplayObject();
+	var _pt = Bitmap.prototype = new Graphics();
 	
 	_pt.constructor = Bitmap;
 	
@@ -93,24 +93,7 @@
 		return this;
 	};
 
-	_pt._handle_mask =  function(p_disp_data){
-
-		this._mask_canvas = this._mask_canvas || Util.createContext("mask_"+this.id());
-		this._mask_transform = this._mask_transform || new Transform(this._mask_canvas.context);
-		this._mask_transform.save();
-		this._mask_transform.setMatrix([1, 0, 0, 1, 0, 0]);
-		this._mask_canvas.context.clearRect(0, 0, this._mask_canvas.canvas.width, this._mask_canvas.canvas.height );
-		this._mask_transform.context.globalAlpha = this.alpha();
-		this._applyStroke(this._mask_transform.context,{x:this.x(),y:this.y(),w:this.width(),h:this.height()});
-		this._mask_transform.translate(this.x(),this.y());
-		this._mask_transform.rotate(this.rotate());
-		this.transform.rotate(this.rotate());
-		this._mask_transform.scale((this.width()/this.orig_width)*this.scale(),(this.height()/this.orig_height)*this.scale());		
-		this.mask()._make(this._mask_canvas.context,this);
-		this._mask_canvas.context.drawImage(p_disp_data,0,0);
-
-		return this._mask_canvas.canvas;
-	};
+	
 
 	/** @memberOf Bitmap#
 	* @name toDataURL
@@ -165,6 +148,13 @@
 	};
 	
 	
+	
+	
+
+	// =====================
+	// = private functions =
+	// =====================
+	//TODO change to private fuction
 	_pt.mouseDraw =  function(){
 
 		this._mouse_canvas = this._mouse_canvas || Util.createContext("mouse_"+this.id());
@@ -183,24 +173,6 @@
 		this._mouse_canvas.context.drawImage(this._src,0,0);
 		return this._mouse_canvas.context;
 	};
-
-	_pt.trace = function(p_val){
-		
-		if(p_val === false) this._cleartrace();
-		
-		if(p_val != null){
-			this._trace = p_val;
-			this.dirty(true,"trace");
-			return this;
-		}else{
-			return this._trace ||  false;
-		}
-		
-	};
-
-	// =====================
-	// = private functions =
-	// =====================
 	
 	_pt._loadsrc = function(p_path){
 		
@@ -231,6 +203,25 @@
 		})(this,p_path);
 	};
 	
+	_pt._handle_mask =  function(p_disp_data){
+
+		this._mask_canvas = this._mask_canvas || Util.createContext("mask_"+this.id());
+		this._mask_transform = this._mask_transform || new Transform(this._mask_canvas.context);
+		this._mask_transform.save();
+		this._mask_transform.setMatrix([1, 0, 0, 1, 0, 0]);
+		this._mask_canvas.context.clearRect(0, 0, this._mask_canvas.canvas.width, this._mask_canvas.canvas.height );
+		this._mask_transform.context.globalAlpha = this.alpha();
+		this._applyStroke(this._mask_transform.context,{x:this.x(),y:this.y(),w:this.width(),h:this.height()});
+		this._mask_transform.translate(this.x(),this.y());
+		this._mask_transform.rotate(this.rotate());
+		this.transform.rotate(this.rotate());
+		this._mask_transform.scale((this.width()/this.orig_width)*this.scale(),(this.height()/this.orig_height)*this.scale());		
+		this.mask()._make(this._mask_canvas.context,this);
+		this._mask_canvas.context.drawImage(p_disp_data,0,0);
+
+		return this._mask_canvas.canvas;
+	};
+
 	_pt._handle_filters = function(p_disp_data){
 
 		var _to_draw;
@@ -300,8 +291,6 @@
 		return this._src;
 	};
 
-
-	
 
 	
 	_pt.name = "Bitmap Instance";

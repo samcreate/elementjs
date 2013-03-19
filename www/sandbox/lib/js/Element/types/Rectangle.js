@@ -29,7 +29,7 @@
 		// debug.log(this.id());
 		this._transform_reset();
 		this.fire("beginDraw");
-		this.transform.translate(this.x(),this.y());
+		this.transform.translate(0,0);
 		this.transform.rotate(this.rotate());
 		
 		this.transform.scale(1*this.scale(),1*this.scale());

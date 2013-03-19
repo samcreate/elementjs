@@ -1,0 +1,196 @@
+<?php
+	require_once($_SERVER["DOCUMENT_ROOT"]."/lib/php/Config.php");
+	$settings = Config::getInstance();
+	$settings->setPage("Documentation: EventTarget ");
+	require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_header.php';
+?>
+		
+		<div id="MainContent" class="doc clearfix"  role="main">
+			<!-- begin publish.classesIndex -->
+			<h2>Classes Menu:</h2>
+<ul id="classNames">
+	
+		
+	
+		
+	
+		
+	<li class="Bitmap">
+			
+			<a href="../class/Bitmap.html">Bitmap</a>
+		
+	</li>
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	<li class="Path">
+			
+			<a href="../class/Path.html">Path</a>
+		
+	</li>
+		
+	
+		
+	<li class="Rectangle">
+			
+			<a href="../class/Rectangle.html">Rectangle</a>
+		
+	</li>
+		
+	
+		
+	
+		
+	<li class="Sprite">
+			
+			<a href="../class/Sprite.html">Sprite</a>
+		
+	</li>
+		
+	
+		
+	<li class="Text">
+			
+			<a href="../class/Text.html">Text</a>
+		
+	</li>
+		
+	
+</ul>
+			<!-- end publish.classesIndex -->
+			<dl>
+				<dt>
+					<h3>
+					<!-- ============================== class title ============================ -->
+
+					
+				EventTarget
+					</h3>
+				<!-- ============================== class summary ========================== -->
+				</dt>
+				
+					<!-- ============================== class constructor ====================== -->
+					<dd>
+						<pre  class="brush: js; gutter: false; ">
+							//EventTarget class is responsible for all objects event handeling and firing.
+						</pre>
+						<hr>
+						<!-- ============================== methods summary ======================== -->
+						
+							
+							
+								<ul>
+									
+										
+											<li>
+												<a href="../class/EventTarget.html#fire">.fire(type, params)</a>
+											</li>
+									
+										
+											<li>
+												<a href="../class/EventTarget.html#unbind">.unbind(type, listener)</a>
+											</li>
+									
+									
+									<li><a href="#extend">.extend(value, value)</a></li>
+									
+								</ul>
+							
+						
+					</dd>
+				
+
+				<!-- ============================== method details ========================= -->		
+			
+				
+				
+					
+					<dt>
+						<a name="fire"> </a>
+						<h3>
+					
+					
+					fire(
+						
+							
+							 
+									 
+									<a href='#fire' class='tooltip' data-tip='- unique name given to the custom event to be fired'> <em class='name'>type</em><em class='type'>:string</em>, 
+									</a>
+								
+							 
+									 
+									<a href='#fire' class='tooltip' data-tip='- passes parameters to the callback function'> <em class='name'>params</em><em class='type'>:Object</em><em class='optional'>:Optional</em>
+									</a>
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">triggers the custom event.
+						_eventEngine.fire('eventName','pass me to the callback function');
+						</pre>
+					</dd>
+				
+					
+					<dt>
+						<a name="unbind"> </a>
+						<h3>
+					
+					
+					unbind(
+						
+							
+							 
+									 
+									<a href='#unbind' class='tooltip' data-tip='- unique name given to the custom event to be removed'> <em class='name'>type</em><em class='type'>:string</em>, 
+									</a>
+								
+							 
+									 
+									<a href='#unbind' class='tooltip' data-tip='- the callback function that was originally bound to the event'> <em class='name'>listener</em><em class='type'>:function</em>
+									</a>
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">Removes the event from the event list.
+						_eventEngine.unbind('eventName', _eventHandler );
+						</pre>
+					</dd>
+				
+			
+				
+				<dt><a name="extend"> </a><h3>extend( <a href="#extend" class="tooltip" data-tip="- Object getting extended."><em class="name">value</em><em class="type">:Object</em><em>,</em> </a><a href="#extend" class="tooltip" data-tip="- Inherited Object."><em class="name">value</em><em class="type">:Object</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// extend allows you to take all the properties for one object and
+    // apply them to another.
+	// In this example, we inherit the x value of obj2.
+var _obj2 = {x:33};
+var _my_element.extend(_my_element,_obj2);
+console.log(_my_element.x); //returns 33;</pre></dd>
+				
+			</dl>
+		</div>
+		
+<?php require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_footer.php'; ?>
+
+
+

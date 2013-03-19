@@ -1,8 +1,8 @@
 <h2>Classes Menu:</h2>
 <ul id="classNames">
 	<for each="thisClass" in="data">
-		{! if (thisClass.alias != "_global_" && thisClass.alias != "DisplayObject") {	!}
-	<li>
+		{! if (thisClass.alias != "_global_" && thisClass.alias != "DisplayObject" && thisClass.alias != "EventTarget" && thisClass.alias != "Basic" && thisClass.alias != "Shape" && thisClass.alias != "Graphics") {	!}
+	<li class="{+thisClass.alias+}">
 			
 			{! output += new Link().toClass(thisClass.alias); !}
 		

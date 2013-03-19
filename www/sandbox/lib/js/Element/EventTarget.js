@@ -3,16 +3,15 @@
 // http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/
 (function(window) {
 	
-	/** @memberOf EventTarget#
- `   * @function
-    * @description holds a custom event until the event is fired. 
-    * @name bind
-	* @public 
-	* @param {string} type - unique name given to the custom event
-	* @param {function} listener - call back function
-	* @param {Object} [scope] - if passed it envokes the callback function with the scope of the passed-in param. (scope injection)
-	* @example _eventEngine.bind('eventName',function(){console.log('callback!')},window);
-    */
+	/**
+	* //EventTarget class is responsible for all objects event handeling and firing.
+	* @class EventTarget
+	* @extends Basic
+	* @constructor
+	* @example var EventTarget = new EventTarget();
+	*/
+
+
 	EventTarget = function() {
 		
 		this._listeners = {};
@@ -49,6 +48,23 @@
 	* @param {string} type - unique name given to the custom event to be removed
 	* @param {function} listener - the callback function that was originally bound to the event
 	* @example _eventEngine.unbind('eventName', _eventHandler );
+    */
+
+    /**
+	* @memberOf EventTarget#
+	* @name unbind
+    * @function
+	* @param {string} type - unique name given to the custom event to be removed
+	* @param {function} listener - the callback function that was originally bound to the event
+	* @param {object} scope - the scope of callback's 'this' property
+    * @description 
+    // Removes the event from the event list. 
+	* @public 
+	* @example 
+	// In this example, we remove the event "eventName" binding to our
+	// function "_eventHandler".
+   	*var _my_element.unbind('eventName', _eventHandler );
+	*console.log(_my_element.x); //returns 33;
     */
 	_pt.unbind = function(type, listener){
 		if (this._listeners[type] instanceof Array){

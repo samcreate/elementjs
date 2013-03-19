@@ -46,7 +46,7 @@ z-index: 9999;
 background-color: #2A2A2B;
 top: 0;
 margin-bottom: 37px;}
-header #menu {height:60px; margin:0px auto; width:410px; }
+header #menu {height:60px; margin:0px auto; width:180px; }
 header #menu li {float:left; padding:26px 5px;}
 header #menu li a{text-decoration: none; text-transform: uppercase;}
 
@@ -84,6 +84,7 @@ div.doc ul#classNames {display: block; width: 740px; margin: 17px auto; overflow
 div.doc ul#classNames li a{display: block; width: 175px; color: white; font-size: 12px; text-decoration: none; float: left; background-color: #414141;padding: 9px 0; margin:5px 5px; }
 div.doc dl {clear: both; width: 740px; margin:0 auto; text-align: left; margin-top: 40px;}
 div.doc dl dt{ width: 740px; font-size: 15px; margin-bottom: 14px;}
+div.doc dl dt h3 a{text-decoration: none;}
 div.doc dl dt em.name{ color:#999;}
 div.doc dl dt em.type{ color:#999;}
 div.doc dl dt em.optional{ color:#414141;}
@@ -92,6 +93,40 @@ div.doc dl dd{ background: #414141; padding: 0 21px; margin-bottom: 39px;}
 div.doc dl dd hr {height: 1px; background: #535353; border:none; margin-bottom: 22px;}
 div.doc dl dd ul {overflow: auto; padding-bottom: 10px; display:block;}
 div.doc dl dd ul li a{ float:left; display: block; text-decoration: none; color: #6d98be; background-color: #262627; padding: 8px 9px 6px; margin-right: 4px; margin-bottom: 4px;}
+a.tooltip {
+  position: relative;
+} 
+
+a.tooltip::before {
+  content: attr(data-tip) ; 
+  font-family: arial, sans-serif; 
+  font-size: 10px;
+  font-weight: bold;
+  position:absolute;
+  z-index: 999;
+  white-space:nowrap;
+  bottom:9999px;
+  left: 50%;
+  background:white;
+  color:#E67330;
+  padding:0px 7px;
+  line-height: 24px;
+  height: 24px;
+
+  
+  opacity: 0; 
+  -webkit-transition:opacity 0.4s ease-out;  
+  -moz-transition:opacity 0.4s ease-out;  
+  -o-transition:opacity 0.4s ease-out;  
+  transition:opacity 0.4s ease-out; 
+}   
+
+
+a.tooltip:hover::before {
+  opacity: 1;
+  bottom:-35px;
+}
+
 /*
 Footer
 */

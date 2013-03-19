@@ -28,6 +28,20 @@
 
 	_pt.constructor = Sprite;
 
+	/** @memberOf Sprite#
+	* @name src
+    * @function
+	* @param {String} pathToSprite - Path to image Sprite (texturepacker.com).
+	* @param {String} pathToJSON - Path to JSON Array (texturepacker.com).
+    * @description 
+    // src allows for two parameters that points to first the sprite
+    // and the second, to the json array created by texturepacker.com
+	* @public 
+	* @example 
+   	*var sprite = new Element("Sprite", {
+	*	src : "zelda.png, zelda.json"
+	*});
+    */
 	_pt.src = function(p_sprite, p_frames) {
 		if (p_sprite && p_frames) {
 			Util.getJSON(p_frames, function(p_response) {

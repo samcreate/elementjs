@@ -110,7 +110,8 @@
 							{! var pram_count = 0; !}
 							<for each="item" in="member.params"> 
 									{! pram_count++; !} 
-									{+((item.type)?  "<em class='name'>"+item.name+"</em><em class='type'>:"+(new Link().toSymbol(item.type))+"</em>":"")+}<if test="item.isOptional"><em class='optional'>:Optional</em><if test="item.defaultValue">, Default: {+item.defaultValue+}</if></if>{+ ((pram_count != member.params.length) ? "," : "" )  +}
+									{+((item.type)?  "<a href='#"+(member.name)+"' class='tooltip' data-tip='"+(item.desc)+"'> <em class='name'>"+item.name+"</em><em class='type'>:"+(new Link().toSymbol(item.type))+"</em>":"")+}<if test="item.isOptional"><em class='optional'>:Optional</em><if test="item.defaultValue">, Default: {+item.defaultValue+}</if></if>{+ ((pram_count != member.params.length) ? ", " : "" )  +}
+									{+"</a>"+}
 								
 							</for>
 							
@@ -142,11 +143,16 @@
 								function($) { 
 									var _params = '';
 									for (var i = 0; i < $.params.length; i++) {
+									_params += '<a href="#'+$.name+'" class="tooltip" data-tip="'+$.params[i].desc +'">';
 										_params += '<em class="name">'+$.params[i].name +'</em><em class="type">:'+$.params[i].type+'</em>';
 
 										if($.params[i].isOptional){
 											_params += '<em class="optional">:Optional</em>';
+
 										}
+
+										_params += ((i != $.params.length-1) ? "<em>,</em> " : "" );
+										_params += '</a>';
 									}
 									var _html = '<dt><a name="'+$.name+'"> </a><h3>'+$.name+'( '+_params+' )</h3></dt>';
 										_html += '<dd><pre class="brush: js; gutter: false; ">'+resolveLinks($.desc)+$.example+'</pre></dd>';

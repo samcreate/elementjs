@@ -13,15 +13,9 @@
 		
 	
 		
-	<li>
-			
-			<a href="../class/Basic.html">Basic</a>
-		
-	</li>
-		
 	
 		
-	<li>
+	<li class="Bitmap">
 			
 			<a href="../class/Bitmap.html">Bitmap</a>
 		
@@ -31,7 +25,11 @@
 		
 	
 		
-	<li>
+	
+		
+	
+		
+	<li class="Path">
 			
 			<a href="../class/Path.html">Path</a>
 		
@@ -39,7 +37,7 @@
 		
 	
 		
-	<li>
+	<li class="Rectangle">
 			
 			<a href="../class/Rectangle.html">Rectangle</a>
 		
@@ -47,15 +45,9 @@
 		
 	
 		
-	<li>
-			
-			<a href="../class/Shape.html">Shape</a>
-		
-	</li>
-		
 	
 		
-	<li>
+	<li class="Sprite">
 			
 			<a href="../class/Sprite.html">Sprite</a>
 		
@@ -63,7 +55,7 @@
 		
 	
 		
-	<li>
+	<li class="Text">
 			
 			<a href="../class/Text.html">Text</a>
 		
@@ -97,6 +89,16 @@
 									
 										
 											<li>
+												<a href="../class/DisplayObject.html#collides">.collides(Element, Callback)</a>
+											</li>
+									
+										
+											<li>
+												<a href="../class/DisplayObject.html#drag">.drag(Callback)</a>
+											</li>
+									
+										
+											<li>
 												<a href="../class/DisplayObject.html#height">.height(value)</a>
 											</li>
 									
@@ -108,6 +110,11 @@
 										
 											<li>
 												<a href="../class/DisplayObject.html#scale">.scale(value)</a>
+											</li>
+									
+										
+											<li>
+												<a href="../class/DisplayObject.html#trace">.trace(true/false)</a>
 											</li>
 									
 										
@@ -126,6 +133,8 @@
 											</li>
 									
 									
+									<li><a href="#fire">.fire(type, params)</a></li><li><a href="#unbind">.unbind(type, listener)</a></li><li><a href="#extend">.extend(value, value)</a></li>
+									
 								</ul>
 							
 						
@@ -138,6 +147,81 @@
 				
 					
 					<dt>
+						<a name="collides"> </a>
+						<h3>
+					
+					
+					collides(
+						
+							
+							 
+									 
+									<a href='#collides' class='tooltip' data-tip='- anything that inherits DisplayObject'> <em class='name'>Element</em><em class='type'>:Object</em>, 
+									</a>
+								
+							 
+									 
+									<a href='#collides' class='tooltip' data-tip='- the callback function trigger when the objects rectangle bonds overlap.'> <em class='name'>Callback</em><em class='type'>:function</em>
+									</a>
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// Collides is used to find out if two different objects collide.
+						
+	// this example will send out an alert if the two object overlap
+
+_my_element.collides(_other_element,function(){
+		alert("_other_element touches _my_element!");
+});
+						</pre>
+					</dd>
+				
+					
+					<dt>
+						<a name="drag"> </a>
+						<h3>
+					
+					
+					drag(
+						
+							
+							 
+									 
+									<a href='#drag' class='tooltip' data-tip='- the callback function triggers: e.onStart, e.onUpdate, e.onFinished'> <em class='name'>Callback</em><em class='type'>:function</em>
+									</a>
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// Allows for dragging an object.
+						
+	// This example will how to setup a basic drag event.
+
+_my_element.on("drag",_drag_handler);
+
+function drag_handler (p_evt) {
+	console.log(p_evt.eventType);
+}
+						</pre>
+					</dd>
+				
+					
+					<dt>
 						<a name="height"> </a>
 						<h3>
 					
@@ -147,7 +231,8 @@
 							
 							 
 									 
-									<em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									<a href='#height' class='tooltip' data-tip='- Value of the element's height.'> <em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									</a>
 								
 							
 							
@@ -165,7 +250,7 @@
 
 var _my_element.height(222);
 
-	//now, let's 'get' the height value
+	// now, let's 'get' the height value
 console.log(_my_element.height()); //returns 222
 						</pre>
 					</dd>
@@ -181,7 +266,8 @@ console.log(_my_element.height()); //returns 222
 							
 							 
 									 
-									<em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									<a href='#rotate' class='tooltip' data-tip='- Value of the element's rotate in.'> <em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									</a>
 								
 							
 							
@@ -199,7 +285,7 @@ console.log(_my_element.height()); //returns 222
 
 var _my_element.rotate(3.14/2);
 
-	//now, let's 'get' the scale value
+	// now, let's 'get' the scale value
 console.log(_my_element.rotate()); //returns 1.57 (i.e. 90º)
 						</pre>
 					</dd>
@@ -215,7 +301,8 @@ console.log(_my_element.rotate()); //returns 1.57 (i.e. 90º)
 							
 							 
 									 
-									<em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									<a href='#scale' class='tooltip' data-tip='- Value of the element's scale in.'> <em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									</a>
 								
 							
 							
@@ -233,8 +320,51 @@ console.log(_my_element.rotate()); //returns 1.57 (i.e. 90º)
 
 var _my_element.scale(2);
 
-	//now, let's 'get' the scale value
+	// now, let's 'get' the scale value
 console.log(_my_element.scale()); //returns 2
+						</pre>
+					</dd>
+				
+					
+					<dt>
+						<a name="trace"> </a>
+						<h3>
+					
+					
+					trace(
+						
+							
+							 
+									 
+									<a href='#trace' class='tooltip' data-tip='- true/false'> <em class='name'>true/false</em><em class='type'>:Boolean</em><em class='optional'>:Optional</em>
+									</a>
+								
+							
+							
+						
+						)
+
+
+					</h3>
+					</dt>
+					<dd>
+						<p class="classDesc"></p>
+						<pre  class="brush: js; gutter: false; ">// Trace function tells the object wether or not all previous context drawing 
+    // should be saved, never erasing the objects previous drawn state. If no value
+    // is entered, the function acts like a 'getter' for the object's trace state.
+						
+	// this example will turn the trace state to 'on.'
+
+var _img = new Element("Bitmap",{
+		src:"path/to/image.jpg"
+}).trace(true);
+
+	// this example will return the trace state.
+
+var _img = new Element("Bitmap",{
+		src:"path/to/image.jpg"
+});
+_img.trace(); // returns true.
 						</pre>
 					</dd>
 				
@@ -249,7 +379,8 @@ console.log(_my_element.scale()); //returns 2
 							
 							 
 									 
-									<em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									<a href='#width' class='tooltip' data-tip='- Value of the element's width.'> <em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									</a>
 								
 							
 							
@@ -283,7 +414,8 @@ console.log(_my_element.width()); //returns 222
 							
 							 
 									 
-									<em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									<a href='#x' class='tooltip' data-tip='- Value of x position.'> <em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									</a>
 								
 							
 							
@@ -317,7 +449,8 @@ console.log(_my_element.x()); //returns 22
 							
 							 
 									 
-									<em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									<a href='#y' class='tooltip' data-tip='- Value of y position.'> <em class='name'>value</em><em class='type'>:Number</em><em class='optional'>:Optional</em>
+									</a>
 								
 							
 							
@@ -341,6 +474,13 @@ console.log(_my_element.y()); //returns 22
 					</dd>
 				
 			
+				
+				<dt><a name="fire"> </a><h3>fire( <a href="#fire" class="tooltip" data-tip="- unique name given to the custom event to be fired"><em class="name">type</em><em class="type">:string</em><em>,</em> </a><a href="#fire" class="tooltip" data-tip="- passes parameters to the callback function"><em class="name">params</em><em class="type">:Object</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">triggers the custom event._eventEngine.fire('eventName','pass me to the callback function');</pre></dd><dt><a name="unbind"> </a><h3>unbind( <a href="#unbind" class="tooltip" data-tip="- unique name given to the custom event to be removed"><em class="name">type</em><em class="type">:string</em><em>,</em> </a><a href="#unbind" class="tooltip" data-tip="- the callback function that was originally bound to the event"><em class="name">listener</em><em class="type">:function</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">Removes the event from the event list._eventEngine.unbind('eventName', _eventHandler );</pre></dd><dt><a name="extend"> </a><h3>extend( <a href="#extend" class="tooltip" data-tip="- Object getting extended."><em class="name">value</em><em class="type">:Object</em><em>,</em> </a><a href="#extend" class="tooltip" data-tip="- Inherited Object."><em class="name">value</em><em class="type">:Object</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// extend allows you to take all the properties for one object and
+    // apply them to another.
+	// In this example, we inherit the x value of obj2.
+var _obj2 = {x:33};
+var _my_element.extend(_my_element,_obj2);
+console.log(_my_element.x); //returns 33;</pre></dd>
 				
 			</dl>
 		</div>
