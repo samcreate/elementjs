@@ -40,16 +40,7 @@
 
         return this;
 	};
-	/** @memberOf EventTarget#
-    * @function
-    * @description Removes the event from the event list. 
-    * @name unbind
-	* @public 
-	* @param {string} type - unique name given to the custom event to be removed
-	* @param {function} listener - the callback function that was originally bound to the event
-	* @example _eventEngine.unbind('eventName', _eventHandler );
-    */
-
+	
     /**
 	* @memberOf EventTarget#
 	* @name unbind
@@ -64,7 +55,6 @@
 	// In this example, we remove the event "eventName" binding to our
 	// function "_eventHandler".
    	*var _my_element.unbind('eventName', _eventHandler );
-	*console.log(_my_element.x); //returns 33;
     */
 	_pt.unbind = function(type, listener){
 		if (this._listeners[type] instanceof Array){
@@ -77,14 +67,20 @@
             }
         }
 	};
-	/** @memberOf EventTarget#
+	
+    /**
+	* @memberOf EventTarget#
+	* @name fire
     * @function
-    * @description triggers the custom event. 
-    * @name fire
-	* @public 
 	* @param {string} type - unique name given to the custom event to be fired
 	* @param {Object} [params] - passes parameters to the callback function 
-	* @example _eventEngine.fire('eventName','pass me to the callback function');
+    * @description 
+    // triggers the custom event
+	* @public 
+	* @example 
+	// In this example, we fire of the event 'eventName' with additonal parameters
+	// to be passed to any listeners.
+   	* _eventEngine.fire('eventName','pass me to the callback function');
     */
 	_pt.fire = function(event,params){
 		if (typeof event == "string"){

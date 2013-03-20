@@ -264,6 +264,23 @@
 		return this.on('drag',p_func);
 	};
 
+
+	/**
+	* @memberOf DisplayObject#
+	* @name alpha
+    * @function
+	* @param {Number} [percentage] - Value of the element's alpha between 0-1.
+    * @description 
+    // Changes the elements transparency from 0-1, where one is equal to 100%
+	* @public 
+	* @example 
+	// In this example, we set the alpha to 50%.
+	*
+   	*var _my_element.alpha(0.5);
+	*
+	// now, let's 'get' the alpha value
+	*console.log(_my_element.alpha()); //returns 0.5
+    */
 	_pt.alpha = function(p_val){
 		if(p_val != null){
 			this._alpha = p_val;
@@ -273,6 +290,27 @@
 			return this._alpha;
 		}
 	};
+	
+	/**
+	* @memberOf DisplayObject#
+	* @name shadow
+    * @function
+	* @param {Object/String} [shadowValues] - {color:hex, blur:Number,x:Number,y:Number,alpha:percent} or 'none'
+    * @description 
+    // adds shadow the current element. Pass in a object with filled values for this:
+    // {color:hex, blur:Number,x:Number,y:Number,alpha:percent}
+	* @public 
+	* @example 
+	// example of adding a black shadow:
+	*
+   	*var _my_element.shadow({color:'#000000', blur:30,x:10,y:10,alpha:0.5});
+	*
+	// now, let's 'get' the shadow values
+	*console.log(_my_element.shadow()); //returns {color:'#000000', blur:30,x:10,y:10,alpha:0.5}
+	*
+	// now, let's 'remove' the shadow values
+	*_my_element.shadow('none'); //returns _my_element
+    */
 	_pt.shadow = function(p_val){
 		if(p_val){
 			this._shadow = p_val;
@@ -282,7 +320,31 @@
 			return this._shadow || {};
 		}
 	};
+
+
+	/**
+	* @memberOf DisplayObject#
+	* @name border
+    * @function
+	* @param {Object/String} [borderValues] - {color:hex,with:number} or 'none'
+    * @description 
+    // allows you to add a border to any display object
+    // {color:hex, width:number}
+	* @public 
+	* @example 
+	// example of adding a black border:
+	*
+   	*var _my_element.border({color:'#000000', width:20}); //returns _my_element
+	*
+	// now, let's 'get' the border values
+	*console.log(_my_element.border()); //returns {color:'#000000', width:20}
+	*
+	// now, let's 'remove' the border values
+	*_my_element.border('none'); //returns _my_element
+    */
 	_pt.border = function(p_val){
+		//TODO: Fix border width to be double the value, 
+		//since it shows up as half the value.
 		if(p_val){
 			this._border = p_val;
 			this.dirty(true, "border");
@@ -293,7 +355,6 @@
 	};
 
 	_pt.mask = function(p_val){
-		// no workey in ie9 if(p_val && p_val.__proto__.__proto__.name === "Shape Instance"){
 		if(p_val){
 			p_val.alpha(0);
 			p_val.unbind("draw",p_val.draw);

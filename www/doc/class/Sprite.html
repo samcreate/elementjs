@@ -93,7 +93,7 @@
 											</li>
 									
 									
-									<li><a href="#on">.on(event_name, call_back)</a></li><li><a href="#toDataURL">.toDataURL(area)</a></li><li><a href="#filter">.filter(value)</a></li><li><a href="#filterRemove">.filterRemove(value)</a></li><li><a href="#collides">.collides(Element, Callback)</a></li><li><a href="#drag">.drag(Callback)</a></li><li><a href="#height">.height(value)</a></li><li><a href="#rotate">.rotate(value)</a></li><li><a href="#scale">.scale(value)</a></li><li><a href="#trace">.trace(true/false)</a></li><li><a href="#width">.width(value)</a></li><li><a href="#x">.x(value)</a></li><li><a href="#y">.y(value)</a></li><li><a href="#fire">.fire(type, params)</a></li><li><a href="#unbind">.unbind(type, listener)</a></li><li><a href="#extend">.extend(value, value)</a></li>
+									<li><a href="#on">.on(event_name, call_back)</a></li><li><a href="#toDataURL">.toDataURL(area)</a></li><li><a href="#filter">.filter(value)</a></li><li><a href="#filterRemove">.filterRemove(value)</a></li><li><a href="#alpha">.alpha(percentage)</a></li><li><a href="#border">.border(borderValues)</a></li><li><a href="#collides">.collides(Element, Callback)</a></li><li><a href="#drag">.drag(Callback)</a></li><li><a href="#height">.height(value)</a></li><li><a href="#rotate">.rotate(value)</a></li><li><a href="#scale">.scale(value)</a></li><li><a href="#shadow">.shadow(shadowValues)</a></li><li><a href="#trace">.trace(true/false)</a></li><li><a href="#width">.width(value)</a></li><li><a href="#x">.x(value)</a></li><li><a href="#y">.y(value)</a></li><li><a href="#fire">.fire(type, params)</a></li><li><a href="#unbind">.unbind(type, listener, scope)</a></li><li><a href="#extend">.extend(value, value)</a></li>
 									
 								</ul>
 							
@@ -245,7 +245,23 @@ my_element.filter("kaleidoscope",{angle : 0,rotation : 0,sides : 3,centerX : 0.5
 _my_element.filterRemove("multiply"); 
 
 	//In this example, we remove all the applied filters
-_my_element.filterRemove("all");</pre></dd><dt><a name="collides"> </a><h3>collides( <a href="#collides" class="tooltip" data-tip="- anything that inherits DisplayObject"><em class="name">Element</em><em class="type">:Object</em><em>,</em> </a><a href="#collides" class="tooltip" data-tip="- the callback function trigger when the objects rectangle bonds overlap."><em class="name">Callback</em><em class="type">:function</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// Collides is used to find out if two different objects collide.
+_my_element.filterRemove("all");</pre></dd><dt><a name="alpha"> </a><h3>alpha( <a href="#alpha" class="tooltip" data-tip="- Value of the element's alpha between 0-1."><em class="name">percentage</em><em class="type">:Number</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// Changes the elements transparency from 0-1, where one is equal to 100%
+	// In this example, we set the alpha to 50%.
+
+var _my_element.alpha(0.5);
+
+	// now, let's 'get' the alpha value
+console.log(_my_element.alpha()); //returns 0.5</pre></dd><dt><a name="border"> </a><h3>border( <a href="#border" class="tooltip" data-tip="- {color:hex,with:number} or 'none'"><em class="name">borderValues</em><em class="type">:Object/String</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// allows you to add a border to any display object
+    // {color:hex, width:number}
+	// example of adding a black border:
+
+var _my_element.border({color:'#000000', width:20}); //returns _my_element
+
+	// now, let's 'get' the border values
+console.log(_my_element.border()); //returns {color:'#000000', width:20}
+
+	// now, let's 'remove' the border values
+_my_element.border('none'); //returns _my_element</pre></dd><dt><a name="collides"> </a><h3>collides( <a href="#collides" class="tooltip" data-tip="- anything that inherits DisplayObject"><em class="name">Element</em><em class="type">:Object</em><em>,</em> </a><a href="#collides" class="tooltip" data-tip="- the callback function trigger when the objects rectangle bonds overlap."><em class="name">Callback</em><em class="type">:function</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// Collides is used to find out if two different objects collide.
 	// this example will send out an alert if the two object overlap
 
 _my_element.collides(_other_element,function(){
@@ -275,7 +291,17 @@ console.log(_my_element.rotate()); //returns 1.57 (i.e. 90º)</pre></dd><dt><a n
 var _my_element.scale(2);
 
 	// now, let's 'get' the scale value
-console.log(_my_element.scale()); //returns 2</pre></dd><dt><a name="trace"> </a><h3>trace( <a href="#trace" class="tooltip" data-tip="- true/false"><em class="name">true/false</em><em class="type">:Boolean</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// Trace function tells the object wether or not all previous context drawing 
+console.log(_my_element.scale()); //returns 2</pre></dd><dt><a name="shadow"> </a><h3>shadow( <a href="#shadow" class="tooltip" data-tip="- {color:hex, blur:Number,x:Number,y:Number,alpha:percent} or 'none'"><em class="name">shadowValues</em><em class="type">:Object/String</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// adds shadow the current element. Pass in a object with filled values for this:
+    // {color:hex, blur:Number,x:Number,y:Number,alpha:percent}
+	// example of adding a black shadow:
+
+var _my_element.shadow({color:'#000000', blur:30,x:10,y:10,alpha:0.5});
+
+	// now, let's 'get' the shadow values
+console.log(_my_element.shadow()); //returns {color:'#000000', blur:30,x:10,y:10,alpha:0.5}
+
+	// now, let's 'remove' the shadow values
+_my_element.shadow('none'); //returns _my_element</pre></dd><dt><a name="trace"> </a><h3>trace( <a href="#trace" class="tooltip" data-tip="- true/false"><em class="name">true/false</em><em class="type">:Boolean</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// Trace function tells the object wether or not all previous context drawing 
     // should be saved, never erasing the objects previous drawn state. If no value
     // is entered, the function acts like a 'getter' for the object's trace state.
 	// this example will turn the trace state to 'on.'
@@ -307,7 +333,13 @@ console.log(_my_element.x()); //returns 22</pre></dd><dt><a name="y"> </a><h3>y(
 var _my_element.y(22);
 
 	//now, let's 'get' the y value
-console.log(_my_element.y()); //returns 22</pre></dd><dt><a name="fire"> </a><h3>fire( <a href="#fire" class="tooltip" data-tip="- unique name given to the custom event to be fired"><em class="name">type</em><em class="type">:string</em><em>,</em> </a><a href="#fire" class="tooltip" data-tip="- passes parameters to the callback function"><em class="name">params</em><em class="type">:Object</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">triggers the custom event._eventEngine.fire('eventName','pass me to the callback function');</pre></dd><dt><a name="unbind"> </a><h3>unbind( <a href="#unbind" class="tooltip" data-tip="- unique name given to the custom event to be removed"><em class="name">type</em><em class="type">:string</em><em>,</em> </a><a href="#unbind" class="tooltip" data-tip="- the callback function that was originally bound to the event"><em class="name">listener</em><em class="type">:function</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">Removes the event from the event list._eventEngine.unbind('eventName', _eventHandler );</pre></dd><dt><a name="extend"> </a><h3>extend( <a href="#extend" class="tooltip" data-tip="- Object getting extended."><em class="name">value</em><em class="type">:Object</em><em>,</em> </a><a href="#extend" class="tooltip" data-tip="- Inherited Object."><em class="name">value</em><em class="type">:Object</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// extend allows you to take all the properties for one object and
+console.log(_my_element.y()); //returns 22</pre></dd><dt><a name="fire"> </a><h3>fire( <a href="#fire" class="tooltip" data-tip="- unique name given to the custom event to be fired"><em class="name">type</em><em class="type">:string</em><em>,</em> </a><a href="#fire" class="tooltip" data-tip="- passes parameters to the callback function"><em class="name">params</em><em class="type">:Object</em><em class="optional">:Optional</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// triggers the custom event
+	// In this example, we fire of the event 'eventName' with additonal parameters
+	// to be passed to any listeners.
+_eventEngine.fire('eventName','pass me to the callback function');</pre></dd><dt><a name="unbind"> </a><h3>unbind( <a href="#unbind" class="tooltip" data-tip="- unique name given to the custom event to be removed"><em class="name">type</em><em class="type">:string</em><em>,</em> </a><a href="#unbind" class="tooltip" data-tip="- the callback function that was originally bound to the event"><em class="name">listener</em><em class="type">:function</em><em>,</em> </a><a href="#unbind" class="tooltip" data-tip="- the scope of callback's 'this' property"><em class="name">scope</em><em class="type">:object</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// Removes the event from the event list.
+	// In this example, we remove the event "eventName" binding to our
+	// function "_eventHandler".
+var _my_element.unbind('eventName', _eventHandler );</pre></dd><dt><a name="extend"> </a><h3>extend( <a href="#extend" class="tooltip" data-tip="- Object getting extended."><em class="name">value</em><em class="type">:Object</em><em>,</em> </a><a href="#extend" class="tooltip" data-tip="- Inherited Object."><em class="name">value</em><em class="type">:Object</em></a> )</h3></dt><dd><pre class="brush: js; gutter: false; ">// extend allows you to take all the properties for one object and
     // apply them to another.
 	// In this example, we inherit the x value of obj2.
 var _obj2 = {x:33};

@@ -94,7 +94,7 @@
 									
 										
 											<li>
-												<a href="../class/EventTarget.html#unbind">.unbind(type, listener)</a>
+												<a href="../class/EventTarget.html#unbind">.unbind(type, listener, scope)</a>
 											</li>
 									
 									
@@ -139,8 +139,11 @@
 					</dt>
 					<dd>
 						<p class="classDesc"></p>
-						<pre  class="brush: js; gutter: false; ">triggers the custom event.
-						_eventEngine.fire('eventName','pass me to the callback function');
+						<pre  class="brush: js; gutter: false; ">// triggers the custom event
+						
+	// In this example, we fire of the event 'eventName' with additonal parameters
+	// to be passed to any listeners.
+_eventEngine.fire('eventName','pass me to the callback function');
 						</pre>
 					</dd>
 				
@@ -160,7 +163,12 @@
 								
 							 
 									 
-									<a href='#unbind' class='tooltip' data-tip='- the callback function that was originally bound to the event'> <em class='name'>listener</em><em class='type'>:function</em>
+									<a href='#unbind' class='tooltip' data-tip='- the callback function that was originally bound to the event'> <em class='name'>listener</em><em class='type'>:function</em>, 
+									</a>
+								
+							 
+									 
+									<a href='#unbind' class='tooltip' data-tip='- the scope of callback's 'this' property'> <em class='name'>scope</em><em class='type'>:object</em>
 									</a>
 								
 							
@@ -173,8 +181,11 @@
 					</dt>
 					<dd>
 						<p class="classDesc"></p>
-						<pre  class="brush: js; gutter: false; ">Removes the event from the event list.
-						_eventEngine.unbind('eventName', _eventHandler );
+						<pre  class="brush: js; gutter: false; ">// Removes the event from the event list.
+						
+	// In this example, we remove the event "eventName" binding to our
+	// function "_eventHandler".
+var _my_element.unbind('eventName', _eventHandler );
 						</pre>
 					</dd>
 				
