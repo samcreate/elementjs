@@ -2,6 +2,11 @@
 	
 	/**
 	* //Text class helps draw a Text
+	*
+	* //Example: 
+	* var _text = new Element('Text'{
+	* 	src:'This is a test'
+	* }).font('Impact, Charcoal, sans-serif');
 	* @class Text
 	* @extends DisplayObject
 	* @constructor
@@ -15,6 +20,7 @@
 		this.extend(this, new Animate());
 		this.transform = new Transform(this._context);
 		this.ctx = this.transform.context;
+
 		this.defaults = {
 			font: 'Calibri',
 			color: "#000000",
@@ -63,7 +69,18 @@
 		return this;
 	};
 
+	/** @memberOf Text#
+	* @name src
+    * @function
+	* @param {String} txt - String to display
+    * @description 
+    // src allows for one string parameter that is used for the display
+	* @public 
+	* @example 
+   	*var _img1 = new Element("Text").src('Poop');
+    */
 	_pt.src = function(p_val){
+		// TODO: fix measure text
 		if(p_val != null){
 			this._txt = p_val;
 			// this._measureText(this._txt);
