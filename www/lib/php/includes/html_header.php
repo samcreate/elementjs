@@ -52,7 +52,7 @@
 			</div>
 			
 			<a href="" class="logo"><h1>Element.js</h1></a>
-			<a href="/download" class="download">Download</a>
+			<a href="/download" class="download" onClick="_gaq.push(['_trackEvent', 'Site', 'download', 'Version 1.0']);">Download</a>
 			<hr>
 			<p><em>Element.js:</em> Canvas 2D Library, Open source and free, really simple api, easy to use.</p>
 		</header>
