@@ -122,6 +122,15 @@
 		}
 	};
 
+	_pt.name = function(p_val){
+		if(p_val){
+			this._name = p_val;
+			return this;
+		}else{
+			return this._name ;
+		}
+	};
+
 
 	// =====================
 	// = private functions =

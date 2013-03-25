@@ -62,7 +62,7 @@ var one, two, three, four;
 
 
 
-var zelda = new Element("Sprite").src("zelda.png","zelda.json",2).x(400).y(200).gotoAndStop(15).sequence("sword",0,14).sequence("default",14,25);
+var zelda = new Element("Sprite").src("zelda.png","zelda.json",2).x(400).y(200).gotoAndStop(15).sequence("sword",0,14).sequence("default",14,25).bind('loaded', _handel_loaded);
 
 
 // var zelda = new Element("Sprite", {
@@ -84,11 +84,15 @@ var zelda = new Element("Sprite").src("zelda.png","zelda.json",2).x(400).y(200).
 // 	var _imgdata = zelda.gotoAndStop(i).toDataURL();
 // 	_pieces.push( new Element("Bitmaps").src(_imgdata) );
 // };
-
-
+var _sword_pad = 0;
+var _sword_x;
 
 zelda.on("keydown",_handlekeydown).on("keyup",_handlekeyUp);
 
+function _handel_loaded (e) {
+	_sword_pad = this.getFrameInfo().w/2;
+	debug.log("handle loadded called",_sword_pad);
+}
 
 Loop(function(){
 	
@@ -98,14 +102,18 @@ Loop(function(){
 function _handlekeydown(p_evt){
 	if(p_evt.keyCode === 37) this.run("default",true).x(this.x()-4);
 	
-	if(p_evt.keyCode === 83) this.run("sword",true);
+	if(p_evt.keyCode === 83 && this.x() != _sword_x){
+		
+		_sword_x = this.x() - _sword_pad;
+		this.run("sword",true).x( _sword_x );
+	} 
 	
 	if(p_evt.keyCode === 39) this.run("default",true).x(this.x()+4);
 	
 }
 function _handlekeyUp(p_evt){
 	if(p_evt.keyCode === 37) this.gotoAndStop(15);
-	if(p_evt.keyCode === 83) this.gotoAndStop(15);
+	if(p_evt.keyCode === 83) this.gotoAndStop(15).x( this.x()+_sword_pad );;
 }
 
 function drag_handler (p_evt) {

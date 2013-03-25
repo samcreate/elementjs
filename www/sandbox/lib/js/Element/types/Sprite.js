@@ -22,6 +22,10 @@
 		this._curSequence = null;
 		this._stopindex = null;
 		this._lastDrawState = "";
+
+		this.defaults = {
+			frameDef : {x:0,y:0,w:0,h:0}
+		}
 	};
 
 	var _pt = Sprite.prototype = new Bitmap();
@@ -52,7 +56,10 @@
 					start: 0,
 					end: this.frames.length
 				};
+				//set the frames definition accessible
+				this.getFrameInfo(this.frames[this.iterate].frame);
 				this._loadsrc(this._src);
+
 			}, this);
 			return this;
 		} else {
@@ -102,16 +109,20 @@
 			if (this.gotoAndStop() !== null) {
 				this.iterate = this.gotoAndStop();
 
-			} else {
+			} else if(this.iterate != this._curSequence.end -1) {
 				this.iterate++;
 			}
 
 		}
 
+
+		
 		_w = this.frames[this.iterate].frame.w + this.padding();
 		_h = this.frames[this.iterate].frame.h + this.padding();
 		_x = this.frames[this.iterate].frame.x;
 		_y = this.frames[this.iterate].frame.y;
+
+
 
 		_ctx = this._sprite_canvas.context;
 		_cvs = this._sprite_canvas.canvas;
@@ -245,6 +256,16 @@
 		}
 		this.controller.childrenDraw(true);
 		return this;
+	};
+
+	_pt.getFrameInfo = function(p_val){
+		if(p_val){
+			this._frameDef = p_val;
+			this.dirty(true,"getFrameInfo");
+			return this;
+		}else{
+			return this._frameDef || this.defaults.frameDef;
+		}
 	};
 
 
