@@ -29,8 +29,6 @@
 	_pt.init = function(p_context){
 		this._context = p_context;
 		this.transform = new Transform(this._context);
-		this.x(0);
-		this.y(0);
 		this.dirty(false);
 	};
 

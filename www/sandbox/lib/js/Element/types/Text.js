@@ -40,8 +40,7 @@
 		this._context = p_context;
 		this.transform = new Transform(this._context);
 		this.ctx = this.transform.context;
-		this.x(0);
-		this.y(0);
+
 		this.ready(true);
 
 		this.bind('draw',this.draw,this);

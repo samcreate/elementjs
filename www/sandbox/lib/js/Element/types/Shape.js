@@ -7,7 +7,7 @@
 	* @constructor
 	*/
 	
-	Shape = function(p_context) {
+	Shape = function() {
 		
 	
 		
@@ -17,9 +17,11 @@
 	
 	_pt.constructor = Shape;
 	
-	_pt.init = function(){
-		this.x(0);
-		this.y(0);
+	_pt.init = function(p_context){
+
+		this._context = p_context;
+		this.transform = new Transform(this._context);
+		this.ctx = this.transform.context;
 		this.ready(true);
 		this.bind('draw',this.draw,this);
 	};

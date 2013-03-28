@@ -167,7 +167,9 @@ function _start_scene1 (e) {
 
 			_zelda = new Element('Sprite').src('zelda.png','zelda.json').gotoAndStop(0);
 
-			Scene1.add(_img1).add(_text).add(_zelda);
+			var line = new Element("Path").style({color:"#333333", width:3}).beginPath(20,20).to(600,600);
+
+			Scene1.add(line).add(_text).add(_zelda).add(_img1);
 
 }
 
@@ -181,8 +183,10 @@ function _start_scene2 (e) {
 				drag: drag_handler
 			});
 
+			_rec = new Element("Rectangle", {color: '#ff0000', width:100,height:100, radius:20}).x(400).y(400);
+
 			_text2 = new Element("Text").src("Fart fartt;").font('Impact, Charcoal, sans-serif');
-			Scene2.add(_img2).add(_text2);
+			Scene2.add(_img2).add(_text2).add(_rec);
 
 }
 

@@ -7,14 +7,13 @@
 	* @constructor
 	*/
 	
-	Rectangle = function(p_context) {
+	Rectangle = function() {
 		
 		EventTarget.call(this);
-		this._context = p_context;
+
 		this.extend(this, new Events());
 		this.extend(this, new Animate());
-		this.transform = new Transform(this._context);
-		this.ctx = this.transform.context;
+		
 		
 	};
 
