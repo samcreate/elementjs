@@ -6,26 +6,22 @@
 		
 		if(p_class){
 			
-			window.$$_CHILDREN = window.$$_CHILDREN || [];
-			window.$$_CHILDREN_ID = window.$$_CHILDREN_ID || 0;
-			window.$$_TWEENS = window.$$_TWEENS || {};
-			window.$$_canvas = window.$$_canvas || new Canvas( this.canvas_id() || "element-root" );
-			
-			
+			var _temp;
 
-			var _temp = eval("new "+p_class+"(window.$$_canvas.context())");
-			
-				_temp = this.extend(_temp, new Element());
-				_temp.id((window.$$_CHILDREN_ID)+"_id");
-				_temp.index((window.$$_CHILDREN_ID));
-				_temp.visible(true);
-				_temp.alpha(1);
-				_temp._tweenie = new Tweenie();
-				if(typeof _temp.init === "function") _temp.init();
-				window.$$_CHILDREN.push(_temp);
-				window.$$_CHILDREN_ID++;
-				_temp._handelDefinition(p_def, _temp);
+			if(p_class === 'Scene'){
 
+				_temp = new Scene(p_def);
+				_temp.width(p_def.width);
+				_temp.height(p_def.height);
+				_temp.canvas(p_def.canvas);
+				_temp.framerate(p_def.framerate);
+
+			}else{
+
+			 	_temp = eval("new "+p_class+"()");
+				this._handelDefinition(p_def, _temp);
+			}
+			
 			return _temp;
 		}
 		
@@ -51,22 +47,13 @@
 		}
 	};
 	
-	
-
-	
-	
-	
-	
-	
 	// ====================
 	// = public functions =
 	// ====================
 	
 	
 	
-	_pt.toString = function(){
-		return "["+this.name+" Instance]"
-	};
+	
 	
 	// =====================
 	// = private functions =

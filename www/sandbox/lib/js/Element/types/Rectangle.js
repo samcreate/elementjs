@@ -84,7 +84,7 @@
 
 	_pt.mouseDraw =  function(){
 
-		this._mouse_canvas = this._mouse_canvas || Util.createContext("mouse_"+this.id());
+		this._mouse_canvas = this._mouse_canvas || Util.createContext("mouse_"+this.id(),this.scene().canvas());
 		this._mouse_transform = this._mouse_transform || new Transform(this._mouse_canvas.context);
 		this._mouse_transform.save();
 		this._mouse_transform.setMatrix([1, 0, 0, 1, 0, 0]);

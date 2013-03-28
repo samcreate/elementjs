@@ -31,7 +31,9 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   </header>
   <div role="main">
-	<canvas id="element-root" framerate="10" >No support for canvas was detected, human.</canvas>
+	<!-- <canvas id="element-root" framerate="10" >No support for canvas was detected, human.</canvas> -->
+	<canvas id="scene1" >No support for canvas was detected, human.</canvas>
+	<canvas id="scene2" >No support for canvas was detected, human.</canvas>
   </div>
   <footer>
 
@@ -41,16 +43,17 @@
 	
 </script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="lib/js/Element/onReady.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Basic.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/util.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/EventTarget.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Scene.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Filter.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/DisplayObject.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Loop.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Transform.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Events.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/CanvasInteract.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Graphics.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Bitmap.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Shape.js" type="text/javascript" charset="utf-8"></script>
@@ -128,9 +131,31 @@ body{overflow: hidden; background: white;}
 </style>
 
 <script type="text/javascript" charset="utf-8">
-	var _img1, zelda, _text;
-	onReady({
-		success:function(e){
+
+var Scene1 = new Element('Scene', {
+    canvas: "scene1",
+    framerate: 20,
+    width: 800,
+    height: 600,
+    onReady: _start_scene1
+});
+
+var Scene2 = new Element('Scene', {
+    canvas: "scene2",
+    framerate: 20,
+    width: 800,
+    height: 600,
+    onReady: _start_scene2
+});
+
+
+// Scene1.bind('tick',function(){debug.log('tick')});
+
+var _img1, zelda, _text, _zelda;
+function _start_scene1 (e) {
+
+			debug.log("On Ready Called", this);
+			
 
 			_img1 = new Element("Bitmap",{
 				src:"jelly.jpg",
@@ -138,25 +163,51 @@ body{overflow: hidden; background: white;}
 				filter: "grayscale,multiply:#ff0000"
 			});
 
-			// zelda = new Element("Sprite",{
-				
-			// 	src : "zelda.png,zelda.json",
-			// 	padding: 2,
-			// 	gotoAndStop : 15,
-			// 	filter: "grayscale,multiply:#ff0000",
-			// 	sequence : "default:14:25,sword:0:14",
-			// 	x:22,
-			// 	y:22
-			// });
-
 			_text = new Element("Text").src("This is Aaron's text;").font('Impact, Charcoal, sans-serif');
 
-		},
-		error:function(e){
-			alert("FART");
+			_zelda = new Element('Sprite').src('zelda.png','zelda.json').gotoAndStop(0);
+
+			Scene1.add(_img1).add(_text).add(_zelda);
+
+}
+
+function _start_scene2 (e) {
+
+			debug.log("On Ready Called", this);
+			
+
+			var _img2= new Element("Bitmap",{
+				src:"jelly.jpg",
+				drag: drag_handler
+			});
+
+			_text2 = new Element("Text").src("Fart fartt;").font('Impact, Charcoal, sans-serif');
+			Scene2.add(_img2).add(_text2);
+
+}
+
+function drag_handler (p_evt) {
+		this.width(650).height(387);
+		
+		if(p_evt.eventType === "onFinished"){
+			
+			this.border("none").width(600).height(337);
 		}
-	});
-	
+		
+		if (p_evt.eventType == "onStart") {
+			
+		}
+}
+
+function _handle_error () {
+	debug.log("Error Called", this);
+}
+
+</script>
+
+
+<script type="text/javascript" charset="utf-8">
+
 _start_y = 0;
 
 /** This is high-level function.
@@ -256,18 +307,7 @@ _start_y = 0;
 	
 	//last step
 
-	function drag_handler (p_evt) {
-			this.width(650).height(387);
-			
-			if(p_evt.eventType === "onFinished"){
-				
-				this.border("none").width(600).height(337);
-			}
-			
-			if (p_evt.eventType == "onStart") {
-				
-			}
-	}
+	
 		
 </script>
   

@@ -2,8 +2,7 @@
 	
 
 	Events = function(p_canvas) {
-		window.$$_EVENTS_CHILDREN = window.$$_EVENTS_CHILDREN || [];
-		window.$$_EVENTS_DRAG_CHILDREN = window.$$_EVENTS_DRAG_CHILDREN || [];
+		this._event_queue = [];
 	}
 
 
@@ -21,17 +20,29 @@
 	// ====================
 	
 	_pt.on = function(p_event,p_callback){
-		
-		$$_EVENTS_CHILDREN.push({object:this,event:p_event,callback:p_callback});
+
+		if(typeof this.scene() != 'undefined'){
+
+			this.scene().eventChildren.push({object:this,event:p_event,callback:p_callback});
+
+		}else{
+
+			this._event_queue.push({object:this,event:p_event,callback:p_callback});
+		}
+		// 
 		return this;
 	}
 	
-	
-
 	// =====================
 	// = private functions =
 	// =====================
-	
+	_pt.check_eventQueue = function(){
+
+		for (var i = 0; i < this._event_queue.length; i++) {;
+			this.scene().eventChildren.push(this._event_queue[i]);
+		}
+
+	};
 
 	
 	window.Events = Events;

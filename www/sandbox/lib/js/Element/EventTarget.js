@@ -104,6 +104,8 @@
                 listeners[i].fn.call( listeners[i].scope || this, event);
             }
         }
+
+        return this;
 	};
 	
 

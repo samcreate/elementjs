@@ -57,33 +57,6 @@
 		
 	};
 
-	_pt.dirty = function(p_val, p_by){
-		
-		if(p_val != null){
-			// debug.log(p_val);
-			 // if(p_by != null && p_val === true) debug.log(this.id(),"dirty by: "+p_by);
-			 // if(p_val === false) debug.log(this.id()+" SET CLEAN");
-			this._dirty = p_val;
-			return this;
-		}else{
-			return this._dirty;
-		}
-	};
-	_pt.top = function(){
-		var _i = Util.getIndex(this);
-		var _childtotop = $$_CHILDREN.splice(_i,1);
-		$$_CHILDREN.push(_childtotop[0]);
-		this.dirty(true, "top");
-		return this;
-	};
-	
-	_pt.bottom = function(){
-		var _i = Util.getIndex(this);
-		var _childtotop = $$_CHILDREN.splice(_i,1);
-		$$_CHILDREN.unshift(_childtotop[0]);
-		this.dirty(true, "bottom");
-		return this;
-	};
 
 	_pt.visible = function(p_val){
 		if(p_val != null){
@@ -91,7 +64,7 @@
 			this.dirty(true, "visible");
 			return this;
 		}else{
-			return this._visible;
+			return this._visible || true;
 		}
 	};
 	
@@ -129,6 +102,10 @@
 		}else{
 			return this._name ;
 		}
+	};
+
+	_pt.toString = function(){
+		return "["+this.name+" Instance]"
 	};
 
 

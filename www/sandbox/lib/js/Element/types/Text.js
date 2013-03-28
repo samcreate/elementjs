@@ -12,14 +12,13 @@
 	* @constructor
 	*/
 	
-	Text = function(p_context) {
+	Text = function() {
 		
 		EventTarget.call(this);
-		this._context = p_context;
+		
 		this.extend(this, new Events());
 		this.extend(this, new Animate());
-		this.transform = new Transform(this._context);
-		this.ctx = this.transform.context;
+
 
 		this.defaults = {
 			font: 'Calibri',
@@ -36,7 +35,11 @@
 	
 	_pt.constructor = Text;
 	
-	_pt.init = function(){
+	_pt.init = function(p_context){
+		
+		this._context = p_context;
+		this.transform = new Transform(this._context);
+		this.ctx = this.transform.context;
 		this.x(0);
 		this.y(0);
 		this.ready(true);
@@ -202,7 +205,7 @@
 		}());
 
 
-		this._textmeasure_canvas = this._textmeasure_canvas || Util.createContext("_textmeasure"+this.id());
+		this._textmeasure_canvas = this._textmeasure_canvas || Util.createContext("_textmeasure"+this.id(),this.scene().canvas());
 		this._textmeasure_transform = this._textmeasure_transform || new Transform(this._textmeasure_canvas.context);
 		this._textmeasure_transform.save();
 		this._textmeasure_transform.setMatrix([1, 0, 0, 1, 0, 0]);

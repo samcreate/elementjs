@@ -9,14 +9,14 @@
 	* @constructor
 	*/
 
-	Sprite = function(p_context) {
+	Sprite = function() {
 
 		EventTarget.call(this);
-		this._context = p_context;
+		
 		this.extend(this, new Events());
 		this.extend(this, new Animate());
-		this.transform = new Transform(this._context);
-		this.controller = $$_canvas;
+		
+		
 		this.iterate = 0;
 		this._sequences = {};
 		this._curSequence = null;
@@ -104,7 +104,7 @@
 
 	_pt._handle_sprite = function(p_src) {
 		var _to_draw, _w, _h, _x, _y, _ctx, _cvs;
-		this._sprite_canvas = this._sprite_canvas || Util.createContext("sprite_" + this.id());
+		this._sprite_canvas = this._sprite_canvas || Util.createContext("sprite_" + this.id(),this.scene().canvas());
 		if (this.iterate <= this._curSequence.end - 1) {
 			if (this.gotoAndStop() !== null) {
 				this.iterate = this.gotoAndStop();
@@ -180,7 +180,9 @@
 				
 			}
 
-			this.controller.childrenDraw(true);
+			try{ this.scene().childrenDraw(true); }catch(e){ }
+
+			
 
 			return this;
 		} else {
@@ -197,7 +199,7 @@
 				this.iterate = p_val;
 			}
 			this._stopindex = null;
-			this.controller.childrenDraw(true);
+			try{ this.scene().childrenDraw(true); }catch(e){ }
 
 			return this;
 		} else {
@@ -254,7 +256,7 @@
 			
 			if (p_loop === true) this.loop(true);
 		}
-		this.controller.childrenDraw(true);
+		try{ this.scene().childrenDraw(true); }catch(e){ }
 		return this;
 	};
 

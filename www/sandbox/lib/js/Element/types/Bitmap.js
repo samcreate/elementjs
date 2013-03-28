@@ -11,13 +11,13 @@
 
 
     
-	Bitmap = function(p_context) {
+	Bitmap = function() {
 		
 		EventTarget.call(this);
-		this._context = p_context;
+		
 		this.extend(this, new Events());
 		this.extend(this, new Animate());
-		this.transform = new Transform(this._context);
+		this.transform;
 		this._lastDrawState = "";
 		
 	};
@@ -26,7 +26,9 @@
 	
 	_pt.constructor = Bitmap;
 	
-	_pt.init = function(){
+	_pt.init = function(p_context){
+		this._context = p_context;
+		this.transform = new Transform(this._context);
 		this.x(0);
 		this.y(0);
 		this.dirty(false);
@@ -120,7 +122,7 @@
     */
 	_pt.toDataURL = function(p_area){
 
-		this._dataurl_canvas = this._dataurl_canvas || Util.createContext("dataurl_"+this.id());
+		this._dataurl_canvas = this._dataurl_canvas || Util.createContext("dataurl_"+this.id(),this.scene().canvas());
 		this._dataurl_transform = this._dataurl_transform || new Transform(this._dataurl_canvas.context);
 		if(!p_area){
 			this._dataurl_canvas.canvas.width = this.width();
@@ -157,7 +159,7 @@
 	//TODO change to private fuction
 	_pt.mouseDraw =  function(){
 
-		this._mouse_canvas = this._mouse_canvas || Util.createContext("mouse_"+this.id());
+		this._mouse_canvas = this._mouse_canvas || Util.createContext("mouse_"+this.id(),this.scene().canvas());
 		this._mouse_transform = this._mouse_transform || new Transform(this._mouse_canvas.context);
 		this._mouse_transform.save();
 		this._mouse_transform.setMatrix([1, 0, 0, 1, 0, 0]);
@@ -205,7 +207,7 @@
 	
 	_pt._handle_mask =  function(p_disp_data){
 
-		this._mask_canvas = this._mask_canvas || Util.createContext("mask_"+this.id());
+		this._mask_canvas = this._mask_canvas || Util.createContext("mask_"+this.id(),this.scene().canvas());
 		this._mask_transform = this._mask_transform || new Transform(this._mask_canvas.context);
 		this._mask_transform.save();
 		this._mask_transform.setMatrix([1, 0, 0, 1, 0, 0]);
@@ -228,7 +230,7 @@
 		if(this.filter() && !this.filter_cache){
 			// if filter is present and there's no cached filter, let's create one.
 			if(this._filter_canvas) Util.removeElement(this._filter_canvas.canvas.id);
-			this._filter_canvas = this._filter_canvas || Util.createContext("filter_"+this.id());
+			this._filter_canvas = this._filter_canvas || Util.createContext("filter_"+this.id(),this.scene().canvas());
 			this._filter_canvas.canvas.width = this.orig_width;
 			this._filter_canvas.canvas.height = this.orig_height;
 			if(this.trace()){

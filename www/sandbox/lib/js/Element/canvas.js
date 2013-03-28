@@ -20,7 +20,7 @@
 		this.context().translate(0,0);
 		this.framerate( this.canvas().getAttribute("framerate") || 0 );
 		this._engine = new FrameTicker();
-		this._engine.start(this.framerate()).bind("tick",this.childrenDraw,this);
+		
 		this.init();
 
 	};
