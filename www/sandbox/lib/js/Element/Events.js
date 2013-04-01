@@ -38,7 +38,7 @@
 	// =====================
 	_pt.check_eventQueue = function(){
 
-		for (var i = 0; i < this._event_queue.length; i++) {;
+		for (var i = 0; i < this._event_queue.length; i++) {
 			this.scene().eventChildren.push(this._event_queue[i]);
 		}
 

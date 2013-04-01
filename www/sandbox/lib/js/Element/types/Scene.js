@@ -231,7 +231,7 @@
 	    if (/KHTML|WebKit|iCab/i.test(navigator.userAgent)) {
 	        var DOMLoadTimer = setInterval(function () {
 	            if (/loaded|complete/i.test(document.readyState)) {
-	                this.def.onReady.call(this)
+	               	callback.call(this);
 	                clearInterval(DOMLoadTimer);
 	            }
 	        }, 10);

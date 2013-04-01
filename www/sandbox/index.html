@@ -32,8 +32,8 @@
   </header>
   <div role="main">
 	<!-- <canvas id="element-root" framerate="10" >No support for canvas was detected, human.</canvas> -->
-	<canvas id="scene1" >No support for canvas was detected, human.</canvas>
 	<canvas id="scene2" >No support for canvas was detected, human.</canvas>
+	<canvas id="scene1" >No support for canvas was detected, human.</canvas>
   </div>
   <footer>
 
@@ -55,6 +55,7 @@
 <script src="lib/js/Element/Events.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/CanvasInteract.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Graphics.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Group.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Bitmap.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Shape.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Text.js" type="text/javascript" charset="utf-8"></script>
@@ -70,7 +71,7 @@
 
 
 <style>
-body{overflow: hidden; background: white;}
+body{background: white;}
 	/** initial setup **/
 .osxslider {
   position : fixed;
@@ -132,13 +133,13 @@ body{overflow: hidden; background: white;}
 
 <script type="text/javascript" charset="utf-8">
 
-var Scene1 = new Element('Scene', {
-    canvas: "scene1",
-    framerate: 20,
-    width: 800,
-    height: 600,
-    onReady: _start_scene1
-});
+// var Scene1 = new Element('Scene', {
+//     canvas: "scene1",
+//     framerate: 20,
+//     width: 800,
+//     height: 600,
+//     onReady: _start_scene1
+// });
 
 var Scene2 = new Element('Scene', {
     canvas: "scene2",
@@ -167,9 +168,11 @@ function _start_scene1 (e) {
 
 			_zelda = new Element('Sprite').src('zelda.png','zelda.json').gotoAndStop(0);
 
+
 			var line = new Element("Path").style({color:"#333333", width:3}).beginPath(20,20).to(600,600);
 
 			Scene1.add(line).add(_text).add(_zelda).add(_img1);
+
 
 }
 
@@ -177,17 +180,27 @@ function _start_scene2 (e) {
 
 			debug.log("On Ready Called", this);
 			
+			// var 
+			var _squareHolder = new Element('Group');
+
+			window.myGroup = _squareHolder;
 
 			var _img2= new Element("Bitmap",{
 				src:"jelly.jpg",
 				drag: drag_handler
 			});
 
-			_rec = new Element("Rectangle", {color: '#ff0000', width:100,height:100, radius:20}).x(400).y(400);
+
+
+			_rec = new Element("Rectangle", {color: '#ff0000', width:100,height:100, radius:20}).x(400).y(300);
+
+			_rec2 = new Element("Rectangle", {color: '#ff0000', width:100,height:100, radius:20}).x(40).y(100);
+			window.rec = _rec;
+
+			_squareHolder.add(_rec).add(_rec2);
 
 			_text2 = new Element("Text").src("Fart fartt;").font('Impact, Charcoal, sans-serif');
-			Scene2.add(_img2).add(_text2).add(_rec);
-
+			Scene2.add(_img2).add(_text2).add(_squareHolder);
 }
 
 function drag_handler (p_evt) {
