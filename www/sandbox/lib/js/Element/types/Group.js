@@ -66,8 +66,6 @@
 
 		this._handle_basic();
 
-		debug.log('redraw');
-		
 		this.transform.context.drawImage(this.group_scene.canvas(),0,0);
 	
 		this.transform.restore();

@@ -79,27 +79,27 @@
 		return a + t * (b-a);
 	};
 	
-	// Util.createContext = function(p_id, parent_canvas) {
-	//     var canvas = document.createElement('canvas');
-	// 	canvas.setAttribute("id", "element-canvas_"+p_id);
-	// 	parent_canvas.appendChild(canvas);
-	// 	 //document.body.appendChild(canvas);
-	// 	canvas.style.display = "none";
-	//     canvas.width =  parent_canvas.width;
-	//     canvas.height =  parent_canvas.height;
-	//     return {canvas:canvas,context:canvas.getContext("2d") };
-	// };
-	
-    Util.createContext = function(p_id, parent_canvas) {
+	Util.createContext = function(p_id, parent_canvas) {
 	    var canvas = document.createElement('canvas');
 		canvas.setAttribute("id", "element-canvas_"+p_id);
-		// parent_canvas.appendChild(canvas);
-		document.body.appendChild(canvas);
-		// canvas.style.display = "none";
+		parent_canvas.appendChild(canvas);
+		 //document.body.appendChild(canvas);
+		canvas.style.display = "none";
 	    canvas.width =  parent_canvas.width;
 	    canvas.height =  parent_canvas.height;
 	    return {canvas:canvas,context:canvas.getContext("2d") };
 	};
+	
+ //    Util.createContext = function(p_id, parent_canvas) {
+	//     var canvas = document.createElement('canvas');
+	// 	canvas.setAttribute("id", "element-canvas_"+p_id);
+	// 	// parent_canvas.appendChild(canvas);
+	// 	document.body.appendChild(canvas);
+	// 	// canvas.style.display = "none";
+	//     canvas.width =  parent_canvas.width;
+	//     canvas.height =  parent_canvas.height;
+	//     return {canvas:canvas,context:canvas.getContext("2d") };
+	// };
 	
 	Util.removeElement = function(p_id){
 		var _el = document.getElementById(p_id);
