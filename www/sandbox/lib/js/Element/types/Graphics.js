@@ -217,7 +217,6 @@
 			}
 			
 			for(var key in  this.filter()){
-				
 				_to_draw = Filter.get(this._filter_canvas,this.filter()[key],this);
 				this.filter_cache = _to_draw;
 			}
@@ -265,7 +264,6 @@
 		this.transform.translate(this.x(),this.y());
 		this.transform.rotate(this.rotate());
 		this.transform.scale(p_w*this.scale(),p_h*this.scale());
-		
 		this._applyShadow(this.transform.context);
 		return this._src;
 	};

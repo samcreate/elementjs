@@ -32,7 +32,10 @@
 		    width:  this.scene().width(),
 		    height:  this.scene().height()
 		});
+		this.width(this.scene().width()).height(this.scene().height());
 
+		this.orig_width = this.width();
+		this.orig_height = this.height();
 
 		this._context = p_context;
 		this.transform = new Transform(this._context);
@@ -56,17 +59,59 @@
 		return this;
 	};
 
-	_pt.draw = function(){
+	// _pt.draw = function(){
 
+	// 	var _to_draw, _w = (this.width()/this.orig_width), _h = (this.height()/this.orig_height);
+		
+	// 	this._transform_reset();
+
+	// 	this.fire("beginDraw");
+
+	// 	this._handle_basic();
+
+	// 	this.transform.context.drawImage(this.group_scene.canvas(),0,0);
+	
+	// 	this.transform.restore();
+
+	// 	this.dirty(false);
+		
+	// 	this.fire("finishDraw");
+
+
+		
+	// 	return this;
+		
+	// };
+
+
+	_pt.draw = function(){
+		
 		var _to_draw, _w = (this.width()/this.orig_width), _h = (this.height()/this.orig_height);
 		
 		this._transform_reset();
 
 		this.fire("beginDraw");
 
-		this._handle_basic();
+		if(this.trace()){
+			_to_draw = this._handle_trace(_w,_h, this._src, "initial");
+		}else{
+			_to_draw = this._handle_basic(_w,_h);
+			
+		}
+		var _img = new Image();
 
-		this.transform.context.drawImage(this.group_scene.canvas(),0,0);
+		_img.src = this.group_scene.canvas().toDataURL();
+		_to_draw = _img;
+		
+		 _to_draw = this._handle_filters(_img);
+
+		 if(this.mask()){
+			this.transform.restore();
+			 _to_draw = this._handle_mask(_to_draw);
+		
+		}
+		this.transform.context.drawImage(_to_draw,0,0);
+		this._lastDrawState = _to_draw;
 	
 		this.transform.restore();
 
@@ -77,7 +122,6 @@
 
 		
 		return this;
-		
 	};
 	// =====================
 	// = private functions =

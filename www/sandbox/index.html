@@ -133,13 +133,13 @@ body{background: white;}
 
 <script type="text/javascript" charset="utf-8">
 
-// var Scene1 = new Element('Scene', {
-//     canvas: "scene1",
-//     framerate: 20,
-//     width: 800,
-//     height: 600,
-//     onReady: _start_scene1
-// });
+var Scene1 = new Element('Scene', {
+    canvas: "scene1",
+    framerate: 20,
+    width: 800,
+    height: 600,
+    onReady: _start_scene1
+});
 
 var Scene2 = new Element('Scene', {
     canvas: "scene2",
@@ -190,7 +190,7 @@ function _start_scene2 (e) {
 				drag: drag_handler
 			});
 
-
+			window.fart =_img2;
 
 			_rec = new Element("Rectangle", {color: '#ff0000', width:100,height:100, radius:20}).x(400).y(300);
 
