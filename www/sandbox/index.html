@@ -181,7 +181,9 @@ function _start_scene2 (e) {
 			debug.log("On Ready Called", this);
 			
 			// var 
-			var _squareHolder = new Element('Group');
+			var _squareHolder = new Element('Group').trace(true);
+
+			_squareHolder.drag(function(){});
 
 			window.myGroup = _squareHolder;
 

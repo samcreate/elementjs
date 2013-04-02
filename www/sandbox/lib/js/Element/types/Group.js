@@ -9,6 +9,8 @@
 	
 	Group = function() {
 
+		EventTarget.call(this);
+
 		this.group_scene;
 		this._add_queue = [];
 		
@@ -59,32 +61,9 @@
 		return this;
 	};
 
-	// _pt.draw = function(){
-
-	// 	var _to_draw, _w = (this.width()/this.orig_width), _h = (this.height()/this.orig_height);
-		
-	// 	this._transform_reset();
-
-	// 	this.fire("beginDraw");
-
-	// 	this._handle_basic();
-
-	// 	this.transform.context.drawImage(this.group_scene.canvas(),0,0);
-	
-	// 	this.transform.restore();
-
-	// 	this.dirty(false);
-		
-	// 	this.fire("finishDraw");
-
-
-		
-	// 	return this;
-		
-	// };
-
 
 	_pt.draw = function(){
+
 		
 		var _to_draw, _w = (this.width()/this.orig_width), _h = (this.height()/this.orig_height);
 		
@@ -92,18 +71,22 @@
 
 		this.fire("beginDraw");
 
+		var _img = new Image();
+
+		_img.src = this.group_scene.canvas().toDataURL();
+
+		this._src = _img;
+
 		if(this.trace()){
-			_to_draw = this._handle_trace(_w,_h, this._src, "initial");
+			_to_draw = this._handle_trace(_w,_h, _img, "initial");
 		}else{
 			_to_draw = this._handle_basic(_w,_h);
 			
 		}
-		var _img = new Image();
 
-		_img.src = this.group_scene.canvas().toDataURL();
-		_to_draw = _img;
 		
-		 _to_draw = this._handle_filters(_img);
+		
+		 _to_draw = this._handle_filters(_to_draw);
 
 		 if(this.mask()){
 			this.transform.restore();

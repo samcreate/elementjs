@@ -240,7 +240,7 @@
 	
 	_pt._handle_trace = function(p_w, p_h, p_src, p_key){
 		//traceing the animation
-		var _trace_canvas = this["trace_"+this.id()+"_"+p_key] || Util.createContext("trace_"+this.id()+"_"+p_key);
+		var _trace_canvas = this["trace_"+this.id()+"_"+p_key] || Util.createContext(("trace_"+this.id()+"_"+p_key),this.scene().canvas());
 		this["trace_"+this.id()+"_"+p_key] = _trace_canvas;
 		var _trace_transform = this["trace_transfrom_"+this.id()+"_"+p_key] || new Transform(_trace_canvas.context);
 		this["trace_transfrom_"+this.id()+"_"+p_key] = _trace_transform;
@@ -253,6 +253,7 @@
 		this._applyStroke(_trace_canvas.context,{x:0,y:0,w:this.orig_width,h:this.orig_height});
 		this._applyShadow(_trace_transform.context);
 		_trace_canvas.context.drawImage(p_src,0,0);
+		_trace_transform.restore();
 		return _trace_canvas.canvas;
 	};
 	
@@ -267,6 +268,27 @@
 		this._applyShadow(this.transform.context);
 		return this._src;
 	};
+
+	//TODO change to private fuction
+	_pt.mouseDraw =  function(){
+
+		this._mouse_canvas = this._mouse_canvas || Util.createContext("mouse_"+this.id(),this.scene().canvas());
+		this._mouse_transform = this._mouse_transform || new Transform(this._mouse_canvas.context);
+		this._mouse_transform.save();
+		this._mouse_transform.setMatrix([1, 0, 0, 1, 0, 0]);
+		this._mouse_canvas.context.clearRect(0, 0, this._mouse_canvas.canvas.width, this._mouse_canvas.canvas.height );
+		this._mouse_transform.translate(this.x(),this.y());
+		var _w = (this.width()/this.orig_width),
+		_h = (this.height()/this.orig_height),
+		_m2 = this._mouse_transform.getMatrix();
+		this._mouse_transform.rotate(this.rotate());
+		this._mouse_transform.scale((this.width()/this.orig_width)*this.scale(),(this.height()/this.orig_height)*this.scale());
+		this._mouse_transform.context.globalAlpha = this.alpha();
+		this._applyShadow(this._mouse_transform.context);
+		this._mouse_canvas.context.drawImage(this._src,0,0);
+		return this._mouse_canvas.context;
+	};
+	
 	
 	
 	_pt.name = "Graphics Instance";

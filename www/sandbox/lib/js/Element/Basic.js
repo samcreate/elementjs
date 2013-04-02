@@ -8,7 +8,7 @@
 
 	Basic = function() {
 		
-	
+		this._visible = true;
 	};
 
 	var _pt = Basic.prototype;
@@ -62,9 +62,10 @@
 		if(p_val != null){
 			this._visible = p_val;
 			this.dirty(true, "visible");
+
 			return this;
 		}else{
-			return this._visible || true;
+			return this._visible;
 		}
 	};
 	

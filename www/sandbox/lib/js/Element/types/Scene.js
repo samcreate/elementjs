@@ -169,12 +169,17 @@
 
     _pt.childrenDraw = function(p_force){
 
-		this.fire("draw").fire('tick');
+		this.fire('tick');
+
+		// console.assert(this._isDirty() !== true && p_force != true);
 
 		if(this._isDirty() !== true && p_force != true) {
 			
 			return;
+
 		}
+
+		this.fire("draw");
 
 		this.context().clearRect(0, 0, this._canvas.width, this._canvas.height);
 		
@@ -202,7 +207,7 @@
 		for (var i=0; i < this.children().length; i++) {
 
 			if(this.children()[i].dirty() === true){
-				// debug.log($$_CHILDREN[i].id(), "IS DIRTY:");
+				 
 				_dirty = true;
 			}
 			
