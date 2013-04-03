@@ -65,7 +65,8 @@
 		
 			//only reignite the timer if object is "on"
 			if(_this.on){
-				_this.timerID = setTimeout(arguments.callee,  $$_canvas.framerate());
+				debug.log("animate: ",_this)
+				_this.timerID = setTimeout(arguments.callee,  obj.what.scene().framerate());
 			}else{
 				_this.fire('finished');
 				obj.what._animating = false;

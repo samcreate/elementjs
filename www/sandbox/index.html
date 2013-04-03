@@ -129,6 +129,8 @@ body{background: white;}
   visibility : visible\9; /* Target only IE7 and IE8 with this hack */
   opacity    : 0.99;
 }
+
+canvas{border:1px solid red;}
 </style>
 
 <script type="text/javascript" charset="utf-8">
@@ -137,7 +139,7 @@ body{background: white;}
 //     canvas: "scene1",
 //     framerate: 20,
 //     width: 800,
-//     height: 600,
+//     height: 300,
 //     onReady: _start_scene1
 // });
 
@@ -145,7 +147,7 @@ var Scene2 = new Element('Scene', {
     canvas: "scene2",
     framerate: 20,
     width: 800,
-    height: 600,
+    height: 500,
     onReady: _start_scene2
 });
 
@@ -188,8 +190,7 @@ function _start_scene2 (e) {
 			window.myGroup = _squareHolder;
 
 			var _img2= new Element("Bitmap",{
-				src:"jelly.jpg",
-				drag: drag_handler
+				src:"jelly.jpg"
 			});
 
 			window.fart =_img2;
@@ -199,7 +200,7 @@ function _start_scene2 (e) {
 			_rec2 = new Element("Rectangle", {color: '#ff0000', width:100,height:100, radius:20}).x(40).y(100);
 			window.rec = _rec;
 
-			_squareHolder.add(_img2).add(_rec2).add(_rec);
+			_squareHolder.add(_rec2).add(_rec);
 
 			_text2 = new Element("Text").src("Fart fartt;").font('Impact, Charcoal, sans-serif');
 			Scene2.add(_text2).add(_squareHolder);
@@ -225,110 +226,6 @@ function _handle_error () {
 </script>
 
 
-<script type="text/javascript" charset="utf-8">
-
-_start_y = 0;
-
-/** This is high-level function.
- * It must react to delta being more/less than zero.
- */
-	function handle(delta) {
-	        if (delta < 0){
-			 //debug.log("down ",_start_y);
-			 _text.y(_start_y);
-			 _text.scale(_text.scale()+0.1);
-			 _start_y += 5;
-	        }else{
-				//debug.log("up ",delta);
-				if(_text.scale() > 1 )_text.scale(_text.scale()-0.1);
-				if(_start_y > 1 )_text.y(_start_y);
-			 	if(_start_y > 1 ) _start_y -= 5;
-			}
-	}
-
-	/** Event handler for mouse wheel event.
-	 */
-	function wheel(event){
-			event.preventDefault();
-	        var delta = 0;
-	        if (!event) /* For IE. */
-	                event = window.event;
-	        if (event.wheelDelta) { /* IE/Opera. */
-	                delta = event.wheelDelta/120;
-	        } else if (event.detail) { /** Mozilla case. */
-	                /** In Mozilla, sign of delta is different than in IE.
-	                 * Also, delta is multiple of 3.
-	                 */
-	                delta = -event.detail/3;
-	        }
-	        /** If delta is nonzero, handle it.
-	         * Basically, delta is now positive if wheel was scrolled up,
-	         * and negative, if wheel was scrolled down.
-	         */
-	        if (delta)
-	                handle(delta);
-	        /** Prevent default actions caused by mouse wheel.
-	         * That might be ugly, but we handle scrolls somehow
-	         * anyway, so don't bother here..
-	         */
-	        if (event.preventDefault)
-	                event.preventDefault();
-		event.returnValue = false;
-	}
-
-	/** Initialization code. 
-	 * If you use your own event management code, change it as required.
-	 */
-	if (window.addEventListener)
-	        /** DOMMouseScroll is for mozilla. */
-	        window.addEventListener('DOMMouseScroll', wheel, false);
-	/** IE/Opera. */
-	window.onmousewheel = document.onmousewheel = wheel;
-
-
-
-
-	//.src("zelda.png","zelda.json",2).gotoAndStop(15).x(400).y(400).sequence("sword",0,14).sequence("default",14,25).trace(true);
-	//var _rectangle = new Element("Shape").rectangle({color:"#ff0000",width:20,height:20});
-	
-	//var _tectangle = new Element("Shape").rectangle({color:, width:, height:,}).x(22).y(33);
-	
-	//var _img2 = new Element("Bitmap").src("apple-touch-icon.png").x(555).width(33).height(33).alpha(0.5).y(565).easing("Bounce.EaseOut").animate(5,{x:22,y:33,width:333}).animate(2,{alpha:0}).animate(2,{alpha:1}).start();
-	 // var _img3 = new Element("Bitmap").src("apple-touch-icon.png").x(22).y(33).width(2).height(2).alpha(0.8)
-	 // 	.easing("Bounce.EaseOut").animate(3,{x:555,y:565,width:100,height:100}).animate(4,{x:45,y:355,alpha:0}).trace(true).start();
-	 // 	
-	 // 			var _img4 = new Element("Bitmap").src("apple-touch-icon.png").x(250).y(250)
-	 // 					.shadow({color:"#000000",x:4,y:4,alpha:0.5,blur:20}).
-	 // 					animate(4,{x:45,y:22,width:120,height:120}).trace(false).start();
-	 // 			
-			
-
-	
-	// Loop(function(){
-	// 	for (var i=0; i < _paths.length; i++) {
-	// 		// _paths[i].to(Math.random()*1000,Math.random()*600);
-	// 	};
-	// });
-	
-	
-
-	// var line = new Element("Path").style({color:"red", width:3}).beginPath(20,20).to(600,600);
-	
-
-	//var _img1 = new Element("Bitmap").src("jelly.jpg").on("drag",drag_handler).trace(true).filter("invert").filter("emboss").filter('multiply',"#ff0000");
-
-	// var _img1 = new Element("Bitmap").src("jelly.jpg").on("drag",drag_handler).filter('sepia');
-
-
-
-	
-
-	
-	//last step
-
-	
-		
-</script>
   
 </body>
 </html>

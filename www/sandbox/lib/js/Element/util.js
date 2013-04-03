@@ -93,9 +93,7 @@
     Util.createContext = function(p_id, parent_canvas) {
 	    var canvas = document.createElement('canvas');
 		canvas.setAttribute("id", "element-canvas_"+p_id);
-		// parent_canvas.appendChild(canvas);
 		document.body.appendChild(canvas);
-		// canvas.style.display = "none";
 	    canvas.width =  parent_canvas.width;
 	    canvas.height =  parent_canvas.height;
 	    return {canvas:canvas,context:canvas.getContext("2d") };

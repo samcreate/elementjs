@@ -13,7 +13,7 @@
 				_temp = new Scene(p_def);
 				_temp.width(p_def.width);
 				_temp.height(p_def.height);
-				_temp.canvas(p_def.canvas);
+				_temp.useEngine(p_def.useEngine);
 				_temp.framerate(p_def.framerate);
 
 			}else{

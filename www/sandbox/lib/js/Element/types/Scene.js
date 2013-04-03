@@ -8,7 +8,6 @@
 
     Scene = function (p_def) {
 
-
         EventTarget.call(this);
         this._children = [];
         this._children_id = 0;
@@ -21,10 +20,13 @@
             canvas: 'element-root',
             framerate: 40,
             width: 1024,
-            height: 768
+            height: 768,
+            engine_use: true
         };
+        this._engine_use = this.defaults.engine_use;
         this.extend(this, new CanvasInteract());
         this.extend(this.defaults, p_def);
+        this.canvas(p_def.canvas);
         this._domLoaded(this.init);
 
     };
@@ -38,17 +40,15 @@
 
     _pt.init = function (p) {
 
-
         if(this.canvas_support === true ){
 
-        	this._engine.start(this.framerate()).bind("tick",this.childrenDraw,this);
+        	if(this.useEngine() === true ) this._engine.start(this.framerate()).bind("tick",this.childrenDraw,this);
         	var _scope = this;
-        	setTimeout(function(){
-        		if(typeof _scope.def.onReady === "function") _scope.def.onReady.call(_scope);
+        	
+        	if(typeof this.def.onReady === "function") this.def.onReady.call(this);
 
-  				_scope.mouseInit();
-
-        	},0.001);
+        	this.mouseInit();
+        
         }
 
 
@@ -97,6 +97,16 @@
 		}
     };
 
+    _pt.useEngine = function (p_val) {
+    	if(p_val != null){
+			this._engine_use = p_val;
+			return this;
+		}else{
+			return this._engine_use;
+		}
+    };
+
+
     _pt.width = function (p_val) {
 
     	if(p_val != null){
@@ -130,6 +140,8 @@
 			this._children_id++;
 
 	    	if(typeof p_element.init === "function") p_element.init(this.context());
+
+	    	p_element.dirty(true);
     	}
     	return this;
 
@@ -146,7 +158,6 @@
     };
 
     _pt.onReady = function (p_val) {
-    	debug.log("this is called");
     	if(p_val != null){
 			this._onReady = this.def.onReady;
 			return this;
@@ -178,6 +189,7 @@
 			return;
 
 		}
+		// if(p_force === true) debug.log("force redraw called")
 
 		this.fire("draw");
 
@@ -217,32 +229,81 @@
 	};
 
 
-	_pt._domLoaded = function (callback) {
-	    /* Internet Explorer */
-	    /*@cc_on
-	    @if (@_win32 || @_win64)
-	        document.write('<script id="ieScriptLoad" defer src="//:"><\/script>');
-	        document.getElementById('ieScriptLoad').onreadystatechange = function() {
-	            if (this.readyState == 'complete') {
-	               callback.call(this)
-	            }
-	        };
-	    @end @*/
-	    /* Mozilla, Chrome, Opera */
-	    if (document.addEventListener) {
-	        document.addEventListener('DOMContentLoaded', callback.call(this), false);
-	    }
-	    /* Safari, iCab, Konqueror */
-	    if (/KHTML|WebKit|iCab/i.test(navigator.userAgent)) {
-	        var DOMLoadTimer = setInterval(function () {
-	            if (/loaded|complete/i.test(document.readyState)) {
-	               	callback.call(this);
-	                clearInterval(DOMLoadTimer);
-	            }
-	        }, 10);
-    	}
+	// _pt._domLoaded = function (callback) {
+	//     /* Internet Explorer */
+	//     /*@cc_on
+	//     @if (@_win32 || @_win64)
+	//         document.write('<script id="ieScriptLoad" defer src="//:"><\/script>');
+	//         document.getElementById('ieScriptLoad').onreadystatechange = function() {
+	//             if (this.readyState == 'complete') {
+	//                callback.call(this)
+	//             }
+	//         };
+	//     @end @*/
+	//     /* Mozilla, Chrome, Opera */
+	//     var _scope = this;
+	//     if (document.addEventListener) {
+	//         document.addEventListener('DOMContentLoaded', function(){
+	//         	callback.call(_scope);
+	//         }, false);
+	//     }
+	//     /* Safari, iCab, Konqueror */
+	//     if (/KHTML|WebKit|iCab/i.test(navigator.userAgent)) {
+	//         var DOMLoadTimer = setInterval(function () {
+	//             if (/loaded|complete/i.test(document.readyState)) {
+	//                	callback.call(this);
+	//                 clearInterval(DOMLoadTimer);
+	//             }
+	//         }, 10);
+ //    	}
 
+	// };
+
+
+	_pt._domLoaded = function (callback) {
+
+		var _scope = this;
+
+		if(typeof window.$$_element_dom_ready != 'undefined'){
+			callback.call(_scope);
+		} 
+
+	    if (window.addEventListener) {
+			window.document.addEventListener('DOMContentLoaded', function () { 
+				
+				window.$$_element_dom_ready = true;
+				callback.call(_scope);
+				
+
+				 }, false);
+		} else {
+			// for IE
+			// code taken from http://ajaxian.com/archives/iecontentloaded-yet-another-domcontentloaded
+			(function(){
+				// check IE's proprietary DOM members
+				if (!window.document.uniqueID && window.document.expando)
+					return;
+
+				// you can create any tagName, even customTag like <document :ready />
+				var tempNode = window.document.createElement('document:ready');
+
+				try {
+					// see if it throws errors until after ondocumentready
+					tempNode.doScroll('left');
+
+					// call ready
+					ready();
+				} catch (err) {
+					setTimeout(arguments.callee, 0);
+				}
+			})();
+		}
+
+		return this;
 	};
+
+
+
 
 
     _pt.name = "Scene Instance";
