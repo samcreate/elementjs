@@ -1,7 +1,7 @@
 <?php
 	require_once($_SERVER["DOCUMENT_ROOT"]."/lib/php/Config.php");
 	$settings = Config::getInstance();
-	$settings->setPage("Documentation: Basic ");
+	$settings->setPage("Documentation: Scene ");
 	require_once $_SERVER["DOCUMENT_ROOT"].'/lib/php/includes/html_header.php';
 ?>
 		
@@ -94,7 +94,7 @@
 					<!-- ============================== class title ============================ -->
 
 					
-				Basic
+				Scene
 					</h3>
 				<!-- ============================== class summary ========================== -->
 				</dt>
@@ -102,70 +102,15 @@
 					<!-- ============================== class constructor ====================== -->
 					<dd>
 						<pre  class="brush: js; gutter: false; ">
-							Basic is the base class for almost every object in Element.js.
+							//Scene class helps draw a Scene
 						</pre>
 						<hr>
 						<!-- ============================== methods summary ======================== -->
-						
-							
-							
-								<ul>
-									
-										
-											<li>
-												<a href="../class/Basic.html#extend">.extend(value, value)</a>
-											</li>
-									
-									
-								</ul>
-							
 						
 					</dd>
 				
 
 				<!-- ============================== method details ========================= -->		
-			
-				
-				
-					
-					<dt>
-						<a name="extend"> </a>
-						<h3>
-					
-					
-					extend(
-						
-							
-							 
-									 
-									<a href='#extend' class='tooltip' data-tip='- Object getting extended.'> <em class='name'>value</em><em class='type'>:Object</em>, 
-									</a>
-								
-							 
-									 
-									<a href='#extend' class='tooltip' data-tip='- Inherited Object.'> <em class='name'>value</em><em class='type'>:Object</em>
-									</a>
-								
-							
-							
-						
-						)
-
-
-					</h3>
-					</dt>
-					<dd>
-						<p class="classDesc"></p>
-						<pre  class="brush: js; gutter: false; ">// extend allows you to take all the properties for one object and
-    // apply them to another.
-						
-	// In this example, we inherit the x value of obj2.
-var _obj2 = {x:33};
-var _my_element.extend(_my_element,_obj2);
-console.log(_my_element.x); //returns 33;
-						</pre>
-					</dd>
-				
 			
 				
 			</dl>
