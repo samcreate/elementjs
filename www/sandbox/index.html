@@ -33,7 +33,7 @@
   <div role="main">
 	<!-- <canvas id="element-root" framerate="10" >No support for canvas was detected, human.</canvas> -->
 	<canvas id="scene2" >No support for canvas was detected, human.</canvas>
-	<!-- <canvas id="scene1" >No support for canvas was detected, human.</canvas> -->
+	<canvas id="scene1" >No support for canvas was detected, human.</canvas>
   </div>
   <footer>
 
@@ -50,7 +50,6 @@
 <script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Filter.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/DisplayObject.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/js/Element/Loop.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Transform.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Events.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/CanvasInteract.js" type="text/javascript" charset="utf-8"></script>
@@ -64,7 +63,6 @@
 <script src="lib/js/Element/types/Rectangle.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/FrameTicker.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Tweenie.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/js/Element/canvas.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script>
 <!-- <script src="lib/js/Element/release/Element.js" type="text/javascript" charset="utf-8"></script> -->
 
@@ -135,13 +133,13 @@ canvas{border:1px solid red;}
 
 <script type="text/javascript" charset="utf-8">
 
-// var Scene1 = new Element('Scene', {
-//     canvas: "scene1",
-//     framerate: 20,
-//     width: 800,
-//     height: 300,
-//     onReady: _start_scene1
-// });
+var Scene1 = new Element('Scene', {
+    canvas: "scene1",
+    framerate: 20,
+    width: 800,
+    height: 300,
+    onReady: _start_scene1
+});
 
 var Scene2 = new Element('Scene', {
     canvas: "scene2",

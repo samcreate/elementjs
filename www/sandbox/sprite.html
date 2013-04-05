@@ -18,7 +18,7 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   </header>
   <div role="main">
-	<canvas id="element-root" framerate="60" height="400"  style="background:gray">No support for canvas was detected, human.</canvas>
+	<canvas id="element-root"  style="background:gray">No support for canvas was detected, human.</canvas>
   </div>
   <footer>
 
@@ -27,32 +27,61 @@
 	window.debug=(function(){var i=this,b=Array.prototype.slice,d=i.console,h={},f,g,m=9,c=["error","warn","info","debug","log"],l="assert clear count dir dirxml exception group groupCollapsed groupEnd profile profileEnd table time timeEnd trace".split(" "),j=l.length,a=[];while(--j>=0){(function(n){h[n]=function(){m!==0&&d&&d[n]&&d[n].apply(d,arguments)}})(l[j])}j=c.length;while(--j>=0){(function(n,o){h[o]=function(){var q=b.call(arguments),p=[o].concat(q);a.push(p);e(p);if(!d||!k(n)){return}d.firebug?d[o].apply(i,q):d[o]?d[o](q):d.log(q)}})(j,c[j])}function e(n){if(f&&(g||!d||!d.log)){f.apply(i,n)}}h.setLevel=function(n){m=typeof n==="number"?n:9};function k(n){return m>0?m>n:c.length+m<=n}h.setCallback=function(){var o=b.call(arguments),n=a.length,p=n;f=o.shift()||null;g=typeof o[0]==="boolean"?o.shift():false;p-=typeof o[0]==="number"?o.shift():n;while(p<n){e(a[p++])}};return h})();
 	
 </script>
-<script src="lib/js/Element/release/Element.js" type="text/javascript" charset="utf-8"></script>
-<!-- <script src="lib/js/Element/util.js" type="text/javascript" charset="utf-8"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="lib/js/Element/Basic.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/util.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/EventTarget.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Scene.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/Animate.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Filter.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/DisplayObject.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/js/Element/Loop.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Transform.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Events.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/CanvasInteract.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Graphics.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Group.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Bitmap.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Shape.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Text.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Path.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Sprite.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Rectangle.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/FrameTicker.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Tweenie.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/js/Element/canvas.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script> -->
-
+<script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="lib/js/Element/release/Element.js" type="text/javascript" charset="utf-8"></script> -->
 
 
 <script type="text/javascript" charset="utf-8">
 
 
+var Scene1 = new Element('Scene',{
+	canvas:'element-root',
+	framerate: 30,
+	width:900,
+	height:500,
+	onReady: _SceneOneStart
 
-var one, two, three, four;
+});
+var one, two, three, four,zelda;
+function _SceneOneStart () {
+	
+	debug.log('this.frametrate. ',this)
+	zelda = new Element("Sprite").
+		src("zelda.png","zelda.json",2).
+		x(400).
+		y(200).
+		gotoAndStop(15).
+		sequence("sword",0,14).
+		sequence("default",14,25).
+		bind('loaded', _handel_loaded);
+
+	zelda.on("keydown",_handlekeydown).on("keyup",_handlekeyUp);
+
+	Scene1.add(zelda);
+}
+
+
 // one = new Element("Bitmap").src("one.png").on("drag",drag_handler).filter("emboss");
 // two = new Element("Bitmap").src("two.png").on("drag",drag_handler).x(50).y(50);
 // three = new Element("Bitmap").src("three.png").on("drag",drag_handler).x(100).y(100);
@@ -62,7 +91,7 @@ var one, two, three, four;
 
 
 
-var zelda = new Element("Sprite").src("zelda.png","zelda.json",2).x(400).y(200).gotoAndStop(15).sequence("sword",0,14).sequence("default",14,25).bind('loaded', _handel_loaded);
+
 
 
 // var zelda = new Element("Sprite", {
@@ -87,17 +116,13 @@ var zelda = new Element("Sprite").src("zelda.png","zelda.json",2).x(400).y(200).
 var _sword_pad = 0;
 var _sword_x;
 
-zelda.on("keydown",_handlekeydown).on("keyup",_handlekeyUp);
+
 
 function _handel_loaded (e) {
 	_sword_pad = this.getFrameInfo().w/2;
 	debug.log("handle loadded called",_sword_pad);
 }
 
-Loop(function(){
-	
-
-})	
 
 function _handlekeydown(p_evt){
 	if(p_evt.keyCode === 37) this.run("default",true).x(this.x()-4);
