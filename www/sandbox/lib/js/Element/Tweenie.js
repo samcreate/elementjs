@@ -65,7 +65,6 @@
 		
 			//only reignite the timer if object is "on"
 			if(_this.on){
-				debug.log("animate: ",_this)
 				_this.timerID = setTimeout(arguments.callee,  obj.what.scene().framerate());
 			}else{
 				_this.fire('finished');

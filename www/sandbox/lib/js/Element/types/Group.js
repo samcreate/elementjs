@@ -16,7 +16,7 @@
 		
 		this.extend(this, new Events());
 		this.extend(this, new Animate());
-		
+
 		
 	};
 
@@ -26,18 +26,21 @@
 	
 	_pt.init = function(p_context){
 
-		// debug.log("Group Init")
+
+		this.padding = this.scene().width()/2;
 
 		this._htmlcanvas = Util.createContext("Group_"+this.id(),this.scene().canvas());
 		
-		// debug.log('GROUP INIT',this._htmlcanvas.canvas.getAttribute("id"),this.scene().framerate(),this.scene().width(),this.scene().height())
 
 		this.group_scene = new Element('Scene', {
 		    canvas: this._htmlcanvas.canvas.getAttribute("id"),
 		    framerate: this.scene().framerate(),
-		    width:  this.scene().width(),
-		    height:  this.scene().height()
+		    width:  this.scene().width()*2,
+		    height:  this.scene().height()*2,
+		    engine_use: false
 		});
+		var _scope = this;
+
 
 		this.group_scene.fart = 'fart';
 		this.width(this.scene().width()).height(this.scene().height());
@@ -60,7 +63,7 @@
 		if(typeof this.group_scene != 'undefined'){
 
 			this._add_to_group(p_element);
-			p_element.dirty(true);
+			
 		}else{
 
 			this._add_queue.push(p_element);
@@ -77,30 +80,29 @@
 		
 		this._transform_reset();
 
+		this.group_scene.childrenDraw(true);
+		
 		this.fire("beginDraw");
 
-		var _img = new Image();
-
-		_img.src = this.group_scene.canvas().toDataURL();
-
-		this._src = _img;
+		this._src = _to_draw = this.group_scene.canvas();
 
 		if(this.trace()){
-			_to_draw = this._handle_trace(_w,_h, _img, "initial");
+			_to_draw = this._handle_trace(_w,_h, this.group_scene.canvas(), "initial");
 		}else{
-			_to_draw = this._handle_basic(_w,_h);
+			
+			this._handle_basic(_w,_h);
 			
 		}
 
-		
-		
-		 _to_draw = this._handle_filters(_to_draw);
+		 // _to_draw = this._handle_filters(this.group_scene.canvas());
 
 		 if(this.mask()){
 			this.transform.restore();
 			 _to_draw = this._handle_mask(_to_draw);
 		
 		}
+
+
 		this.transform.context.drawImage(_to_draw,0,0);
 		this._lastDrawState = _to_draw;
 	
@@ -129,22 +131,25 @@
 
 	_pt._add_to_group = function(p_element){
 
+		var _scope = this;
+		
 
-		p_element.bind('finishDraw',this._children_dirty,this);
-
+		p_element.bind('dirty',function(){
+			_scope.dirty(true);
+			// debug.log('************ group children dirty', this);
+		})
 		this.group_scene.add(p_element);
-		p_element.dirty(true);
+		
+		
 
 		if(p_element.toString() === "[Bitmap Instance Instance]"){
-			p_element.bind('loaded',this._children_dirty,this);
+			p_element.bind('loaded',function(){
+				_scope.dirty(true);
+			});
 		}
+		
 	};
 
-	_pt._children_dirty = function(){
-		
-		this.scene().childrenDraw(true);
-		
-	}
 
 	
 	_pt.name = "Group Instance";

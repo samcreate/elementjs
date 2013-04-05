@@ -33,7 +33,7 @@
   <div role="main">
 	<!-- <canvas id="element-root" framerate="10" >No support for canvas was detected, human.</canvas> -->
 	<canvas id="scene2" >No support for canvas was detected, human.</canvas>
-	<canvas id="scene1" >No support for canvas was detected, human.</canvas>
+	<!-- <canvas id="scene1" >No support for canvas was detected, human.</canvas> -->
   </div>
   <footer>
 
@@ -145,7 +145,7 @@ canvas{border:1px solid red;}
 
 var Scene2 = new Element('Scene', {
     canvas: "scene2",
-    framerate: 20,
+    framerate: 30,
     width: 800,
     height: 500,
     onReady: _start_scene2
@@ -200,7 +200,7 @@ function _start_scene2 (e) {
 			_rec2 = new Element("Rectangle", {color: '#ff0000', width:100,height:100, radius:20}).x(40).y(100);
 			window.rec = _rec;
 
-			_squareHolder.add(_rec2).add(_rec);
+			_squareHolder.add(_rec2).add(_rec).add(_img2);
 
 			_text2 = new Element("Text").src("Fart fartt;").font('Impact, Charcoal, sans-serif');
 			Scene2.add(_text2).add(_squareHolder);

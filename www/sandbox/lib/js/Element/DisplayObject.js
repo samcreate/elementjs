@@ -372,6 +372,7 @@
 			// debug.log(p_val);
 			 // if(p_by != null && p_val === true) debug.log(this.id(),"dirty by: "+p_by);
 			 // if(p_val === false) debug.log(this.id()+" SET CLEAN");
+			this.fire('dirty');
 			this._dirty = p_val;
 			return this;
 		}else{

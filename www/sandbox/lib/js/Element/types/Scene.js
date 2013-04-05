@@ -14,7 +14,7 @@
         this._tweens = {};
         this.def = p_def;
         this.canvas_support = true;
-        this._engine = new FrameTicker();
+        this.engine = new FrameTicker();
 
         this.defaults = {
             canvas: 'element-root',
@@ -23,9 +23,10 @@
             height: 768,
             engine_use: true
         };
-        this._engine_use = this.defaults.engine_use;
+        
         this.extend(this, new CanvasInteract());
         this.extend(this.defaults, p_def);
+        this.engine_use = this.defaults.engine_use;
         this.canvas(p_def.canvas);
         this._domLoaded(this.init);
 
@@ -42,7 +43,7 @@
 
         if(this.canvas_support === true ){
 
-        	if(this.useEngine() === true ) this._engine.start(this.framerate()).bind("tick",this.childrenDraw,this);
+        	if(this.useEngine() === true ) this.engine.start( this.framerate() ).bind("tick",this.childrenDraw,this);
         	var _scope = this;
         	
         	if(typeof this.def.onReady === "function") this.def.onReady.call(this);
@@ -99,10 +100,10 @@
 
     _pt.useEngine = function (p_val) {
     	if(p_val != null){
-			this._engine_use = p_val;
+			this.engine_use = p_val;
 			return this;
 		}else{
-			return this._engine_use;
+			return this.engine_use;
 		}
     };
 
@@ -131,6 +132,7 @@
 
 
     	if(typeof p_element != 'undefined'){
+
 	    	p_element.id(this._children_id+"_id");
 			p_element.index(this._children_id);
 			p_element._tweenie = new Tweenie();
@@ -180,7 +182,12 @@
 
     _pt.childrenDraw = function(p_force){
 
+
 		this.fire('tick');
+		if(this.canvas().width !== this.width()){
+			this.canvas().width = this.width();
+			this.canvas().height = this.height();
+		}
 
 		// console.assert(this._isDirty() !== true && p_force != true);
 
@@ -189,7 +196,7 @@
 			return;
 
 		}
-		// if(p_force === true) debug.log("force redraw called")
+		
 
 		this.fire("draw");
 
@@ -209,7 +216,6 @@
 			
 		}
 
-
 		
 	};
 
@@ -217,6 +223,9 @@
 
 		var _dirty = false;
 		for (var i=0; i < this.children().length; i++) {
+
+			if(this.fart === 'fart'){
+			}
 
 			if(this.children()[i].dirty() === true){
 				 

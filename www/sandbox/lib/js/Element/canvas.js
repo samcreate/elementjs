@@ -142,8 +142,6 @@
 			
 		}
 
-		// debug.log("##---------drawCHILDREN called");
-
 		
 		// if(this._isDirty() !== true) this._cleanChildren();
 		
