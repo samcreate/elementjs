@@ -30,6 +30,7 @@
         this.canvas(p_def.canvas);
         this._domLoaded(this.init);
 
+
     };
 
 
@@ -238,49 +239,20 @@
 	};
 
 
-	// _pt._domLoaded = function (callback) {
-	//     /* Internet Explorer */
-	//     /*@cc_on
-	//     @if (@_win32 || @_win64)
-	//         document.write('<script id="ieScriptLoad" defer src="//:"><\/script>');
-	//         document.getElementById('ieScriptLoad').onreadystatechange = function() {
-	//             if (this.readyState == 'complete') {
-	//                callback.call(this)
-	//             }
-	//         };
-	//     @end @*/
-	//     /* Mozilla, Chrome, Opera */
-	//     var _scope = this;
-	//     if (document.addEventListener) {
-	//         document.addEventListener('DOMContentLoaded', function(){
-	//         	callback.call(_scope);
-	//         }, false);
-	//     }
-	//     /* Safari, iCab, Konqueror */
-	//     if (/KHTML|WebKit|iCab/i.test(navigator.userAgent)) {
-	//         var DOMLoadTimer = setInterval(function () {
-	//             if (/loaded|complete/i.test(document.readyState)) {
-	//                	callback.call(this);
-	//                 clearInterval(DOMLoadTimer);
-	//             }
-	//         }, 10);
- //    	}
-
-	// };
-
-
 	_pt._domLoaded = function (callback) {
 
 		var _scope = this;
 
-		if(typeof window.$$_element_dom_ready != 'undefined'){
-			callback.call(_scope);
-		} 
+
+		if (document.readyState == "complete" 
+		     || document.readyState == "loaded" 
+		     || document.readyState == "interactive") {
+		    callback.call(_scope);
+		}
 
 	    if (window.addEventListener) {
 			window.document.addEventListener('DOMContentLoaded', function () { 
-				
-				window.$$_element_dom_ready = true;
+			
 				callback.call(_scope);
 				
 
@@ -301,7 +273,7 @@
 					tempNode.doScroll('left');
 
 					// call ready
-					ready();
+					callback.call(_scope);
 				} catch (err) {
 					setTimeout(arguments.callee, 0);
 				}
