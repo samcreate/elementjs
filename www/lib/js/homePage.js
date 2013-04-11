@@ -44,10 +44,16 @@ EJS.homePage = function(){
 
 	
 		SyntaxHighlighter.all();
-		
+
+		var firePlace = new Element("Scene",{
+			canvas:'fire',
+			framerate: 80,
+			width: 740,
+			height:480
+		})
 		self.fire = new Element("Sprite").src("/media/animation/fire.png","/media/animation/fire.json",2).loop(true);
 
-		
+		firePlace.add(self.fire);
 
 	}
 	
