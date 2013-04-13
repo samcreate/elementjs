@@ -42,7 +42,6 @@
 		var _scope = this;
 
 
-		this.group_scene.fart = 'fart';
 		this.width(this.scene().width()).height(this.scene().height());
 
 		this.orig_width = this.width();

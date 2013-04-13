@@ -225,8 +225,6 @@
 		var _dirty = false;
 		for (var i=0; i < this.children().length; i++) {
 
-			if(this.fart === 'fart'){
-			}
 
 			if(this.children()[i].dirty() === true){
 				 
