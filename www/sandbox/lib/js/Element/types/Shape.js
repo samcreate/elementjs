@@ -26,8 +26,23 @@
 		this.bind('draw',this.draw,this);
 	};
 
-	_pt._make = function(){
+	_pt.draw = function(){
+		
+	
+		this._transform_reset();
+		this.fire("beginDraw");
+		this.transform.translate(0,0);
+		this.transform.rotate(this.rotate());
+		this.transform.scale(1*this.scale(),1*this.scale());
+		this._applyShadow(this.ctx);
+		this.ctx.fillStyle   = this.color();
+		this.ctx.globalAlpha = this.alpha();
+		this.draw_shape(this.ctx);
+		this.transform.restore();
+		this.dirty(false);
+		this.fire("finishDraw");
 
+		return this;
 	};
 
 	_pt.color = function(p_val){

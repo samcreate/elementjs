@@ -22,25 +22,6 @@
 	_pt.constructor = Circle;
 	
 
-	_pt.draw = function(){
-		
-	
-		this._transform_reset();
-		this.fire("beginDraw");
-		this.transform.translate(this.x(),this.y());
-		this.transform.rotate(this.rotate());
-		this.transform.scale(1*this.scale(),1*this.scale());
-		this._applyShadow(this.ctx);
-		this.ctx.fillStyle   = this.color();
-		this.ctx.globalAlpha = this.alpha();
-		this.draw_shape(this.ctx);
-		this.transform.restore();
-		this.dirty(false);
-		this.fire("finishDraw");
-
-		return this;
-	};
-
 
 	_pt._make = function(ctx){
 		
@@ -57,17 +38,17 @@
 		var kappa = .5522848,
 		  ox = (this.width() / 2) * kappa, // control point offset horizontal
 		  oy = (this.height() / 2) * kappa, // control point offset vertical
-		  xe = this.width(),           // x-end
-		  ye = this.height(),           // y-end
-		  xm = this.width() / 2,       // x-middle
-		  ym = this.height() / 2;       // y-middle
+		  xe =  this.x()+this.width(),           // x-end
+		  ye =  this.y()+this.height(),           // y-end
+		  xm =  this.x()+this.width() / 2,       // x-middle
+		  ym =  this.y()+this.height() / 2;       // y-middle
     
 		ctx.beginPath();
-		ctx.moveTo(0, ym);
-		ctx.bezierCurveTo(0, ym - oy, xm - ox, 0, xm, 0);
-		ctx.bezierCurveTo(xm + ox, 0, xe, ym - oy, xe, ym);
+		ctx.moveTo(this.x(), ym);
+		ctx.bezierCurveTo(this.x(), ym - oy, xm - ox, this.y(), xm, this.y());
+		ctx.bezierCurveTo(xm + ox, this.y(), xe, ym - oy, xe, ym);
 		ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
-		ctx.bezierCurveTo(xm - ox, ye, 0, ym + oy, 0, ym);
+		ctx.bezierCurveTo(xm - ox, ye, this.x(), ym + oy, this.x(), ym);
 		ctx.closePath();
       	ctx.fill();
 
@@ -75,10 +56,6 @@
 	};
 
 
-	
-	function drawEllipse(ctx, w, h) {
-      
-    }
 
 	// TODO: Maybe add override for every object???
 	// _pt.override = function(p_draw){

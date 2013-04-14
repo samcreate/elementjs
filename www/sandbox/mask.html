@@ -61,6 +61,7 @@
 <script src="lib/js/Element/types/Sprite.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Rectangle.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Circle.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/Triangle.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/FrameTicker.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Tweenie.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script>
@@ -144,28 +145,24 @@ canvas{border:1px solid red;}
 
 function _start_scene1 (e) {
 
-
+      var _scene = this;
 			debug.log("On Ready Called", this);
 
       var _img = new Element('Bitmap').src('jelly.jpg');
-      var _mask = new Element('Circle',{color: '#ff0000', width:200,height:200,x:100,y:100});
-      //var _mask = new Element("Rectangle",{color:"#ff0000"}).width(314).height(307)
-      
-      _img.bind('loaded',function(){
-        debug.log('loaded');
-        this.mask(_mask);
-      });
+      var _mask = new Element('Circle',{color: '#ff0000', width:300,height:200,x:100,y:100});
+      var _rec = new Element("Rectangle",{color:"#ff0000"}).width(314).height(307);
+      var _triangle = new Element('Triangle',{color:"#000000",width:200,height:150});
+      _img.mask(_triangle);
 
-      var _group = new Element('Group');
+      _img.drag(function(){})
 
-      _group.drag(function(){});
+      _scene.add(_img).add(_mask).add(_rec).add(_triangle);
 
-      _group.add(_img);
-
-      this.add(_group);
 
       window._img = _img;
       window._mask = _mask;
+      window._rec = _rec;
+      window._triangle = _triangle;
 
       // TODO:
       // FIX MASKING!!!!!

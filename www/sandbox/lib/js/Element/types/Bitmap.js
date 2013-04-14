@@ -75,11 +75,11 @@
 		 _to_draw = this._handle_filters(_to_draw);
 
 		 if(this.mask()){
-			this.transform.restore();
-			 _to_draw = this._handle_mask(_to_draw);
+			this.mask()._make(this.transform.context);
 		
 		}
 		this.transform.context.drawImage(_to_draw,0,0);
+
 		this._lastDrawState = _to_draw;
 	
 		this.transform.restore();
