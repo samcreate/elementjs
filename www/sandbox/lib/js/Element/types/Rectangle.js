@@ -22,10 +22,9 @@
 	_pt.constructor = Rectangle;
 	
 
-	_pt.draw = function(p_val){
+	_pt.draw = function(){
 		
 	
-		// debug.log(this.id());
 		this._transform_reset();
 		this.fire("beginDraw");
 		this.transform.translate(0,0);
@@ -60,8 +59,8 @@
 	_pt._make = function(p_ctx,p_scope){
 		
 		var _ctx = p_ctx;
-
 		
+		_ctx.beginPath();
 		_ctx.moveTo(0 + this.radius(), 0);
 		_ctx.lineTo(0 + this.width() - this.radius(), 0);
 		_ctx.quadraticCurveTo(0 + this.width(), 0, 0 + this.width(), 0 + this.radius());
@@ -104,17 +103,6 @@
 
 
 	
-
-	_pt.color = function(p_val){
-		if(p_val != null){
-			this._color = p_val;
-			this.dirty(true, arguments.callee.name);
-			return this;
-		}else{
-			return this._color;
-		}
-	};
-
 	_pt.radius = function(p_val){
 		if(p_val != null){
 			this._radius = p_val;
@@ -124,6 +112,33 @@
 			return this._radius || 0;
 		}
 	};
+
+	// TODO: Maybe add override for every object???
+	// _pt.override = function(p_draw){
+
+	// 	this.unbind('draw',this.draw,this);
+
+	// 	this.bind('draw',function(){
+
+	// 		this._transform_reset();
+	// 		this.fire("beginDraw");
+	// 		this.transform.translate(0,0);
+	// 		this.transform.rotate(this.rotate());
+	// 		this.transform.scale(1*this.scale(),1*this.scale());
+	// 		this._applyShadow(this.ctx);
+	// 		this.ctx.fillStyle   = this.color();
+	// 		this.ctx.globalAlpha = this.alpha();
+			
+	// 		p_draw.call(this,this.ctx);
+
+	// 		this.transform.restore();
+	// 		this.dirty(false);
+	// 		this.fire("finishDraw");
+
+
+	// 	},this);
+
+	// }
 
 
 
