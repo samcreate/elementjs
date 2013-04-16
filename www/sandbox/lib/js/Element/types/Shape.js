@@ -9,7 +9,9 @@
 	
 	Shape = function() {
 		
-	
+		this.defaults = {
+            color: '#000000'
+        };
 		
 	};
 
@@ -24,6 +26,14 @@
 		this.ctx = this.transform.context;
 		this.ready(true);
 		this.bind('draw',this.draw,this);
+	};
+
+	_pt._make = function(ctx){
+		
+		this.draw_shape(ctx);
+		ctx.clip();
+		this.dirty(false);
+
 	};
 
 	_pt.draw = function(){
@@ -51,7 +61,7 @@
 			this.dirty(true, arguments.callee.name);
 			return this;
 		}else{
-			return this._color;
+			return this._color || this.defaults.color;
 		}
 	};
 
@@ -63,7 +73,7 @@
 		this._mouse_transform.save();
 		this._mouse_transform.setMatrix([1, 0, 0, 1, 0, 0]);
 		this._mouse_canvas.context.clearRect(0, 0, this._mouse_canvas.canvas.width, this._mouse_canvas.canvas.height );
-		this._mouse_transform.translate(this.x(),this.y());
+		this._mouse_transform.translate(0,0);
 		var _w = (this.width()/this.orig_width),
 		_h = (this.height()/this.orig_height),
 		_m2 = this._mouse_transform.getMatrix();
@@ -73,8 +83,11 @@
 		this._applyShadow(this._mouse_transform.context);
 		this._mouse_canvas.context.fillStyle   = this.color();
 		this._mouse_canvas.context.globalAlpha = this.alpha();
-		this._mouse_canvas.context.fillRect(0,   0, this.width(), this.height());
+		this.draw_shape(this._mouse_canvas.context);
 		return this._mouse_canvas.context;
+
+
+
 	};
 
 	// =====================

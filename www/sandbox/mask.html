@@ -62,6 +62,7 @@
 <script src="lib/js/Element/types/Rectangle.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Circle.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/types/Triangle.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/js/Element/types/CustomShape.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/FrameTicker.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/Tweenie.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/js/Element/element.js" type="text/javascript" charset="utf-8"></script>
@@ -151,12 +152,63 @@ function _start_scene1 (e) {
       var _img = new Element('Bitmap').src('jelly.jpg');
       var _mask = new Element('Circle',{color: '#ff0000', width:300,height:200,x:100,y:100});
       var _rec = new Element("Rectangle",{color:"#ff0000"}).width(314).height(307);
+
+      var _simile = new Element('CustomShape').render(function(ctx){
+
+            // The Face
+              ctx.strokeStyle = '#0000FF';
+              ctx.fillStyle = '#FFFF00';
+              ctx.lineWidth = 4;
+              ctx.beginPath();
+              ctx.arc(100,75,50,0*Math.PI,2*Math.PI,true);
+              ctx.closePath();
+              ctx.stroke();
+              ctx.fill();
+           
+              // The Smile
+              ctx.strokeStyle = '#FF0000';
+              ctx.lineWidth = 2;
+              ctx.beginPath();
+              ctx.arc(100,65,40,0.2*Math.PI,0.8*Math.PI,false);
+              ctx.stroke();
+           
+              // The Left eye
+              ctx.strokeStyle = '#000000';
+              ctx.fillStyle = '#000000';
+              ctx.beginPath();
+              ctx.arc(80,60,10,0*Math.PI,2*Math.PI,false);
+              ctx.closePath();
+              ctx.stroke();
+              ctx.fill();
+           
+              // The Right Eye
+              ctx.strokeStyle = '#000000';
+              ctx.fillStyle = '#000000';
+              ctx.beginPath();
+              ctx.arc(120,60,10,0*Math.PI,2*Math.PI,false);
+              ctx.closePath();
+              ctx.stroke();
+              ctx.fill();
+ 
+      });
+
+      var diamond = new Element('CustomShape',{color:"yellow",width:200,height:250}).render(function(ctx){
+
+            ctx.beginPath();
+            ctx.moveTo(this.x()+(this.width()/2),this.y());
+            ctx.lineTo(this.x()+this.width(),this.y()+(this.height()/2));
+            ctx.lineTo(this.x()+(this.width()/2),this.y()+this.height());
+            ctx.lineTo(this.x(),this.y()+(this.height()/2));
+            ctx.fill();
+ 
+      });
+
+
       var _triangle = new Element('Triangle',{color:"#000000",width:200,height:150});
       _img.mask(_triangle);
 
-      _img.drag(function(){})
-
-      _scene.add(_img).add(_mask).add(_rec).add(_triangle);
+      diamond.drag(function(){});
+      _scene.add(_simile).add(_img).add(_mask).add(diamond);
 
 
       window._img = _img;

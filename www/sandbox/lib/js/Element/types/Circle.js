@@ -23,15 +23,6 @@
 	
 
 
-	_pt._make = function(ctx){
-		
-		this.draw_shape(ctx);
-		ctx.clip();
-		this.dirty(false);
-
-	};
-
-
 	_pt.draw_shape = function(ctx){
 
 
@@ -54,36 +45,6 @@
 
 
 	};
-
-
-
-	// TODO: Maybe add override for every object???
-	// _pt.override = function(p_draw){
-
-	// 	this.unbind('draw',this.draw,this);
-
-	// 	this.bind('draw',function(){
-
-	// 		this._transform_reset();
-	// 		this.fire("beginDraw");
-	// 		this.transform.translate(0,0);
-	// 		this.transform.rotate(this.rotate());
-	// 		this.transform.scale(1*this.scale(),1*this.scale());
-	// 		this._applyShadow(this.ctx);
-	// 		this.ctx.fillStyle   = this.color();
-	// 		this.ctx.globalAlpha = this.alpha();
-			
-	// 		p_draw.call(this,this.ctx);
-
-	// 		this.transform.restore();
-	// 		this.dirty(false);
-	// 		this.fire("finishDraw");
-
-
-	// 	},this);
-
-	// }
-
 
 
 	// =====================
